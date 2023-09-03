@@ -1,13 +1,22 @@
 .App {
+<<<<<<< HEAD
     text-align: center;
 }
 
 html {
     background-color: #212121;
+=======
+  text-align: center;
+}
+
+html {
+  background-color: #212121;
+>>>>>>> 15587dcc1948524d11684288b1009e4f29eed8ba
 }
 
 /* Everything in this <div> is going to be centered in a column */
 .main {
+<<<<<<< HEAD
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -46,4 +55,44 @@ li a {
 
 li a:hover {
     color: #01c4ff;
+=======
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #212121;
+  color: #fff;
+}
+
+.create-form label {
+  color: whitesmoke !important;
+  font-family: "Roboto", sans-serif;
+  font-size: 12px !important;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  list-style: none;
+  padding-top: 1rem;
+  background: #212121;
+  color: #fff;
+}
+
+.nav li {
+  display: inline-block;
+  padding: 10px;
+}
+
+li a {
+  text-decoration: none;
+  color: #56aafd;
+  font-size: 1.25rem;
+}
+
+li a:hover {
+  color: #01c4ff;
+>>>>>>> 15587dcc1948524d11684288b1009e4f29eed8ba
 }

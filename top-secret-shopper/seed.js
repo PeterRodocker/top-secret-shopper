@@ -1,5 +1,5 @@
 // const { blue, cyan, green, red } = require('chalk');
-const { db, Product } = require('./database');
+const { db, Product } = require('./server/database');
 
 async function seed() {
   try {
@@ -19,8 +19,8 @@ async function seed() {
       stockQty: 30,
       categoryId: 1
     });
-    console.log('cauliflower instance >>>>', cauliflower)
-    console.log('cauliflower name >>>>', cauliflower.name)
+    // console.log('cauliflower instance >>>>', cauliflower)
+    // console.log('cauliflower name >>>>', cauliflower.name)
 
     // console.log(green('🌲 Finished seeding the database!'));
     console.log('🌲 Finished seeding the database!');
