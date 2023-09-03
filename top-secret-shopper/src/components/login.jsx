@@ -1,12 +1,17 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import React, {useState} from 'react'
 =======
 import React, { useState } from 'react'
 >>>>>>> 15587dcc1948524d11684288b1009e4f29eed8ba
+=======
+import React, { useState } from 'react'
+>>>>>>> peter
 import axios from 'axios'
 import { Button, Form } from 'semantic-ui-react'
 
 const Login = () => {
+<<<<<<< HEAD
 <<<<<<< HEAD
     
     const [username, setUsername] = useState('')
@@ -52,6 +57,9 @@ const Login = () => {
 export default Login
 
 =======
+=======
+
+>>>>>>> peter
 
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
@@ -90,4 +98,7 @@ export default Login
 }
 
 export default Login
+<<<<<<< HEAD
 >>>>>>> 15587dcc1948524d11684288b1009e4f29eed8ba
+=======
+>>>>>>> peter
