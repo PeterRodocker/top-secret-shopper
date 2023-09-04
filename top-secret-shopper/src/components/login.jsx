@@ -12,6 +12,7 @@ const Login = () => {
 
 
   const handleSubmit = async (e) => {
+    console.log('handle this')
     e.preventDefault()
     axios.post('/', {
       firstName,
