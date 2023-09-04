@@ -3,10 +3,6 @@ import axios from 'axios'
 import { Button, Form } from 'semantic-ui-react'
 
 const Login = () => {
-<<<<<<<< < Temporary merge branch 1
-
-=========
->>>>>>>>> Temporary merge branch 2
 
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
@@ -19,11 +15,10 @@ const Login = () => {
   const handleSubmit = async (e) => {
     console.log('handle this')
     e.preventDefault()
-    axios.post('https://64e78e68b0fd9648b7901b1e.mockapi.io/fakedata', {
+    axios.post('/', {
       username,
       password
     })
-    axios.post('/')
   }
 
 
