@@ -1,20 +1,19 @@
 .App {
-  <<<<<<<<< Temporary merge branch 1 text-align: center;
+  text-align: center;
 }
 
 html {
   background-color: #212121;
-  =========text-align: center;
+  text-align: center;
 }
 
 html {
   background-color: #212121;
-  >>>>>>>>>Temporary merge branch 2
 }
 
 /* Everything in this <div> is going to be centered in a column */
 .main {
-  <<<<<<<<< Temporary merge branch 1 display: flex;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -52,7 +51,7 @@ li a {
 
 li a:hover {
   color: #01c4ff;
-  =========display: flex;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -90,5 +89,4 @@ li a {
 
 li a:hover {
   color: #01c4ff;
-  >>>>>>>>>Temporary merge branch 2
 }
