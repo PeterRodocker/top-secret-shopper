@@ -14,17 +14,35 @@ async function seed() {
     // Seed the database
     const cauliflower = await Product.create({
       name: 'Cauliflower',
-      price: 3.99,
+      price: 4.99,
       imageURL: 'www.cauliflower.com',
       stockQty: 30,
       categoryId: 1
     });
+
+    const taco = await Product.create({
+      name: 'Taco',
+      price: 1.99,
+      imageURL: 'www.tac0.com',
+      stockQty: 25,
+      categoryId: 1
+    });
+
+    const pizza = await Product.create({
+      name: 'Pizza',
+      price: 49.99,
+      imageURL: 'www.pizza.com',
+      stockQty: 10,
+      categoryId: 2
+    });
+
     // console.log('cauliflower instance >>>>', cauliflower)
     // console.log('cauliflower name >>>>', cauliflower.name)
 
     // console.log(green('🌲 Finished seeding the database!'));
     console.log('🌲 Finished seeding the database!');
     await db.close();
+    console.log("db closed")
   } catch (err) {
     // console.log(red('🔥 An error occured!!'));
     console.log('🔥 An error occured!!');
@@ -33,3 +51,4 @@ async function seed() {
   }
 }
 seed();
+

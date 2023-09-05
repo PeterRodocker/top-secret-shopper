@@ -7,15 +7,10 @@ const Login = () => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
 
-  const firstName = username
-  const lastName = password
-
-
-
   const handleSubmit = async (e) => {
     console.log('handle this')
     e.preventDefault()
-    axios.post('/', {
+    axios.post('/help', {
       username,
       password
     })

@@ -12,12 +12,19 @@ app.use(express.urlencoded({ extended: true }));
 // app.use('/auth', require('./auth'));
 app.use('/api', require('./api'));
 
+app.get("/message", (_, res) => res.send("Hello from express!"));
+
 app.get('/', (req, res, next) =>
   res.sendFile(path.join(__dirname, '..', 'public')));
 
+app.get('/help', (req, res, next) => {
+  console.log('HELP!!!'),
+    res.send('Get Help');
+})
+
 app.post('/help', (req, res, next) => {
   console.log('HELP!!!'),
-    res.send('Nailed it');
+    res.send('Post Help');
 })
 
 app.use(express.static(path.join(__dirname, "..", "public")));
