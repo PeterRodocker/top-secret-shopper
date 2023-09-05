@@ -2,11 +2,11 @@ const Sequelize = require('sequelize');
 const db = require('../db');
 
 const Product = db.define('product', {
-  userName: {
+  name: {
     type: Sequelize.STRING,
     allowNull: false,
   },
-  password: {
+  price: {
     type: Sequelize.STRING,
     allowNull: false,
   }
