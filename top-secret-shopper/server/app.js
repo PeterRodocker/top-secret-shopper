@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const ViteExpress = require('vite-express');
 const path = require('path');
 const morgan = require('morgan');
 
@@ -13,6 +14,11 @@ app.use('/api', require('./api'));
 
 app.get('/', (req, res, next) =>
   res.sendFile(path.join(__dirname, '..', 'public')));
+
+app.post('/help', (req, res, next) => {
+  console.log('HELP!!!'),
+    res.send('Nailed it');
+})
 
 app.use(express.static(path.join(__dirname, "..", "public")));
 
@@ -37,7 +43,7 @@ app.use((err, req, res, next) => {
 });
 
 const PORT = 1337;
-app.listen(PORT, () => {
+ViteExpress.listen(app, PORT, () => {
   console.log(`listening on port ${PORT}`)
 });
 
