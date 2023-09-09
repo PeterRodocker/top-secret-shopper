@@ -4,14 +4,13 @@ import { Button, Form } from 'semantic-ui-react'
 
 const Login = () => {
 
-  const [username, setUsername] = useState('')
+  const [userName, setUserName] = useState('')
   const [password, setPassword] = useState('')
 
   const handleSubmit = async (e) => {
-    console.log('handle this')
     e.preventDefault()
-    axios.post('/help', {
-      username,
+    axios.post('/api/users', {
+      userName,
       password
     })
   }
@@ -23,7 +22,7 @@ const Login = () => {
       <Form>
         <Form.Field>
           <label>Username</label>
-          <input placeholder='username' onChange={(e) => setUsername(e.target.value)} />
+          <input placeholder='username' onChange={(e) => setUserName(e.target.value)} />
         </Form.Field>
         <Form.Field>
           <label>Password</label>

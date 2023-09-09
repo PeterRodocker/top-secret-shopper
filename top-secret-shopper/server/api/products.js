@@ -4,6 +4,7 @@ const { Product } = require('../database')
 // Get all products /api/products
 router.get('/', async (req, res, next) => {
   try {
+    console.log('pooooort', process.env)
     const products = await Product.findAll();
     res.send(products);
   } catch (err) {

@@ -1,8 +1,9 @@
 const express = require('express');
 const app = express();
-const ViteExpress = require('vite-express');
 const path = require('path');
 const morgan = require('morgan');
+
+const PORT = 1337;
 
 app.use(morgan('dev'));
 
@@ -16,16 +17,6 @@ app.get("/message", (_, res) => res.send("Hello from express!"));
 
 app.get('/', (req, res, next) =>
   res.sendFile(path.join(__dirname, '..', 'public')));
-
-app.get('/help', (req, res, next) => {
-  console.log('HELP!!!'),
-    res.send('Get Help');
-})
-
-app.post('/help', (req, res, next) => {
-  console.log('HELP!!!'),
-    res.send('Post Help');
-})
 
 app.use(express.static(path.join(__dirname, "..", "public")));
 
@@ -49,8 +40,7 @@ app.use((err, req, res, next) => {
   res.status(err.status || 500).send(err.message || "Internal server error.");
 });
 
-const PORT = 1337;
-ViteExpress.listen(app, PORT, () => {
+app.listen(PORT, () => {
   console.log(`listening on port ${PORT}`)
 });
 
