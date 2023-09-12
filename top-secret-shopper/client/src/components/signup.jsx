@@ -2,21 +2,20 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import { Button, Form } from 'semantic-ui-react'
 
-const Login = () => {
+const Signup = () => {
 
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const { data: token } = await axios.post('/auth/login', {
+    const { data: { token } } = await axios.post('/auth/signup', {
       username,
       password
     })
-    window.localStorage.setItem('Authorization', token)
+    window.localStorage.setItem('Authorization', token);
     attemptTokenLogin()
   }
-
 
   const attemptTokenLogin = async () => {
     const token = window.localStorage.getItem('Authorization')
@@ -24,14 +23,14 @@ const Login = () => {
       const { data: user } = await axios.get('./auth/me', {
         headers: { authorization: token }
       })
-      console.log('***Login User***', user)
+      console.log('***Signup User***', user)
       // Add user to global state
     }
   }
 
   return (
     <div>
-      <h1>Login</h1>
+      <h1>Signup</h1>
       <Form>
         <Form.Field>
           <label>Username</label>
@@ -48,5 +47,5 @@ const Login = () => {
 
 }
 
-export default Login
+export default Signup
 

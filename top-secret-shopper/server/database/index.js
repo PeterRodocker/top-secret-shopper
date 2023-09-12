@@ -9,7 +9,9 @@ Product.belongsToMany(User, { through: 'userProducts' });
 
 module.exports = {
   db,
-  Product,
-  User,
-  Category
+  models: {
+    Product,
+    User,
+    Category
+  }
 }
