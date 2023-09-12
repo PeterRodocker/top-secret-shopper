@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User } = require('../database')
+const { models: { User } } = require('../database')
 
 // Get all users /api/users
 router.get('/', async (req, res, next) => {

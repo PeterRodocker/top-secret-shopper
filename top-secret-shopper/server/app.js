@@ -10,7 +10,7 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// app.use('/auth', require('./auth'));
+app.use('/auth', require('./auth'));
 app.use('/api', require('./api'));
 
 app.get("/message", (_, res) => res.send("Hello from express!"));
