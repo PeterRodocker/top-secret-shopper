@@ -17,7 +17,6 @@ const Login = () => {
     attemptTokenLogin()
   }
 
-
   const attemptTokenLogin = async () => {
     const token = window.localStorage.getItem('Authorization')
     if (token) {
