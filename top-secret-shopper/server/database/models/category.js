@@ -1,13 +1,15 @@
 const Sequelize = require('sequelize');
+const { STRING } = Sequelize;
 const db = require('../db');
 
 const Category = db.define('category', {
   name: {
-    type: Sequelize.STRING,
+    type: STRING,
     allowNull: false,
   },
   description: {
-    type: Sequelize.STRING
+    type: STRING,
+    allowNull: false,
   }
 });
 

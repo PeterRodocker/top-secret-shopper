@@ -1,5 +1,5 @@
-import dotenv from 'dotenv';
-dotenv.config();
+// import dotenv from 'dotenv';
+// dotenv.config();
 
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
