@@ -1,8 +1,11 @@
+const { faker } = require('@faker-js/faker');
+
 const productData = [
   {
     name: 'Cauliflower',
     price: 4.99,
-    imageURL: 'www.cauliflower.com',
+    // imageURL: faker.image.urlLoremFlickr({ category: 'abstract' }),
+    imageURL: faker.image.urlLoremFlickr(width ?: number = 640, height ?: number = 480, { category: 'abstract' }),
     stockQty: 30,
     categoryId: 1
   },
@@ -10,7 +13,7 @@ const productData = [
   {
     name: 'Taco',
     price: 1.99,
-    imageURL: 'www.tac0.com',
+    imageURL: faker.image.urlLoremFlickr({ category: 'abstract' }),
     stockQty: 25,
     categoryId: 1
   },
@@ -18,7 +21,7 @@ const productData = [
   {
     name: 'Pizza',
     price: 49.99,
-    imageURL: 'www.pizza.com',
+    imageURL: faker.image.urlLoremFlickr({ category: 'abstract' }),
     stockQty: 10,
     categoryId: 2
   }

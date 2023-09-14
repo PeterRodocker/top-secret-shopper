@@ -16,22 +16,22 @@ const User = db.define('user', {
   },
   firstName: {
     type: STRING,
-    allowNull: false,
+    // allowNull: false,
   },
   lastName: {
     type: STRING,
-    allowNull: false,
+    // allowNull: false,
   },
   email: {
     type: STRING,
-    allowNull: false,
-    validate: {
-      isEmail: true,
-    }
+    // allowNull: false,
+    // validate: {
+    //   isEmail: true,
+    // }
   },
   address: {
     type: STRING,
-    allowNull: false
+    // allowNull: false
   },
   isAdmin: {
     type: BOOLEAN,
@@ -59,6 +59,7 @@ User.authenticate = async function ({ username, password }) {
     error.status = 401;
     throw error;
   }
+  console.log('user', user)
   if (await bcrypt.compare(password, user.password)) {
     return user.generateToken();
   }
@@ -69,8 +70,17 @@ User.prototype.generateToken = function () {
   return token;
 }
 
-User.beforeCreate(async function (user) {
+const hashPassword = async (user) => {
   user.password = await bcrypt.hash(user.password, SALT_ROUNDS);
-});
+}
+
+User.beforeCreate(hashPassword);
+User.beforeUpdate(hashPassword);
+User.beforeBulkCreate(async (users) => {
+  for (const user of users) {
+    user.password = await bcrypt.hash(user.password, SALT_ROUNDS);
+    // hashPassword(user);
+  }
+})
 
 module.exports = User;
