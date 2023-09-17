@@ -5,7 +5,7 @@ const productData = [
     name: 'Cauliflower',
     price: 4.99,
     // imageURL: faker.image.urlLoremFlickr({ category: 'abstract' }),
-    imageURL: faker.image.urlLoremFlickr(width ?: number = 640, height ?: number = 480, { category: 'abstract' }),
+    imageURL: faker.image.urlLoremFlickr({ category: 'abstract' }),
     stockQty: 30,
     categoryId: 1
   },
