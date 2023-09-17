@@ -1,11 +1,14 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import axios from 'axios'
 import { Button, Form } from 'semantic-ui-react'
 
-const Login = () => {
+import UserContext from '../contexts/UserContext'
 
+const Login = () => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
+  const [user, setUser] = useContext(UserContext)
+
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -23,8 +26,7 @@ const Login = () => {
       const { data: user } = await axios.get('./auth/me', {
         headers: { authorization: token }
       })
-      console.log('***Login User***', user)
-      // Add user to global state
+      setUser(user)
     }
   }
 

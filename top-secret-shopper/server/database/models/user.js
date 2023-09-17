@@ -41,7 +41,8 @@ const User = db.define('user', {
 
 User.findByToken = async function (token) {
   const { userId } = await jwt.verify(token, process.env.JWT);
-  const user = await User.findByPk(userId);
+  const user = await User.findByPk(userId,
+    { attributes: ['username', 'address', 'email', 'firstName', 'lastName'] });
   if (!user) {
     const error = Error('bad credentials');
     error.status = 401;
@@ -59,7 +60,6 @@ User.authenticate = async function ({ username, password }) {
     error.status = 401;
     throw error;
   }
-  console.log('user', user)
   if (await bcrypt.compare(password, user.password)) {
     return user.generateToken();
   }
