@@ -1,15 +1,21 @@
 import React from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Login from './components/login'
 import Signup from './components/signup'
+import AllProducts from './components/allProducts'
 
 
 function App() {
-
-  console.log()
   return (
     <>
-      <Signup />
-      <Login />
+      <Router>
+        <Routes>
+          <Route path='/' element={<Login />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/signup' element={<Signup />} />
+          <Route path='/products' element={<AllProducts />} />
+        </Routes>
+      </Router>
     </>
 
   )

@@ -15,6 +15,12 @@ const Product = db.define('product', {
     type: INTEGER,
     allowNull: false,
   },
+  imageURL: {
+    type: STRING,
+    validate: {
+      isURL: true,
+    }
+  }
 });
 
 module.exports = Product;
