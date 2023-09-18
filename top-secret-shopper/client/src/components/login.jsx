@@ -1,4 +1,5 @@
 import { useState, useContext } from 'react'
+import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { Button, Form } from 'semantic-ui-react'
 
@@ -8,7 +9,7 @@ const Login = () => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [user, setUser] = useContext(UserContext)
-
+  const navigate = useNavigate()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -27,8 +28,12 @@ const Login = () => {
         headers: { authorization: token }
       })
       setUser(user)
+      navigate('/products')
+
     }
   }
+
+
 
   return (
     <div>
