@@ -1,10 +1,12 @@
+import './productView.css'
+
 const ProductView = (props) => {
   const { product: { name, imageURL, price, stockQty } } = props
 
   return (
-    <div style={{ margin: '5rem' }} className="product-view">
+    <div className="product-view__container">
       <h3>{name}</h3>
-      <img style={{ maxWidth: '250px' }} src={imageURL} alt={name} />
+      <img className='product-view__image' src={imageURL} alt={name} />
       <p>${price}</p>
       <p>{stockQty} in stock</p>
     </div>

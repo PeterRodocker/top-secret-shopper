@@ -6,11 +6,12 @@ import ProductView from './productView';
 const AllProducts = () => {
   const [products, setProducts] = useState([])
 
+  async function fetchData() {
+    const products = await axios.get('/api/products')
+    setProducts(products.data)
+  }
+  
   useEffect(() => {
-    async function fetchData() {
-      const products = await axios.get('/api/products')
-      setProducts(products.data)
-    }
     fetchData()
   }, []);
 
