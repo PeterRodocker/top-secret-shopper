@@ -20,6 +20,10 @@ const Product = db.define('product', {
     validate: {
       isURL: true,
     }
+  },
+  description: {
+    type: STRING,
+    allowNull: false,
   }
 });
 
