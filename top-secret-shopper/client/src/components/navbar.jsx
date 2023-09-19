@@ -1,17 +1,18 @@
 import { useContext } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import './navbar.css' 
 
 import UserContext from '../contexts/UserContext'
 
-
 const Navbar = () => {
+  const navigate = useNavigate()
   const [user, setUser] = useContext(UserContext)
 
   const logout = () => {
     setUser({})
     window.localStorage.removeItem('Authorization')
     window.localStorage.removeItem('user')
+    navigate('/login')
   }
 
   return (
