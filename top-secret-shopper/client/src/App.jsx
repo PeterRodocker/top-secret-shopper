@@ -6,6 +6,7 @@ import Signup from './components/signup'
 import AllProducts from './components/allProducts'
 import SingleProduct from './components/singleProduct'
 import Navbar from './components/navbar'
+import './App.css'
 
 import { UserProvider } from './contexts/UserContext';
 

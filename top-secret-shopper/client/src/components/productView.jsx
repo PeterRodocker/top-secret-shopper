@@ -1,13 +1,14 @@
-
 import { useState } from "react"
 import { Link } from "react-router-dom"
+
 import { Button, Form, Input } from 'semantic-ui-react'
+import './productView.css'
 
 const ProductView = (props) => {
   const { product: { description, id, imageURL, name, price, stockQty } } = props
   const [qty, setQty] = useState(0)
   let qtyInStock = stockQty
-
+  
   const handleChangeQty = (e) => {
     setQty(e.target.value)
   }
@@ -22,10 +23,10 @@ const ProductView = (props) => {
 
   return (
     <>
-      <div style={{ margin: '5rem' }} className="product-view">
+      <div className="product-view__container">
         <Link to={`/products/${id}`}>
           <h3>{name}</h3>
-          <img style={{ maxWidth: '250px' }} src={imageURL} alt={name} />
+          <img className='product-view__image' src={imageURL} alt={name} />
         </Link>
         <p>${price}</p>
         {stockQty - qty > 0 ? <p>In Stock</p> : <p>Only {qty} in Stock</p>}
