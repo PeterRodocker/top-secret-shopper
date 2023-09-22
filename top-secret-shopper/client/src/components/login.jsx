@@ -19,6 +19,7 @@ const Login = () => {
     })
     window.localStorage.setItem('Authorization', token)
     attemptTokenLogin()
+    navigate('/products')
   }
 
   const attemptTokenLogin = async () => {
@@ -28,8 +29,6 @@ const Login = () => {
         headers: { authorization: token }
       })
       setUser(user)
-      navigate('/products')
-
     }
   }
 
