@@ -5,8 +5,6 @@ import './Navbar.css'
 
 import UserContext from '../contexts/UserContext'
 
-
-
 const Navbar = () => {
   const navigate = useNavigate()
   const [user, setUser] = useContext(UserContext)
@@ -20,27 +18,27 @@ const Navbar = () => {
 
   return (
     <div className='nav__container'>
-      <p className='nav__welcome-text'>
-        {user.username ? 'Welcome, ' + user.username : 'Let\'s Shop!'}
-      </p>
-      <span className='nav__links'>
-        <Link to='/login' style={{ margin: '1em' }}>Login</Link>
-        <Link to='/signup' style={{ margin: '1em' }}>Signup</Link>
-        <Link to='/products' style={{ margin: '1em' }}>Products</Link>
-      </span>
-      
-      {
-        user.username ?
-          <Link to="/products">All Products</Link> :
+
+      {!user.username ?
+        <>
+          <p className='nav__welcome-text'>
+            Sign In To Give Us $$$
+          </p>
           <span className='nav__links'>
             <Link to='/login' style={{ margin: '1em' }}>Login</Link>
             <Link to='/signup' style={{ margin: '1em' }}>Signup</Link>
             <Link to='/products' style={{ margin: '1em' }}>Products</Link>
           </span>
+        </>
+        :
+        <>
+          <p className='nav__welcome-text'>
+            Welcome, {user.username}
+          </p>
+          <Link to='/products' style={{ margin: '1em' }}>Products</Link>
+          <button className='nav__logout-button' onClick={logout}>Logout</button>
+        </>
       }
-      
-      {
-        user.username ? (<button className='nav__logout-button' onClick={logout}>Logout</button>) : ''}
     </div >
   )
 }
