@@ -1,6 +1,8 @@
 import { useContext } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import './navbar.css'
+
+import './Navbar.css'
+
 import UserContext from '../contexts/UserContext'
 
 

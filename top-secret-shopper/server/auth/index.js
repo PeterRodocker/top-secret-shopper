@@ -28,6 +28,7 @@ router.post('/login', async (req, res, next) => {
 
 // Get User
 router.get('/me', async (req, res, next) => {
+  console.log('/me')
   try {
     const user = await User.findByToken(req.headers.authorization, {
     })
