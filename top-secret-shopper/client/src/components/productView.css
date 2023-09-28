@@ -1,14 +1,27 @@
 .product-view__container {
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
     align-items: center;
+    justify-content: space-around;
+    width: 60vh;
     padding: 0 1rem;
-    margin: 5rem;
-    height: 10vh;
-    background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 5rem;
+    background-color: white;
 }
 
 .product-view__image {
-    max-width: 15.625rem;
+    max-width: 8.625rem;
+}
+
+#description {
+    width: 40vh;
+}
+
+#in-stock {
+    color: green;
+}
+
+#only-in-stock {
+    color: orange;
 }

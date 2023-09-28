@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 
-import ProductView from './productView';
+import ProductView from './ProductView';
 
 const AllProducts = () => {
   const [products, setProducts] = useState([])
@@ -12,10 +12,14 @@ const AllProducts = () => {
     setProducts(products.data)
   }
 <<<<<<< HEAD
+<<<<<<< HEAD
   
 =======
 
 >>>>>>> 218848214d522afc7dbbf6dff9af49906d0efb8f
+=======
+
+>>>>>>> f18be0d85768f2b7160825aff7776596ad2f17a0
   useEffect(() => {
     fetchData()
   }, []);
@@ -30,7 +34,6 @@ const AllProducts = () => {
           </div>
         ))}
       </div>
-
     </>
   )
 }
