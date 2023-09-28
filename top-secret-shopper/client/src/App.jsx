@@ -1,14 +1,14 @@
 import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
-import Login from './components/Login'
-import Signup from './components/Signup'
-import AllProducts from './components/AllProducts'
 import SingleProduct from './components/singleProduct'
-import Navbar from './components/Navbar'
+import Navbar from './components/navbar'
 import './App.css'
 
+
 import { UserProvider } from './contexts/UserContext';
+import './App.css'
+
 
 function App() {
   return (

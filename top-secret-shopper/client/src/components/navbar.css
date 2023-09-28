@@ -18,6 +18,7 @@
     display: flex;
     justify-content: space-around;
     width: 30%;
+    margin: 1em;
 }
 
 .nav__logout-button {
