@@ -1,8 +1,11 @@
 import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
+import AllProducts from './components/AllProducts'
+import Login from './components/Login'
+import Navbar from './components/Navbar'
+import Signup from './components/Signup'
 import SingleProduct from './components/singleProduct'
-import Navbar from './components/navbar'
 import './App.css'
 
 
