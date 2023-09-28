@@ -18,7 +18,6 @@ const Navbar = () => {
 
   return (
     <div className='nav__container'>
-
       {!user.username ?
         <>
           <p className='nav__welcome-text'>
