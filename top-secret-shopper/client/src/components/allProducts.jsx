@@ -11,15 +11,7 @@ const AllProducts = () => {
     const products = await axios.get('/api/products')
     setProducts(products.data)
   }
-<<<<<<< HEAD
-<<<<<<< HEAD
-  
-=======
 
->>>>>>> 218848214d522afc7dbbf6dff9af49906d0efb8f
-=======
-
->>>>>>> f18be0d85768f2b7160825aff7776596ad2f17a0
   useEffect(() => {
     fetchData()
   }, []);
