@@ -1,14 +1,21 @@
 const Sequelize = require('sequelize');
-const { INTEGER, STRING } = Sequelize;
+const { ENUM, INTEGER, STRING } = Sequelize;
 const db = require('../db');
 
-const Shipping = db.define('shipping', {
-
+const Address = db.define('address', {
     street: {
         type: STRING,
         allowNull: false,
     },
+    unit: {
+        type: STRING,
+        allowNull: true,
+    },
     city: {
+        type: STRING,
+        allowNull: false,
+    },
+    state: {
         type: STRING,
         allowNull: false,
     },
@@ -16,11 +23,11 @@ const Shipping = db.define('shipping', {
         type: INTEGER,
         allowNull: false,
     },
-    unit: {
-        type: STRING,
-        allowNull: false,
-    },
-
+    type: {
+        type: ENUM('Mailing', 'Billing'),
+        defaultValue: 'Mailing',
+        allowNull: false
+    }
 });
 
-module.exports = Shipping;
+module.exports = Address;

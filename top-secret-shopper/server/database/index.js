@@ -1,82 +1,62 @@
 const db = require('./db')
+const Address = require('./models/address')
 const Cart = require('./models/cart')
 const CartDetail = require('./models/cartDetail')
 const Category = require('./models/category')
+const Order = require('./models/order')
+const OrderDetail = require('./models/orderDetail')
 const OrderHistory = require('./models/orderHistory')
+const Payment = require('./models/payment')
 const Product = require('./models/product')
 const Shipping = require('./models/shipping')
 const User = require('./models/user')
-const Order = require('./models/order')
-const OrderDetail = require('./models/orderDetail')
-const Address = require('./models/address')
 
 // Associations go here
+
 // USER
-User.hasOne(Cart)
+User.hasMany(Address);
+Address.belongsTo(User);
+
+User.hasOne(Cart);
 Cart.belongsTo(User);
+
+Product.belongsToMany(Cart, { through: CartDetail });
+Cart.belongsToMany(Product, { through: CartDetail });
+
+Category.hasMany(Product);
+Product.belongsTo(Category);
 
 User.hasMany(Order)
 Order.belongsTo(User);
 
-User.hasMany(Address)
-Address.belongsTo(User);
+Order.belongsToMany(Product, { through: OrderDetail });
+Product.belongsToMany(Order, { through: OrderDetail });
 
-// // CART
-// Cart.hasMany(CartDetail);
-// CartDetail.belongsTo(Cart);
-
-// CART DETAIL
-// CartDetail.belongsTo(Product);
-
-
-// ORDER
-
-// Order.hasMany(OrderDetail);
-// OrderDetail.belongsTo(Order);
-
-Order.hasMany(OrderHistory)
+Order.hasOne(Payment);
+Payment.belongsTo(Order);
 
 Order.hasOne(Shipping)
 Shipping.belongsTo(Order);
 
+User.hasOne(OrderHistory);
+OrderHistory.belongsTo(User);
 
-// // ORDER DETAIL
-Order.belongsTo(Cart, { through: OrderDetail });
-Cart.belongsTo(Product, { through: OrderDetail });
-// OrderDetail.hasOne(Product);
-// OrderDetail.belongsTo(Product);
-
-
-// ORDER HISTORY
-OrderHistory.hasOne(Order);
-
-
-// SHIPPING
-Shipping.hasOne(Address);
-
-
-// CATEGORY 
-Category.hasMany(Product);
-Product.belongsTo(Category);
-
-
-// PRODUCT
-Product.belongsToMany(Cart, { through: CartDetail });
-Cart.belongsToMany(Product, { through: CartDetail });
-
+Order.hasOne(OrderHistory);
+OrderHistory.belongsTo(Order);
 
 module.exports = {
   db,
   models: {
+    Address,
     Cart,
     CartDetail,
     Category,
-    Product,
-    User,
     Order,
     OrderDetail,
     OrderHistory,
+    Payment,
+    Product,
     Shipping,
-    Address
+    User,
   }
 }

@@ -3,15 +3,6 @@ const { INTEGER, STRING, DATE } = Sequelize;
 const db = require('../db');
 
 const OrderHistory = db.define('orderHistory', {
-
-    orderId: {
-        type: INTEGER,
-        allowNull: false,
-    },
-    userId: {
-        type: STRING,
-        allowNull: false,
-    },
     firstName: {
         type: STRING,
         allowNull: false,
@@ -36,7 +27,6 @@ const OrderHistory = db.define('orderHistory', {
         type: DATE,
         allowNull: false,
     },
-
 });
 
 module.exports = OrderHistory;

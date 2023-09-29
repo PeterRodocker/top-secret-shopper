@@ -1,13 +1,8 @@
 const Sequelize = require('sequelize');
-const { INTEGER, DATE, STRING } = Sequelize;
+const { DATE, STRING } = Sequelize;
 const db = require('../db');
 
 const Shipping = db.define('shipping', {
-
-    orderId: {
-        type: INTEGER,
-        allowNull: false,
-    },
     shippingMethod: {
         type: STRING,
         allowNull: false,
@@ -20,7 +15,6 @@ const Shipping = db.define('shipping', {
         type: DATE,
         allowNull: false,
     },
-
 });
 
 module.exports = Shipping;

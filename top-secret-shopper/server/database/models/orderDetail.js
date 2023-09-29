@@ -3,14 +3,6 @@ const { INTEGER, STRING } = Sequelize;
 const db = require('../db');
 
 const OrderDetail = db.define('orderDetail', {
-    // orderId: {
-    //     type: INTEGER,
-    //     allowNull: false,
-    // },
-    // productId: {
-    //     type: INTEGER,
-    //     allowNull: false,
-    // },
     quantity: {
         type: INTEGER,
         allowNull: false,
@@ -21,7 +13,6 @@ const OrderDetail = db.define('orderDetail', {
             isURL: true,
         }
     }
-    
-    })
+})
 
-    module.exports = OrderDetail;
+module.exports = OrderDetail;
