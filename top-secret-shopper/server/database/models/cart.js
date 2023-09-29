@@ -1,12 +1,11 @@
 const Sequelize = require('sequelize');
-const { DATE } = Sequelize;
 const db = require('../db');
 
 const Cart = db.define('cart', {
-  creationDate: {
-    type: DATE,
-    allowNull: false,
-  }
+  isOpen: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: true,
+  },
 })
 
 module.exports = Cart;
