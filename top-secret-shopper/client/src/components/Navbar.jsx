@@ -24,9 +24,9 @@ const Navbar = () => {
             Sign In To Give Us $$$
           </p>
           <span className='nav__links'>
-            <Link to='/login' style={{ margin: '1em' }}>Login</Link>
-            <Link to='/signup' style={{ margin: '1em' }}>Signup</Link>
-            <Link to='/products' style={{ margin: '1em' }}>Products</Link>
+            <Link to='/login'>Login</Link>
+            <Link to='/signup'>Signup</Link>
+            <Link to='/products'>Products</Link>
           </span>
         </>
         :
