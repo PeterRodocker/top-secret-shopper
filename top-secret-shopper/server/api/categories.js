@@ -1,11 +1,12 @@
+// IMPORTS
 const router = require('express').Router();
 const { Category } = require('../database/models/category')
 
-// Get all categories /api/categories
+// GET Route for '/api/categories'
 router.get('/', async (req, res, next) => {
   try {
     const categories = await Category.findAll();
-    res.send('categories', categories);
+    res.json({ categories });
   } catch (err) {
     next(err);
   }

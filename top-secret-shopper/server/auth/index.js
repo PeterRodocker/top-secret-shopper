@@ -1,8 +1,8 @@
+// IMPORTS
 const router = require('express').Router();
-
 const { models: { User } } = require('../database')
 
-// Signup
+// Signup - listens for POST requests on the '/signup' endpoint
 router.post('/signup', async (req, res, next) => {
   try {
     const user = await User.create(req.body)
@@ -16,7 +16,7 @@ router.post('/signup', async (req, res, next) => {
   }
 })
 
-// Login
+// Login - listens for POST requests on the '/login' endpoint
 router.post('/login', async (req, res, next) => {
   try {
     const token = await User.authenticate(req.body);
@@ -26,7 +26,7 @@ router.post('/login', async (req, res, next) => {
   }
 })
 
-// Get User
+// GET User - listens for GET requests on the '/me' endpoint
 router.get('/me', async (req, res, next) => {
   try {
     const user = await User.findByToken(req.headers.authorization, {
@@ -38,3 +38,5 @@ router.get('/me', async (req, res, next) => {
 })
 
 module.exports = router;
+
+
