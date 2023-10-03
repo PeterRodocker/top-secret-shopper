@@ -13,7 +13,6 @@ const User = require('./models/user')
 
 // Associations go here
 
-// USER
 User.hasMany(Address);
 Address.belongsTo(User);
 
@@ -38,10 +37,10 @@ Payment.belongsTo(Order);
 Order.hasOne(Shipping)
 Shipping.belongsTo(Order);
 
-User.hasOne(OrderHistory);
+User.hasMany(OrderHistory);
 OrderHistory.belongsTo(User);
 
-Order.hasOne(OrderHistory);
+Order.hasMany(OrderHistory);
 OrderHistory.belongsTo(Order);
 
 module.exports = {

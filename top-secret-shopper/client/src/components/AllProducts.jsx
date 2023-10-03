@@ -1,30 +1,37 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 
 import ProductView from './ProductView';
 
-const AllProducts = () => {
-  const [products, setProducts] = useState([])
+import ProductContext from '../contexts/ProductContext';
 
-  async function fetchData() {
-    const products = await axios.get('/api/products')
-    setProducts(products.data)
+const AllProducts = () => {
+  const [products, setProducts] = useContext(ProductContext)
+
+  async function fetchProducts() {
+    try {
+      const { data: products } = await axios.get('/api/products')
+      setProducts(products)
+    } catch (err) {
+      console.log(err)
+    }
   }
 
   useEffect(() => {
-    fetchData()
+    fetchProducts()
   }, []);
 
   return (
     <>
       <h1>All Products</h1>
       <div className='all-products-container'>
-        {products.map(product => (
+        {products.length ? products.map(product => (
           <div key={product.id}>
             <ProductView product={product} />
           </div>
-        ))}
+        )) : ''
+        }
       </div>
     </>
   )

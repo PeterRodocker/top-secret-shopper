@@ -13,6 +13,7 @@ const Navbar = () => {
     setUser({})
     window.localStorage.removeItem('Authorization')
     window.localStorage.removeItem('user')
+    window.localStorage.removeItem('products')
     navigate('/login')
   }
 

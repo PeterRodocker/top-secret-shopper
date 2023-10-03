@@ -8,9 +8,8 @@ import Signup from './components/Signup'
 import SingleProduct from './components/singleProduct'
 import './App.css'
 
-
 import { UserProvider } from './contexts/UserContext';
-import './App.css'
+import { ProductProvider } from './contexts/ProductContext';
 
 
 function App() {
@@ -18,18 +17,19 @@ function App() {
     <>
       <Router>
         <UserProvider storageKey="user">
-          <Navbar />
-          <Routes>
-            <Route path="/" element={<Login />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/products" element={<AllProducts />} />
-            <Route path="/products/:productId" element={<SingleProduct />} />
-          </Routes>
+          <ProductProvider storageKey="products">
+            <Navbar />
+            <Routes>
+              <Route path="/" element={<Login />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<Signup />} />
+              <Route path="/products" element={<AllProducts />} />
+              <Route path="/products/:productId" element={<SingleProduct />} />
+            </Routes>
+          </ProductProvider>
         </UserProvider>
       </Router>
     </>
-
   )
 }
 
