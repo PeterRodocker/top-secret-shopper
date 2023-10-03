@@ -1,3 +1,4 @@
+// IMPORTS
 const router = require('express').Router();
 const { models: { User } } = require('../database')
 
