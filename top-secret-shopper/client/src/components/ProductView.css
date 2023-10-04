@@ -1,3 +1,18 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.all-products-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+    grid-gap: 1rem;
+    margin: 5rem;
+    padding: 0 1rem;
+}
+
 .product-view__container {
     display: flex;
     flex-direction: column;
@@ -7,13 +22,57 @@
     margin: 5rem;
     padding: 0 1rem;
     background-color: white;
+    border-radius: 0.25rem;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: #fff;
+    text-align: center;
 }
 
 .product-view__heading {
     font-size: 1.5rem;
     font-weight: 700;
     margin: 0.5rem 0;
+    background-color: #fff;
+}
+
+.product-view__image {
+    max-width: 8.625rem;
+}
+
+#price {
+    background-color: #fff;
+}
+
+#in-stock {
+    color: green;
+    background-color: #fff;
+}
+
+#only-in-stock {
+    color: orange;
+    background-color: #fff;
+}
+
+.product-view__description {
+    font-size: 1rem;
+    font-weight: 400;
+    margin: 0.5rem 0;
+    background-color: #fff;
+}
+
+.product-view__form {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+}
+
+input {
+    background-color: #fff;
+    border: 2px solid #2f2e2e;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .product-view__link {
@@ -22,24 +81,9 @@
     align-items: center;
 }
 
-.product-view__image {
-    max-width: 8.625rem;
-}
-
-#in-stock {
-    color: green;
-}
-
-#only-in-stock {
-    color: orange;
-}
-
-.product-view__form {
-    display: flex;
-    flex-direction: column;
-    
-}
-
+/* -----------
+    BUTTONS
+-------------*/
 .product-view__add-to-cart {
     display: flex;
     justify-content: center;
@@ -54,6 +98,10 @@
     font-size: 1rem;
     font-weight: 700;
     cursor: pointer;
+}
+
+.product-view__add-to-cart:hover {
+    background-color: #0f7dea;
 }
 
 .product-view__buy-now {
@@ -71,4 +119,8 @@
     font-size: 1rem;
     font-weight: 700;
     cursor: pointer;
+}
+
+.product-view__buy-now:hover {
+    background-color: #2f9e0f;
 }

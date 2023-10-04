@@ -27,7 +27,7 @@ const ProductView = (props) => {
         <h3 className='product-view__heading'>{name}</h3>
         <img className='product-view__image' src={imageURL} alt={name} />
       </Link>
-      <p>${price}</p>
+      <p id='price'>${price}</p>
       {stockQty - qty > 0 ? <p id="in-stock">In Stock</p> : <p id="only-in-stock">Only {qty} in Stock</p>}
       <p className="product-view__description">${description}</p>
       <Form className='product-view__form'>
