@@ -1,10 +1,9 @@
 import { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom'
 import axios from 'axios'
-
 import ProductView from './ProductView';
-
 import ProductContext from '../contexts/ProductContext';
+
 
 const AllProducts = () => {
   const [products, setProducts] = useContext(ProductContext)

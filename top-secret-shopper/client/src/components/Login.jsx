@@ -2,6 +2,7 @@ import { useState, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { Button, Form } from 'semantic-ui-react'
+import './Login.css'
 
 import UserContext from '../contexts/UserContext'
 
@@ -33,18 +34,18 @@ const Login = () => {
   }
 
   return (
-    <div>
-      <h1>Login</h1>
-      <Form>
+    <div className='login__container'>
+      <h1 className='login__heading'>Login</h1>
+      <Form className='login__form'>
         <Form.Field>
-          <label>Username</label>
+          <label className='label'>Username</label>
           <input placeholder='username' onChange={(e) => setUsername(e.target.value)} />
         </Form.Field>
         <Form.Field>
           <label>Password</label>
           <input placeholder='password' onChange={(e) => setPassword(e.target.value)} />
         </Form.Field>
-        <Button type='submit' onClick={handleSubmit}>Submit</Button>
+        <Button className='button-submit' type='submit' onClick={handleSubmit}>Submit</Button>
       </Form>
     </div>
   )
