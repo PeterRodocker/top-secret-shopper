@@ -19,7 +19,7 @@
     height: 120px;
     object-fit: cover;
     border-radius: 50%;
-    
+
 }
 
 .nav__welcome-text {
@@ -38,6 +38,7 @@
 
 .link {
     color: #fff;
+    margin: .5em;
 }
 
 .link:hover {
@@ -48,7 +49,7 @@
 .nav__logout-button {
     display: 'inline-block';
     background-color: dodgerblue;
-    color: #fff;    
+    color: #fff;
     border: 1px solid #000;
     border-radius: 5px;
     padding: 0.5rem 1rem;

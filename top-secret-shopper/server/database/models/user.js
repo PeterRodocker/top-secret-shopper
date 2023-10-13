@@ -38,7 +38,7 @@ const User = db.define('user', {
 User.findByToken = async function (token) {
   const { userId } = await jwt.verify(token, process.env.JWT);
   const user = await User.findByPk(userId,
-    { attributes: ['username', 'email', 'firstName', 'lastName'] });
+    { attributes: ['id', 'username', 'email', 'firstName', 'lastName'] });
   if (!user) {
     const error = Error('bad credentials');
     error.status = 401;

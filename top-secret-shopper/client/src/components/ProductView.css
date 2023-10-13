@@ -104,7 +104,8 @@ input {
     background-color: #0f7dea;
 }
 
-.product-view__buy-now {
+.product-view__buy-now,
+.product-view__delete {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -121,6 +122,7 @@ input {
     cursor: pointer;
 }
 
-.product-view__buy-now:hover {
+.product-view__buy-now:hover,
+.product-view__delete:hover {
     background-color: #2f9e0f;
 }

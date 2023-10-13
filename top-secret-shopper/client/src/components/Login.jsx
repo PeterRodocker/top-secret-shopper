@@ -4,12 +4,14 @@ import axios from 'axios'
 import { Button, Form } from 'semantic-ui-react'
 import './Login.css'
 
+import CartContext from '../contexts/CartContext'
 import UserContext from '../contexts/UserContext'
 
 const Login = () => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [user, setUser] = useContext(UserContext)
+  const [cart, setCart] = useContext(CartContext)
   const navigate = useNavigate()
 
   const handleSubmit = async (e) => {
@@ -26,11 +28,19 @@ const Login = () => {
   const attemptTokenLogin = async () => {
     const token = window.localStorage.getItem('Authorization')
     if (token) {
-      const { data: user } = await axios.get('./auth/me', {
+      const { data: user } = await axios.get('/auth/me', {
         headers: { authorization: token }
       })
       setUser(user)
+      fetchCart(user.id)
     }
+  }
+
+  const fetchCart = async (userId) => {
+    const { data: cart } = await axios.get('api/cart', {
+      params: { userId }
+    })
+    setCart(cart)
   }
 
   return (
