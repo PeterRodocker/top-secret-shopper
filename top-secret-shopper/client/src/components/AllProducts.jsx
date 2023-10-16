@@ -23,7 +23,6 @@ const AllProducts = () => {
 
   return (
     <>
-      <h1>All Products</h1>
       <div className='all-products-container'>
         {products.length ? products.map(product => (
           <div key={product.id}>

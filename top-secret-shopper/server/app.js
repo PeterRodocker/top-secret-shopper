@@ -17,10 +17,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/auth', require('./auth'));
 app.use('/api', require('./api'));
 
-// Sample route
-app.get("/message", (_, res) => res.send("Hello from express!"));
-
-
 // Static file-serving middleware
 app.get('/', (req, res, next) =>
   res.sendFile(path.join(__dirname, '..', 'public')));
