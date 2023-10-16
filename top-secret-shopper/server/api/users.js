@@ -1,11 +1,14 @@
 // IMPORTS
 const router = require('express').Router();
-const { models: { User } } = require('../database')
+const { models: { User } } = require('../database');
+const { requireToken, isAdmin } = require('./gateKeepingMiddleware');
 
 // Get all users /api/users
-router.get('/', async (req, res, next) => {
+router.get('/', requireToken, isAdmin, async (req, res, next) => {
   try {
-    const users = await User.findAll();
+    const users = await User.findAll({
+      attributes: ['id', 'username']
+    });
     res.send(users);
   } catch (err) {
     next(err);
@@ -13,10 +16,11 @@ router.get('/', async (req, res, next) => {
 });
 
 // Get single user /api/users
-router.get('/:id', async (req, res, next) => {
+router.get('/:id', requireToken, isAdmin, async (req, res, next) => {
   try {
     const user = await User.findOne({
-      where: { id: req.params.id }
+      where: { id: req.params.id },
+      attributes: ['id', 'username']
     });
     res.send(user);
   } catch (err) {

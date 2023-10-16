@@ -20,13 +20,13 @@ const Login = () => {
       username,
       password
     })
-    window.localStorage.setItem('Authorization', token)
+    window.localStorage.setItem('authorization', token)
     attemptTokenLogin()
     navigate('/products')
   }
 
   const attemptTokenLogin = async () => {
-    const token = window.localStorage.getItem('Authorization')
+    const token = window.localStorage.getItem('authorization')
     if (token) {
       const { data: user } = await axios.get('/auth/me', {
         headers: { authorization: token }

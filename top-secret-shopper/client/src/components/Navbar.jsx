@@ -18,14 +18,17 @@ const Navbar = () => {
   }, [qty]);
 
   const getQty = () => {
-    const products = cart
     let quantity = 0;
-    products?.forEach(product => quantity += product.cartDetail.quantity)
+
+    if (cart.length) {
+      cart.forEach(cartItem => quantity += cartItem.cartDetail.quantity)
+    }
     setQty(quantity)
   }
 
   const logout = () => {
-    const keys = ['Authorization', 'user', 'products', 'cart'];
+    const keys = ['authorization', 'user', 'products', 'cart'];
+
     setUser({})
     setCart({})
     keys.forEach(key => window.localStorage.removeItem(key));

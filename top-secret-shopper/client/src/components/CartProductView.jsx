@@ -4,14 +4,13 @@ import { Link } from "react-router-dom"
 import { Button, Form, Input } from 'semantic-ui-react'
 import './ProductView.css'
 
-const ProductView = (props) => {
+const CartProductView = (props) => {
   const { handleDelete, product: { id, imageURL, name, price, stockQty, cartDetail: { quantity } } } = props
 
   const [qty, setQty] = useState(quantity)
 
   const handleChangeQty = (e) => {
     setQty(e.target.value)
-
   }
 
   return (
@@ -45,4 +44,4 @@ const ProductView = (props) => {
   )
 }
 
-export default ProductView
+export default CartProductView

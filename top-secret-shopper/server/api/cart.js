@@ -1,5 +1,8 @@
 const router = require('express').Router();
+
 const { models: { Cart, Product } } = require('../database');
+// const { requireToken, isAdmin } = require('./gateKeepingMiddleware');
+
 
 router.get('/', async (req, res, next) => {
   try {
