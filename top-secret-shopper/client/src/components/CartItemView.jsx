@@ -1,13 +1,17 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { Link } from "react-router-dom"
 
 import { Button, Form, Input } from 'semantic-ui-react'
 import './ProductView.css'
 
-const CartProductView = (props) => {
-  const { handleDelete, product: { id, imageURL, name, price, stockQty, cartDetail: { quantity } } } = props
+import UserContext from '../contexts/UserContext';
+
+const CartItemView = (props) => {
+  const { onDelete, onUpdate, cartItem: { id: productId, imageURL, name, price, stockQty, cartDetail: { quantity } } } = props
 
   const [qty, setQty] = useState(quantity)
+  const [user, setUser] = useContext(UserContext)
+  const token = window.localStorage.getItem('authorization')
 
   const handleChangeQty = (e) => {
     setQty(e.target.value)
@@ -15,7 +19,7 @@ const CartProductView = (props) => {
 
   return (
     <div className="product-view__container">
-      <Link className='product-view__link' to={`/products/${id}`}>
+      <Link className='product-view__link' to={`/products/${productId}`}>
         <h3 className='product-view__heading'>{name}</h3>
         <img className='product-view__image' src={imageURL} alt={name} />
       </Link>
@@ -34,9 +38,15 @@ const CartProductView = (props) => {
         >
         </Input>
         <button
-          onClick={handleDelete}
+          onClick={() => onUpdate(user.id, productId, qty, token)}
           type="submit"
-          className='product-view__delete'>
+          className='product-view__button'>
+          Update
+        </button>
+        <button
+          onClick={() => onDelete(user.id, productId, token)}
+          type="submit"
+          className='product-view__button'>
           Delete
         </button>
       </Form>
@@ -44,4 +54,4 @@ const CartProductView = (props) => {
   )
 }
 
-export default CartProductView
+export default CartItemView

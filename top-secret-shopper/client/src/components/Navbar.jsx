@@ -15,7 +15,7 @@ const Navbar = () => {
 
   useEffect(() => {
     getQty()
-  }, [qty]);
+  }, [qty, cart]);
 
   const getQty = () => {
     let quantity = 0;

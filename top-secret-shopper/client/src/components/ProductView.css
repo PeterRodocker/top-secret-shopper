@@ -105,13 +105,14 @@ input {
 }
 
 .product-view__buy-now,
-.product-view__delete {
+.product-view__button {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     height: 2.5rem;
-    margin-bottom: 2rem;
+    margin-bottom: .5rem;
+    margin-top: .5rem;
     padding: 0 1rem;
     border: none;
     border-radius: 0.25rem;
@@ -123,6 +124,6 @@ input {
 }
 
 .product-view__buy-now:hover,
-.product-view__delete:hover {
+.product-view__button:hover {
     background-color: #2f9e0f;
 }
