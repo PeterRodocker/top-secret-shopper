@@ -2,7 +2,9 @@ import { useState, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { Button, Form } from 'semantic-ui-react'
+
 import './Login.css'
+import { fetchCart } from '../utility/cartFuncs'
 
 import CartContext from '../contexts/CartContext'
 import UserContext from '../contexts/UserContext'
@@ -32,15 +34,9 @@ const Login = () => {
         headers: { authorization: token }
       })
       setUser(user)
-      fetchCart(user.id)
+      const cart = await fetchCart(user.id, token)
+      setCart(cart)
     }
-  }
-
-  const fetchCart = async (userId) => {
-    const { data: cart } = await axios.get('api/cart', {
-      params: { userId }
-    })
-    setCart(cart)
   }
 
   return (
