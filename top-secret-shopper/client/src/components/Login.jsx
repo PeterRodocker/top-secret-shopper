@@ -34,7 +34,7 @@ const Login = () => {
         headers: { authorization: token }
       })
       setUser(user)
-      const cart = await fetchCart(user.id, token)
+      const cart = await fetchCart(token)
       setCart(cart)
     }
   }

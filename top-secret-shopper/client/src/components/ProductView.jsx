@@ -1,29 +1,27 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { Link } from "react-router-dom"
 
 import { Button, Form, Input } from 'semantic-ui-react'
 import './ProductView.css'
 
-const ProductView = (props) => {
-  const [qty, setQty] = useState(0)
+import UserContext from '../contexts/UserContext';
 
-  const { product: { description, id, imageURL, name, price, stockQty } } = props
+const ProductView = (props) => {
+  const { onAddToCart, onBuyNow, product: { description, id: productId, imageURL, name, price, stockQty } } = props
+
+  const [qty, setQty] = useState(1)
+  const [user, setUser] = useContext(UserContext)
+  const token = window.localStorage.getItem('authorization')
+
 
   const handleChangeQty = (e) => {
     setQty(e.target.value)
   }
 
-  const handleAddToCart = () => {
-    console.log('AddToCart', qty)
-  }
-
-  const handleBuyNow = () => {
-    console.log('BuyNow', qty)
-  }
 
   return (
     <div className="product-view__container">
-      <Link className='product-view__link' to={`/products/${id}`}>
+      <Link className='product-view__link' to={`/products/${productId}`}>
         <h3 className='product-view__heading'>{name}</h3>
         <img className='product-view__image' src={imageURL} alt={name} />
       </Link>
@@ -32,17 +30,17 @@ const ProductView = (props) => {
       <p className="product-view__description">${description}</p>
       <Form className='product-view__form'>
         <Input onChange={handleChangeQty} type="number" value={qty < 1 ? 1 : qty} size="mini" min="1" max={stockQty}></Input>
-        <button 
-          onClick={handleAddToCart} 
+        <button
+          onClick={() => onAddToCart(productId, qty, token)}
           type="submit"
           className='product-view__add-to-cart'>
-            Add to Cart
+          Add to Cart
         </button>
-        <button 
-          onClick={handleBuyNow} 
+        <button
+          onClick={() => onBuyNow(productId, qty, token)}
           type="submit"
           className='product-view__buy-now'>
-            Buy Now
+          Buy Now
         </button>
       </Form>
     </div >
