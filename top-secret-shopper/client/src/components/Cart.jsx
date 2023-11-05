@@ -8,15 +8,22 @@ import CartContext from '../contexts/CartContext';
 
 const Cart = () => {
   const [cart, setCart] = useContext(CartContext)
+  const getSubtotal = () => {
+    let subtotal = 0
+    cart.map(cartItem => {
+      subtotal += (cartItem.cartDetail.quantity * cartItem.price)
+    })
+    return subtotal
+  }
 
-  const handleUpdate = async (userId, productId, quantity, token) => {
-    const updatedCart = await updateCart(userId, productId, quantity, token)
+  const handleUpdate = async (productId, quantity, token) => {
+    const updatedCart = await updateCart(productId, quantity, token)
     setCart(updatedCart)
   }
 
-  const handleDelete = async (userId, productId, token) => {
-    deleteFromCart(userId, productId, token)
-    const cart = await fetchCart(userId, token)
+  const handleDelete = async (productId, token) => {
+    deleteFromCart(productId, token)
+    const cart = await fetchCart(token)
     setCart(cart)
   }
 
@@ -30,7 +37,7 @@ const Cart = () => {
         onDelete={handleDelete}
       />) :
         <p style={{ color: 'white' }}>No items in your cart</p>}
-      <p style={{ color: 'white' }}>Subtotal: $</p>
+      <p style={{ color: 'white' }}>Subtotal: ${getSubtotal()}</p>
     </>
   )
 }

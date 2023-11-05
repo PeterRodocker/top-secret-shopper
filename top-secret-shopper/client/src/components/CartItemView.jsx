@@ -38,13 +38,13 @@ const CartItemView = (props) => {
         >
         </Input>
         <button
-          onClick={() => onUpdate(user.id, productId, qty, token)}
+          onClick={() => onUpdate(productId, qty, token)}
           type="submit"
           className='product-view__button'>
           Update
         </button>
         <button
-          onClick={() => onDelete(user.id, productId, token)}
+          onClick={() => onDelete(productId, token)}
           type="submit"
           className='product-view__button'>
           Delete
