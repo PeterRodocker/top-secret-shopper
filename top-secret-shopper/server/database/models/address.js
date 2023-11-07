@@ -9,7 +9,8 @@ const Address = db.define('address', {
     },
     unit: {
         type: STRING,
-        allowNull: true,
+        allowNull: false,
+        defaultValue: ''
     },
     city: {
         type: STRING,
@@ -27,6 +28,11 @@ const Address = db.define('address', {
         type: ENUM('Mailing', 'Billing'),
         defaultValue: 'Mailing',
         allowNull: false
+    },
+    isPrimary: {
+        type: Sequelize.BOOLEAN,
+        allowNull: false,
+        defaultValue: false
     }
 });
 

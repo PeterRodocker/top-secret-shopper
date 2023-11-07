@@ -3,7 +3,7 @@ const router = require('express').Router();
 const { models: { Cart, Product } } = require('../database');
 const { requireToken, isAdmin } = require('./gateKeepingMiddleware');
 
-// GET Get cart
+// GET Fetch cart
 router.get('/', requireToken, async (req, res, next) => {
   try {
     const { products: cartItems } = await Cart.findOne({

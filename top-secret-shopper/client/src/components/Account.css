@@ -1,0 +1,47 @@
+*,
+html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #000;
+}
+
+.account__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin-top: -5rem;
+  background-color: #000;
+  color: white;
+}
+
+.account__heading {
+  font-size: 2rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+.account__form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+}
+
+label {
+  /* background-color: green; */
+}
+
+.ui .button {
+  color: #fff;
+  background-color: rgb(40, 149, 232);
+}
+
+.ui .button:hover {
+  color: #fff;
+  background-color: rgb(8, 112, 191);
+}
