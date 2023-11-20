@@ -1,6 +1,7 @@
 import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
+import Account from './components/Account'
 import AllProducts from './components/AllProducts'
 import Cart from './components/Cart'
 import Login from './components/Login'
@@ -29,6 +30,7 @@ function App() {
                 <Route path="/products" element={<AllProducts />} />
                 <Route path="/products/:productId" element={<SingleProduct />} />
                 <Route path="/cart" element={<Cart />} />
+                <Route path="/account" element={<Account />} />
               </Routes>
             </ProductProvider>
           </CartProvider>

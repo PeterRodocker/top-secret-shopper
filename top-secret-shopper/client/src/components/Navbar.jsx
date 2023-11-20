@@ -37,7 +37,7 @@ const Navbar = () => {
 
   return (
     <div className='nav__container'>
-      {!user.username ?
+      {!user.firstName ?
         <>
           <img className='black-logo' src={logo} alt="logo" />
           <p className='nav__welcome-text'>
@@ -53,12 +53,12 @@ const Navbar = () => {
         <>
           <img className='black-logo' src={logo} alt="logo" />
           <p className='nav__welcome-text'>
-            Welcome, {user.username}
+            Welcome, {user.firstName}
           </p>
           <div>
             <Link to='/products' className='link'>Products</Link>
             <Link to='/products' className='link'>Checkout</Link>
-            <Link to='/products' className='link'>My Account</Link>
+            <Link to='/account' className='link'>My Account</Link>
             <Link to='/cart' className='link'>
               <button className='nav__logout-button'>
                 {qty > 0 ? `Cart: ${qty}` : 'Cart'}

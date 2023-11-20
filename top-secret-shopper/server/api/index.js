@@ -2,6 +2,7 @@
 const router = require('express').Router();
 
 // Attach routes to router
+router.use('/address', require('./address'))
 router.use('/cart', require('./cart'))
 router.use('/categories', require('./categories'))
 router.use('/products', require('./products'))

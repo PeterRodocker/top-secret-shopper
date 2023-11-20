@@ -5,8 +5,8 @@ const { models: { User } } = require('../database')
 // Signup - listens for POST requests on the '/signup' endpoint
 router.post('/signup', async (req, res, next) => {
   try {
-    const { username, password, email, address, firstName, lastName, street, unit, city, state, zip } = req.body;
-    const user = await User.create({ username, password, email, address, firstName, lastName, street, unit, city, state, zip })
+    const { username, password, email, firstName, lastName, street, unit, city, state, zip } = req.body;
+    const user = await User.create({ username, password, email, firstName, lastName, street, unit, city, state, zip })
     res.send({ token: await user.generateToken() })
   } catch (err) {
     if (err.name === 'SequelizeUniqueConstraintError') {

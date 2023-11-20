@@ -10,6 +10,7 @@ const Payment = require('./models/payment')
 const Product = require('./models/product')
 const Shipping = require('./models/shipping')
 const User = require('./models/user')
+const hello = 'Hello Peter'
 
 // Associations go here
 
@@ -44,6 +45,7 @@ Order.hasMany(OrderHistory);
 OrderHistory.belongsTo(Order);
 
 module.exports = {
+  hello,
   db,
   models: {
     Address,

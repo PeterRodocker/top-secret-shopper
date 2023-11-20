@@ -1,9 +1,10 @@
 const Sequelize = require('sequelize');
-const { STRING, BOOLEAN } = Sequelize;
+const { BOOLEAN, STRING, VIRTUAL } = Sequelize;
 const db = require('../db');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt')
 const SALT_ROUNDS = 5;
+const Address = require('./address')
 
 const User = db.define('user', {
   username: {
@@ -22,6 +23,12 @@ const User = db.define('user', {
     type: STRING,
     // allowNull: false,
   },
+  fullName: {
+    type: VIRTUAL,
+    get() {
+      return `${this.firstName} ${this.lastName}`;
+    }
+  },
   email: {
     type: STRING,
     // allowNull: false,
@@ -37,8 +44,9 @@ const User = db.define('user', {
 
 User.findByToken = async function (token) {
   const { userId } = await jwt.verify(token, process.env.JWT);
-  const user = await User.findByPk(userId,
-  );
+  const user = await User.findByPk(userId, {
+    include: Address
+  });
   if (!user) {
     const error = Error('bad credentials');
     error.status = 401;
