@@ -57,8 +57,8 @@ const Navbar = () => {
           </p>
           <div>
             <Link to='/products' className='link'>Products</Link>
-            <Link to='/products' className='link'>Checkout</Link>
             <Link to='/account' className='link'>My Account</Link>
+            <Link to='/checkout' className='link'>Checkout</Link>
             <Link to='/cart' className='link'>
               <button className='nav__logout-button'>
                 {qty > 0 ? `Cart: ${qty}` : 'Cart'}
