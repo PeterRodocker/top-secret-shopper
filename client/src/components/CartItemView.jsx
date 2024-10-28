@@ -2,7 +2,7 @@ import { useContext, useState } from "react"
 import { Link } from "react-router-dom"
 
 import { Button, Form, Input } from 'semantic-ui-react'
-import './ProductView.css'
+import './CartItemView.css'
 
 import UserContext from '../contexts/UserContext';
 
@@ -46,7 +46,7 @@ const CartItemView = (props) => {
         <button
           onClick={() => onDelete(productId, token)}
           type="submit"
-          className='product-view__button'>
+          className='product-view__delete'>
           Delete
         </button>
       </Form>
