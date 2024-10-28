@@ -15,7 +15,8 @@ const ProductView = (props) => {
 
 
   const handleChangeQty = (e) => {
-    setQty(e.target.value)
+    if (e.target.value > stockQty) setQty(stockQty)
+    else setQty(e.target.value)
   }
 
 

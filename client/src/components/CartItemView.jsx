@@ -14,7 +14,8 @@ const CartItemView = (props) => {
   const token = window.localStorage.getItem('authorization')
 
   const handleChangeQty = (e) => {
-    setQty(e.target.value)
+    if (e.target.value > stockQty) setQty(stockQty)
+    else setQty(e.target.value)
   }
 
   return (
