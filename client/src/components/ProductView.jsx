@@ -29,7 +29,14 @@ const ProductView = (props) => {
       {stockQty - qty > 0 ? <p id="in-stock">In Stock</p> : <p id="only-in-stock">Only {qty} in Stock</p>}
       <p className="product-view__description">${description}</p>
       <Form className='product-view__form'>
-        <Input onChange={handleChangeQty} type="number" value={qty < 1 ? 1 : qty} size="mini" min="1" max={stockQty}></Input>
+        <Input onChange={handleChangeQty}
+          type="number"
+          value={qty < 1 ? 1 : qty}
+          size="mini"
+          min="1"
+          max={stockQty}
+          className="input">
+        </Input>
         <button
           onClick={() => onAddToCart(productId, qty, token)}
           type="submit"
