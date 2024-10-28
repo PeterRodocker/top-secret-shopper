@@ -31,7 +31,7 @@ const ProductView = (props) => {
       <Form className='product-view__form'>
         <Input onChange={handleChangeQty}
           type="number"
-          value={qty < 1 ? 1 : qty}
+          value={qty < 1 ? 1 : Math.round(qty)}
           size="mini"
           min="1"
           max={stockQty}
