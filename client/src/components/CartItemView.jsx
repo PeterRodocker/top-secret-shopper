@@ -19,7 +19,7 @@ const CartItemView = (props) => {
   }
 
   return (
-    <div className="product-view__container">
+    <div className="cart-item-view__container">
       <Link className='product-view__link' to={`/products/${productId}`}>
         <h3 className='product-view__heading'>{name}</h3>
         <img className='product-view__image' src={imageURL} alt={name} />

@@ -32,9 +32,9 @@ html {
   background-color: black;
 }
 
-label {
-  /* background-color: green; */
-}
+/* label {
+  color: #fff;
+} */
 
 .ui .button {
   color: #fff;

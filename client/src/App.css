@@ -6,7 +6,7 @@ html {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-color: #fff;
+  background-color: orange;
 }
 
 /* Everything in this <div> is going to be centered in a column */
@@ -16,7 +16,7 @@ html {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: #fff;
+  background: pink;
   color: #fff;
 }
 
@@ -57,4 +57,3 @@ li a:hover {
   background: #212121;
   color: #fff;
 }
-

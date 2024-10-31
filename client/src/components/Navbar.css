@@ -46,6 +46,7 @@
     text-decoration: none;
 }
 
+.nav__cart-button,
 .nav__logout-button {
     display: 'inline-block';
     background-color: dodgerblue;
@@ -56,4 +57,9 @@
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
+}
+
+.nav__cart-button:hover,
+.nav__logout-button:hover {
+    background-color: #0f7dea;
 }

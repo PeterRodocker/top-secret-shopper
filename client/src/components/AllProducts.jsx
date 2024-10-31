@@ -4,6 +4,7 @@ import axios from 'axios'
 
 import ProductView from './ProductView';
 import { addToCart, updateCart } from '../utility/cartFuncs';
+import './AllProducts.css';
 
 import CartContext from '../contexts/CartContext';
 import ProductContext from '../contexts/ProductContext';
@@ -41,12 +42,11 @@ const AllProducts = () => {
     <>
       <div className='all-products-container'>
         {products.length ? products.map(product => (
-          <div key={product.id}>
-            <ProductView
-              product={product}
-              onAddToCart={handleAddToCart}
-              onBuyNow={handleBuyNow} />
-          </div>
+          <ProductView
+            key={product.id}
+            product={product}
+            onAddToCart={handleAddToCart}
+            onBuyNow={handleBuyNow} />
         )) : ''
         }
       </div>

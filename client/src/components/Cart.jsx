@@ -3,6 +3,7 @@ import axios from 'axios'
 
 import CartItemView from './CartItemView'
 import { deleteFromCart, fetchCart, updateCart } from '../utility/cartFuncs';
+import './Cart.css'
 
 import CartContext from '../contexts/CartContext';
 
@@ -29,15 +30,20 @@ const Cart = () => {
 
   return (
     <>
-      <h3 style={{ color: 'white' }}>Your Cart</h3>
-      {cart.length ? cart.map(cartItem => <CartItemView
-        cartItem={cartItem}
-        key={cartItem.id}
-        onUpdate={handleUpdate}
-        onDelete={handleDelete}
-      />) :
-        <p style={{ color: 'white' }}>No items in your cart</p>}
-      <p style={{ color: 'white' }}>Subtotal: ${getSubtotal()}</p>
+      <h1>Your Cart</h1>
+      <div className='cart__items-container'>
+        {cart.length ? cart.map(cartItem => <CartItemView
+          cartItem={cartItem}
+          key={cartItem.id}
+          onUpdate={handleUpdate}
+          onDelete={handleDelete}
+        />) :
+          <p>No items in your cart</p>}
+      </div>
+      <div className='subtotal-div'>
+        <h2>Subtotal: ${getSubtotal()} </h2>
+        <button className='cart__checkout-button'>Checkout</button>
+      </div>
     </>
   )
 }

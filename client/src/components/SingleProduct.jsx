@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import axios from 'axios'
 import { Button, Input, Form } from 'semantic-ui-react'
 
+
 const SingleProduct = () => {
   const [product, setProduct] = useState([])
   const { productId } = useParams();
@@ -34,7 +35,7 @@ const SingleProduct = () => {
 
   return (
     <>
-      <div style={{ margin: '5rem' }} className="product-view">
+      <div className="single-product__container">
         <Link to={`/products/${productId}`}>
           <h3>{name}</h3>
           <img style={{ maxWidth: '250px' }} src={imageURL} alt={name} />
