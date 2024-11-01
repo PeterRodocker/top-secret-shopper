@@ -43,7 +43,7 @@ const Cart = () => {
           <p>No items in your cart</p>}
       </div>
       <div className='subtotal-div'>
-        <h2>Subtotal: ${getSubtotal()} </h2>
+        <h2>Order Subtotal: ${getSubtotal()} </h2>
         <button className='cart__checkout-button'>Checkout</button>
       </div>
     </>
