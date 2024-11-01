@@ -1,7 +1,6 @@
 import { useContext, useState } from "react"
 import { Link } from "react-router-dom"
 
-import { Button, Form, Input } from 'semantic-ui-react'
 import './CartItemView.css'
 
 import UserContext from '../contexts/UserContext';
