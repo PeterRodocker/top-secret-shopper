@@ -20,40 +20,42 @@ const CartItemView = (props) => {
 
   return (
     <div className="cart-item-view__container">
-      <Link className='product-view__link' to={`/products/${productId}`}>
-        <h3 className='product-view__heading'>{name}</h3>
-        <img className='product-view__image' src={imageURL} alt={name} />
+      <Link className='cart-view__link' to={`/products/${productId}`}>
+        <h3 className='cart-view__heading'>{name}</h3>
+        <img className='cart-view__image' src={imageURL} alt={name} />
       </Link>
       <p id='price'>${price}</p>
       {stockQty - qty > 0 ?
-        <p id="in-stock">In Stock</p> :
-        <p id="only-in-stock">Only {qty} in Stock</p>
+        <p id="cart-in-stock">In Stock</p> :
+        <p id="cart-only-in-stock">Only {qty} in Stock</p>
       }
-      <Form className='cart-view__form'>
-        <input
-          onChange={handleChangeQty}
-          type="number"
-          value={qty < 1 ? 1 : Math.round(qty)}
-          min="1"
-          max={stockQty}
-          className="cart-view__input"
-          id="cart-view__input"
-
-        >
-        </input>
+      <form className='cart-view__form'>
+        <div className="cart__label-and-input">
+          <label htmlFor={`cart-view__input${productId}`} className="subtotal__label">Item Subtotal: </label>
+          <input
+            onChange={handleChangeQty}
+            type="number"
+            value={qty < 1 ? 1 : Math.round(qty)}
+            min="1"
+            max={stockQty}
+            id={`cart-view__input${productId}`}
+            className="subtotal__input"
+          >
+          </input>
+        </div>
         <button
-          onClick={() => onUpdate(productId, qty, token)}
+          onClick={(e) => onUpdate(e, productId, qty, token)}
           type="submit"
-          className='product-view__update'>
+          className='cart-view__update'>
           Update
         </button>
         <button
-          onClick={() => onDelete(productId, token)}
+          onClick={(e) => onDelete(e, productId, token)}
           type="submit"
-          className='product-view__remove'>
+          className='cart-view__remove'>
           Remove
         </button>
-      </Form>
+      </form>
     </div >
   )
 }

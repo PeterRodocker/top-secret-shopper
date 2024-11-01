@@ -17,27 +17,29 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.product-view__heading {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin: .5rem;
-  color: dodgerblue;
-}
-
-.product-view__heading:hover {
-  color: #0f7dea;
-}
-
-.product-view__image {
-  max-width: 8.625rem;
-  margin: 0 0.5rem;
-}
-
-.product-view__link {
+.cart-view__link {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
+.cart-view__heading {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: .5rem;
+  color: dodgerblue;
+  background-color: #fff;
+}
+
+.cart-view__heading:hover {
+  color: #0f7dea;
+}
+
+.cart-view__image {
+  max-width: 8.625rem;
+  margin: 0 0.5rem;
+}
+
 
 #price {
   font-size: 1.5rem;
@@ -45,14 +47,14 @@
   margin: .5rem;
 }
 
-#in-stock {
+#cart-in-stock {
   font-size: 1.25rem;
   color: green;
   background-color: #fff;
   margin: 0 0 0.5rem;
 }
 
-#only-in-stock {
+#cart-only-in-stock {
   font-size: 1.25rem;
   color: orange;
   background-color: #fff;
@@ -69,20 +71,42 @@
   margin: 0 auto;
 }
 
-#cart-view__input {
+.cart__label-and-input {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: .5rem;
+  line-height: 2.5;
+  background-color: #fff;
+  height: 2.5rem;
+  width: 100%
+}
+
+.subtotal__label {
+  display: flex;
+  background-color: #fff;
+  font-size: large;
+  border-radius: 0.25rem;
+  width: 70%;
+}
+
+.subtotal__input {
   border: 100px #2f2e2e;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  margin-bottom: .5rem;
-  width: 40%;
+  height: 2.5rem;
+  width: 30%;
   min-width: 45px;
+  background-color: #fff;
+  border-radius: 0.25rem;
+  padding: 0 .5rem;
 }
 
 /* -----------
   BUTTONS
 -------------*/
 
-.product-view__update,
-.product-view__remove {
+.cart-view__update,
+.cart-view__remove {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -97,18 +121,18 @@
   cursor: pointer;
 }
 
-.product-view__update {
+.cart-view__update {
   background-color: #35b711;
 }
 
-.product-view__remove {
+.cart-view__remove {
   background-color: red;
 }
 
-.product-view__update:hover {
+.cart-view__update:hover {
   background-color: #2f9e0f;
 }
 
-.product-view__remove:hover {
+.cart-view__remove:hover {
   background-color: #b30000;
 }

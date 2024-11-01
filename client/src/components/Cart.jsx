@@ -17,12 +17,14 @@ const Cart = () => {
     return subtotal
   }
 
-  const handleUpdate = async (productId, quantity, token) => {
+  const handleUpdate = async (e, productId, quantity, token) => {
+    e.preventDefault()
     const updatedCart = await updateCart(productId, quantity, token)
     setCart(updatedCart)
   }
 
-  const handleDelete = async (productId, token) => {
+  const handleDelete = async (e, productId, token) => {
+    e.preventDefault()
     deleteFromCart(productId, token)
     const cart = await fetchCart(token)
     setCart(cart)
