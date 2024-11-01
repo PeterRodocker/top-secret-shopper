@@ -4,17 +4,6 @@
   box-sizing: border-box;
 }
 
-/* .all-products-container {
-  background-color: green;
-  display: flex;
-  flex-wrap: wrap;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: auto;
-  grid-gap: 1rem;
-  margin: 5rem;
-  padding: 0 1rem;
-} */
-
 .cart-item-view__container {
   display: flex;
   flex-direction: column;
@@ -37,12 +26,17 @@
 
 .product-view__heading:hover {
   color: #0f7dea;
-  ;
 }
 
 .product-view__image {
   max-width: 8.625rem;
   margin: 0 0.5rem;
+}
+
+.product-view__link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 #price {
@@ -65,13 +59,7 @@
   margin: 0 0 0.5rem;
 }
 
-.product-view__description {
-  font-size: 1rem;
-  font-weight: 400;
-  background-color: #fff;
-}
-
-.product-view__form {
+.cart-view__form {
   display: flex;
   flex-direction: column;
   background-color: #fff;
@@ -81,24 +69,20 @@
   margin: 0 auto;
 }
 
-.input {
-  background-color: #fff;
-  border: 2px #2f2e2e;
+#cart-view__input {
+  border: 100px #2f2e2e;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   margin-bottom: .5rem;
-  width: 30%;
-}
-
-.product-view__link {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  width: 40%;
+  min-width: 45px;
 }
 
 /* -----------
   BUTTONS
 -------------*/
-.product-view__add-to-cart {
+
+.product-view__update,
+.product-view__remove {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -108,55 +92,23 @@
   border: none;
   border-radius: 0.25rem;
   color: white;
-  background-color: #56aafd;
   font-size: 1rem;
   font-weight: 700;
   cursor: pointer;
 }
 
-.product-view__add-to-cart:hover {
-  background-color: #0f7dea;
-}
-
-.product-view__buy-now {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 2.5rem;
-  margin-bottom: .5rem;
-  padding: 0 1rem;
-  border: none;
-  border-radius: 0.25rem;
-  color: white;
+.product-view__update {
   background-color: #35b711;
-  font-size: 1rem;
-  font-weight: 700;
-  cursor: pointer;
 }
 
-
-.product-view__delete {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 2.5rem;
-  margin-bottom: .5rem;
-  padding: 0 1rem;
-  border: none;
-  border-radius: 0.25rem;
-  color: white;
+.product-view__remove {
   background-color: red;
-  font-size: 1rem;
-  font-weight: 700;
-  cursor: pointer;
 }
 
-.product-view__buy-now:hover {
+.product-view__update:hover {
   background-color: #2f9e0f;
 }
 
-.product-view__delete:hover {
+.product-view__remove:hover {
   background-color: #b30000;
 }

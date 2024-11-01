@@ -33,14 +33,13 @@ const AllProducts = () => {
   }
 
   const handleBuyNow = async (productId, quantity, token) => {
-    console.log('buyNow', quantity)
     const updatedCart = await updateCart(productId, quantity, token)
     setCart(updatedCart)
   }
 
   return (
     <>
-      <div className='all-products-container'>
+      <div className='all-products__container'>
         {products.length ? products.map(product => (
           <ProductView
             key={product.id}

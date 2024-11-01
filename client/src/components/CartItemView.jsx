@@ -29,26 +29,29 @@ const CartItemView = (props) => {
         <p id="in-stock">In Stock</p> :
         <p id="only-in-stock">Only {qty} in Stock</p>
       }
-      <Form className='product-view__form'>
-        <Input
+      <Form className='cart-view__form'>
+        <input
           onChange={handleChangeQty}
           type="number"
-          value={qty < 1 ? 1 : qty}
-          size="mini" min="1"
+          value={qty < 1 ? 1 : Math.round(qty)}
+          min="1"
           max={stockQty}
+          className="cart-view__input"
+          id="cart-view__input"
+
         >
-        </Input>
+        </input>
         <button
           onClick={() => onUpdate(productId, qty, token)}
           type="submit"
-          className='product-view__button'>
+          className='product-view__update'>
           Update
         </button>
         <button
           onClick={() => onDelete(productId, token)}
           type="submit"
-          className='product-view__delete'>
-          Delete
+          className='product-view__remove'>
+          Remove
         </button>
       </Form>
     </div >
