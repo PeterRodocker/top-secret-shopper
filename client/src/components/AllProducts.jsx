@@ -32,7 +32,8 @@ const AllProducts = () => {
     setCart(updatedCart)
   }
 
-  const handleBuyNow = async (productId, quantity, token) => {
+  const handleBuyNow = async (e, productId, quantity, token) => {
+    e.preventDefault()
     const updatedCart = await updateCart(productId, quantity, token)
     setCart(updatedCart)
   }

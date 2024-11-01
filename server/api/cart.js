@@ -34,7 +34,6 @@ router.post('/', requireToken, async (req, res, next) => {
 
 // PUT Add product to cart
 router.put('/', requireToken, async (req, res, next) => {
-  console.log('req.body', req.body)
   try {
     const { productId, quantity } = req.body;
     const cart = await Cart.findOne({
@@ -62,7 +61,6 @@ router.put('/', requireToken, async (req, res, next) => {
       },
       include: Product
     })
-    console.log('**cart items after**', cartItems)
     res.send(cartItems);
   } catch (err) {
     next(err);

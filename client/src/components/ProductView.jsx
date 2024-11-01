@@ -1,24 +1,25 @@
 import { useContext, useState } from "react"
 import { Link } from "react-router-dom"
 
-import { Button, Form, Input } from 'semantic-ui-react'
 import './ProductView.css'
 
-import UserContext from '../contexts/UserContext';
 
 const ProductView = (props) => {
   const { onAddToCart, onBuyNow, product: { description, id: productId, imageURL, name, price, stockQty } } = props
-
-  const [qty, setQty] = useState(1)
-  const [user, setUser] = useContext(UserContext)
   const token = window.localStorage.getItem('authorization')
 
+  const [qty, setQty] = useState(1)
 
   const handleChangeQty = (e) => {
     if (e.target.value > stockQty) setQty(stockQty)
     else setQty(e.target.value)
   }
 
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    onAddToCart(productId, qty, token)
+    setQty(1)
+  }
 
   return (
     <div className="product-view__container">
@@ -27,9 +28,9 @@ const ProductView = (props) => {
         <img className='product-view__image' src={imageURL} alt={name} />
       </Link>
       <p id='price'>${price}</p>
-      {stockQty - qty > 0 ? <p id="in-stock">In Stock</p> : <p id="only-in-stock">Only {qty} in Stock</p>}
+      {stockQty - qty > 0 ? <p id="product-in-stock">In Stock</p> : <p id="product-only-in-stock">Only {qty} in Stock</p>}
       <p className="product-view__description">${description}</p>
-      <Form className='product-view__form'>
+      <form className='product-view__form'>
         <input onChange={handleChangeQty}
           type="number"
           value={qty < 1 ? 1 : Math.round(qty)}
@@ -38,18 +39,18 @@ const ProductView = (props) => {
           id="product-view__input">
         </input>
         <button
-          onClick={() => onAddToCart(productId, qty, token)}
+          onClick={handleSubmit}
           type="submit"
           className='product-view__add-to-cart'>
           Add to Cart
         </button>
         <button
-          onClick={() => onBuyNow(productId, qty, token)}
+          onClick={(e) => onBuyNow(e, productId, qty, token)}
           type="submit"
           className='product-view__buy-now'>
           Buy Now
         </button>
-      </Form>
+      </form>
     </div >
   )
 }

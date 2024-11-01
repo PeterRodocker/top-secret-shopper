@@ -38,17 +38,17 @@
 
 #price {
     font-size: 1.5rem;
-    margin: .5rem;
+    /* margin: .5rem; */
 }
 
-#in-stock {
+#product-in-stock {
     font-size: 1.25rem;
     color: green;
     background-color: #fff;
-    margin: .5rem 0 0.5rem;
+    /* margin: .5rem 0 0.5rem; */
 }
 
-#only-in-stock {
+#product-only-in-stock {
     font-size: 1.25rem;
     color: orange;
     margin: .5rem 0 0.5rem;
@@ -73,10 +73,11 @@
 #product-view__input {
     border: 2px #2f2e2e;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    height: 2rem;
+    height: 2.5rem;
     width: 30%;
     min-width: 45px;
     margin-bottom: .5rem;
+    background-color: #fff;
 }
 
 
