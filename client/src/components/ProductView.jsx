@@ -28,7 +28,10 @@ const ProductView = (props) => {
         <img className='product-view__image' src={imageURL} alt={name} />
       </Link>
       <p id='price'>${price}</p>
-      {stockQty - qty > 0 ? <p id="product-in-stock">In Stock</p> : <p id="product-only-in-stock">Only {qty} in Stock</p>}
+      {stockQty - qty > 0 ?
+        <p id="product-in-stock">In Stock</p> :
+        <p id="product-only-in-stock">Only {qty} in Stock</p>
+      }
       <p className="product-view__description">${description}</p>
       <form className='product-view__form'>
         <input onChange={handleChangeQty}

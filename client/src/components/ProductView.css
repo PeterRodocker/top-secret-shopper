@@ -45,13 +45,12 @@
     font-size: 1.25rem;
     color: green;
     background-color: #fff;
-    /* margin: .5rem 0 0.5rem; */
 }
 
 #product-only-in-stock {
     font-size: 1.25rem;
     color: orange;
-    margin: .5rem 0 0.5rem;
+    background-color: #fff;
 }
 
 .product-view__description {

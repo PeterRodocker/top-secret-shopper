@@ -27,7 +27,8 @@ const SingleProduct = () => {
   }, []);
 
   const handleChange = (e) => {
-    setQty(e.target.value)
+    if (e.target.value > stockQty) setQty(stockQty)
+    else setQty(e.target.value)
   }
 
   const handleAddToCart = async (e) => {

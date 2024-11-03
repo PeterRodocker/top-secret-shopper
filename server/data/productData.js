@@ -33,7 +33,7 @@ const productData = [
     name: 'Rice',
     price: 19.99,
     imageURL: faker.image.urlLoremFlickr({ category: 'abstract' }),
-    stockQty: 1000,
+    stockQty: 85,
     categoryId: 3,
     description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero quo, placeat harum cupiditate quaerat dolore, quidem velit soluta magnam itaque modi aut distinctio unde omnis. Iusto modi vitae corporis iste.'
   }
