@@ -25,7 +25,7 @@ const Cart = () => {
 
   const handleDelete = async (e, productId, token) => {
     e.preventDefault()
-    deleteFromCart(productId, token)
+    await deleteFromCart(productId, token)
     const cart = await fetchCart(token)
     setCart(cart)
   }
