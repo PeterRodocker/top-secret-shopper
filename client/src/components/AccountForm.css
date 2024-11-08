@@ -1,0 +1,25 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.account__form {
+  grid-template-columns: repeat(2, 100px)
+}
+
+account-form_label-input {
+  display: flex;
+  background-color: orange;
+}
+
+label {
+  background-color: #fff;
+  border-radius: .25rem;
+  margin: 1rem 0 2rem;
+}
+
+input {
+  background-color: red;
+  border-radius: 0.25rem;
+}

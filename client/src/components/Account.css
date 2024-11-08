@@ -3,7 +3,7 @@ html {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-color: #000;
+  background-color: pink;
 }
 
 .account__container {
@@ -32,9 +32,9 @@ html {
   background-color: black;
 }
 
-/* label {
+label {
   color: #fff;
-} */
+}
 
 .ui .button {
   color: #fff;

@@ -1,6 +1,5 @@
 import { useContext, useEffect, useState } from 'react'
 import axios from 'axios'
-import { Button, Form } from 'semantic-ui-react'
 
 import AccountForm from './AccountForm'
 import './Account.css'
@@ -62,18 +61,20 @@ function Account() {
   }
 
   return (
-    <>
-      <p style={{ color: 'white' }}>Your Account</p>
-      {address.street ?
-        <AccountForm
-          firstName={firstName}
-          lastName={lastName}
-          address={address}
-          onHandleChange={handleChange}
-          onHandleSubmit={handleSubmit}
-        /> : ''
+    <div className="account__container">
+      < p style={{ color: 'white' }
+      }> Your Account</p >
+      {
+        address.street ?
+          <AccountForm
+            firstName={firstName}
+            lastName={lastName}
+            address={address}
+            onHandleChange={handleChange}
+            onHandleSubmit={handleSubmit}
+          /> : ''
       }
-    </>
+    </div>
   )
 }
 

@@ -85,6 +85,7 @@
 .subtotal__label {
   display: flex;
   background-color: #fff;
+  color: #000;
   font-size: large;
   border-radius: 0.25rem;
   width: 70%;
