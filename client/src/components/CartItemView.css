@@ -74,31 +74,34 @@
 .cart__label-and-input {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  margin-bottom: .5rem;
+  justify-content: center;
   line-height: 2.5;
   background-color: #fff;
   height: 2.5rem;
   width: 100%
 }
 
-.subtotal__label {
+.item-subtotal__label {
   display: flex;
+  align-items: center;
   background-color: #fff;
   color: #000;
   font-size: large;
   border-radius: 0.25rem;
+  height: 2.5rem;
   width: 70%;
+  margin: 0 0 .5rem;
 }
 
 .subtotal__input {
+  background-color: #fff;
   border: 100px #2f2e2e;
+  border-radius: 0.25rem;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   height: 2.5rem;
   width: 30%;
   min-width: 45px;
-  background-color: #fff;
-  border-radius: 0.25rem;
+  margin: 0 0 .5rem;
   padding: 0 .5rem;
 }
 
