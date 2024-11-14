@@ -11,9 +11,9 @@ const Cart = () => {
   const [cart, setCart] = useContext(CartContext)
   const getSubtotal = () => {
     let subtotal = 0
-    cart.map(cartItem => {
+    cart.length ? cart.map(cartItem => {
       subtotal += (cartItem.cartDetail.quantity * cartItem.price)
-    })
+    }) : ""
     return subtotal
   }
 
@@ -40,7 +40,7 @@ const Cart = () => {
           onUpdate={handleUpdate}
           onDelete={handleDelete}
         />) :
-          <p>No items in your cart</p>}
+          <h3 className='no-items'>No items in your cart</h3>}
       </div>
       <div className='subtotal-div'>
         <h2>Order Subtotal: ${getSubtotal()} </h2>

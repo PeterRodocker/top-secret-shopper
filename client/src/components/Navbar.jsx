@@ -41,7 +41,7 @@ const Navbar = () => {
         <>
           <img className='black-logo' src={logo} alt="logo" />
           <p className='nav__welcome-text'>
-            Sign In To Give Us $$$
+            Welcome to Top Secret Shopper
           </p>
           <span className='nav__links'>
             <Link className='link' to='/login'>Login</Link>

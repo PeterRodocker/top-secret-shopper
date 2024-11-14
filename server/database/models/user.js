@@ -10,6 +10,7 @@ const User = db.define('user', {
   username: {
     type: STRING,
     allowNull: false,
+    unique: true,
   },
   password: {
     type: STRING,
@@ -17,11 +18,11 @@ const User = db.define('user', {
   },
   firstName: {
     type: STRING,
-    // allowNull: false,
+    allowNull: false,
   },
   lastName: {
     type: STRING,
-    // allowNull: false,
+    allowNull: false,
   },
   fullName: {
     type: VIRTUAL,
@@ -31,10 +32,11 @@ const User = db.define('user', {
   },
   email: {
     type: STRING,
-    // allowNull: false,
-    // validate: {
-    //   isEmail: true,
-    // }
+    allowNull: false,
+    unique: true,
+    validate: {
+      isEmail: true,
+    }
   },
   isAdmin: {
     type: BOOLEAN,
@@ -83,7 +85,6 @@ User.beforeUpdate(hashPassword);
 User.beforeBulkCreate(async (users) => {
   for (const user of users) {
     user.password = await bcrypt.hash(user.password, SALT_ROUNDS);
-    // hashPassword(user);
   }
 })
 

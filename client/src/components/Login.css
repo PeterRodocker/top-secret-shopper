@@ -48,7 +48,7 @@ html {
 }
 
 
-.button-submit {
+.login__button-submit {
     background-color: dodgerblue;
     border-radius: 1rem;
     border-width: 0;
@@ -58,7 +58,7 @@ html {
     color: #fff;
 }
 
-.ui .button:hover {
+.login__button-submit:hover {
     color: #fff;
     background-color: rgb(8, 112, 191);
 }

@@ -11,12 +11,14 @@
 account-form_label-input {
   display: flex;
   background-color: orange;
+  margin: 1rem 1rem;
 }
 
 label {
-  background-color: #fff;
+  background-color: orange;
+  color: #000;
   border-radius: .25rem;
-  margin: 1rem 0 2rem;
+  margin: 1rem 1rem 2rem;
 }
 
 input {

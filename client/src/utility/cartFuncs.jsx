@@ -8,7 +8,7 @@ export const fetchCart = async (token) => {
 }
 
 export const createNewCart = async (token) => {
-  const { data: cart } = await axios.post('api/cart', {
+  const { data: cart } = await axios.post('api/cart', token, {
     headers: { authorization: token }
   })
   return cart

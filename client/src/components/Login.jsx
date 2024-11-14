@@ -1,7 +1,6 @@
 import { useState, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
-// import { Button, Form } from 'semantic-ui-react'
 
 import './Login.css'
 import { fetchCart } from '../utility/cartFuncs'
@@ -23,7 +22,9 @@ const Login = () => {
       password
     })
     window.localStorage.setItem('authorization', token)
-    attemptTokenLogin()
+    await attemptTokenLogin()
+    const cart = await fetchCart(token)
+    setCart(cart)
     navigate('/products')
   }
 
@@ -34,8 +35,6 @@ const Login = () => {
         headers: { authorization: token }
       })
       setUser(user)
-      const cart = await fetchCart(token)
-      setCart(cart)
     }
   }
 
@@ -56,7 +55,7 @@ const Login = () => {
         <button
           type='submit'
           onClick={handleSubmit}
-          className='button-submit'
+          className='login__button-submit'
         >
           Submit
         </button>
