@@ -9,17 +9,14 @@
     justify-content: space-between;
     align-items: center;
     padding: 1rem 1rem;
-    height: 10rem;
     background-color: #000000;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .black-logo {
-    width: 120px;
-    height: 120px;
+    width: 150px;
+    height: 150px;
     object-fit: cover;
     border-radius: 50%;
-
 }
 
 .nav__welcome-text {

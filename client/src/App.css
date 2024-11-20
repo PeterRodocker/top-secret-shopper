@@ -9,15 +9,33 @@ html {
   background-color: orange;
 }
 
+.container {
+  display: grid;
+  grid-template-rows: 100px, auto, 100px;
+}
+
 /* Everything in this <div> is going to be centered in a column */
 .main {
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column;
+  align-content: center;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
   height: 100vh;
   background: pink;
-  color: #fff;
+  /* color: #fff; */
+}
+
+.navbar {
+  grid-row: 2;
+}
+
+.body {
+  grid-row: 1;
+}
+
+.footer {
+  grid-row: 3;
 }
 
 .create-form label {

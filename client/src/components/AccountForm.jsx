@@ -1,126 +1,134 @@
+import { useContext, useEffect, useState } from 'react'
+import axios from 'axios'
+
 import './AccountForm.css'
 
-const AccountForm = ({
-  firstName,
-  lastName,
-  address: { street, unit, city, state, zip },
-  onHandleChange,
-  onHandleSubmit
-}) => {
+import UserContext from '../contexts/UserContext';
+
+
+const AccountForm = () => {
+
+  const [user, setUser] = useContext(UserContext)
+  const [profileFields, setProfileFields] = useState(user)
+  const [address, setAddress] = useState({})
+  const [errors, setErrors] = useState({})
+
+  const { firstName, lastName, addresses } = profileFields
+  const { street, unit, city, state, zip } = address
+  const token = window.localStorage.getItem('authorization')
+
+  console.log('**address**', address)
+
+  useEffect(() => {
+    getPrimaryAddress()
+  }, [profileFields])
+
+  const getPrimaryAddress = () => {
+    if (addresses && addresses.length > 0) {
+      const primaryAddress = addresses.find(a => a.isPrimary)
+      if (primaryAddress) setAddress(primaryAddress)
+    }
+  }
+
+  const handleChange = property => (e) => {
+    const { name, value } = e.target;
+
+    if (!property) {
+      setProfileFields({
+        ...profileFields,
+        [name]: value
+      })
+    }
+    else {
+      const updatedAddresses = profileFields[property].map(a => {
+        if (a.id === address.id) {
+          const updatedAddress = { ...a, [name]: value }
+          return updatedAddress
+        }
+        else return { ...a }
+      })
+      if (updatedAddresses) {
+        setProfileFields({
+          ...profileFields,
+          [property]: updatedAddresses
+        })
+      }
+    }
+  }
+
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+
+    try {
+      const { data: updatedUser } = await axios.put('api/users/update', {
+        profileFields
+      }, {
+        headers: { authorization: token }
+      })
+      setUser(updatedUser)
+      setErrors({})
+    } catch (error) {
+      console.error('Error updating user', error)
+      setErrors(error.response.data || {})
+    }
+  }
 
   return (
     <form className='account__form'>
-      <div className="account-form_label-input">
-        <label className='account-form_label'>First Name</label>
+      <div className="account__grid">
+        <label>First Name</label>
         <input
           name="firstName"
           type="text"
           value={firstName}
-          onChange={onHandleChange()}
+          onChange={handleChange()}
         />
-      </div>
-      <div className="account-form_label-input">
-        <label className='account-form_label'>Last Name</label>
+        <label>Last Name</label>
         <input
           name="lastName"
           type="text"
           value={lastName}
-          onChange={onHandleChange()} />
-      </div>
-      <div className="account-form_label-input">
-        <label className='account-form_label'>Street</label>
+          onChange={handleChange()} />
+        <label>Street</label>
         <input
           name="street"
           type="text"
-          value={street}
-          onChange={onHandleChange('addresses')} />
-      </div>
-      <div className="account-form_label-input">
-        <label className='account-form_label'>Unit</label>
+          value={street ? street : ''}
+          onChange={handleChange('addresses')} />
+        <label>Unit</label>
         <input
           name="unit"
           type="text"
-          value={unit}
-          onChange={onHandleChange('addresses')} />
-      </div>
-      <div className="account-form_label-input">
-        <label className='account-form_label'>City</label>
+          value={unit ? unit : ''}
+          onChange={handleChange('addresses')} />
+        <label>City</label>
         <input
           name="city"
           type="text"
-          value={state}
-          onChange={onHandleChange('addresses')} />
-      </div>
-      <div className="account-form_label-input">
-        <label className='account-form_label'>State</label>
+          value={city ? city : ''}
+          onChange={handleChange('addresses')} />
+        <label>State</label>
         <input
           name="state"
           type="text"
-          value={state}
-          onChange={onHandleChange('addresses')} />
-      </div>
-      <div className="account-form_label-input">
-        <label className='account-form_label'>Zip Code</label>
+          value={state ? state : ''}
+          onChange={handleChange('addresses')} />
+        <label>Zip Code</label>
         <input
           name="zip"
           type="text"
-          value={zip}
-          onChange={onHandleChange('addresses')} />
+          value={zip ? zip : ''}
+          onChange={handleChange('addresses')} />
       </div>
-      <button className='button-submit' type='submit' onClick={onHandleSubmit}>Update</button>
+      <button
+        className='account__button-submit'
+        type='submit'
+        onClick={handleSubmit}
+      >
+        Update
+      </button>
     </form>
-    // <Form className='account__form'>
-    //   <Form.Field>
-    //     <label className='label'>First Name</label>
-    //     <input
-    //       name="firstName"
-    //       type="text"
-    //       value={firstName}
-    //       onChange={onHandleChange()}
-    //     />
-    //   </Form.Field>
-    //   <Form.Field>
-    //     <label className='label'>Last Name</label>
-    //     <input
-    //       name="lastName"
-    //       type="text"
-    //       value={lastName}
-    //       onChange={onHandleChange()} />
-    //   </Form.Field>
-    //   <Form.Field>
-    //     <label className='label'>Street</label>
-    //     <input
-    //       name="street"
-    //       type="text"
-    //       value={street}
-    //       onChange={onHandleChange('addresses')} />
-    //   </Form.Field>
-    //   <Form.Field>
-    //     <label className='label'>Unit</label>
-    //     <input
-    //       name="unit"
-    //       type="text"
-    //       value={unit}
-    //       onChange={onHandleChange('addresses')} />
-    //   </Form.Field>
-    //   <Form.Field>
-    //     <label className='label'>State</label>
-    //     <input
-    //       name="state"
-    //       type="text"
-    //       value={state}
-    //       onChange={onHandleChange('addresses')} />
-    //   </Form.Field>
-    //   <Form.Field>
-    //     <label className='label'>Zip Code</label>
-    //     <input
-    //       name="zip"
-    //       type="text"
-    //       value={zip}
-    //       onChange={onHandleChange('addresses')} />
-    //   </Form.Field>
-    //   <Button className='button-submit' type='submit' onClick={onHandleSubmit}>Update</Button>
-    // </Form>
   )
 }
 

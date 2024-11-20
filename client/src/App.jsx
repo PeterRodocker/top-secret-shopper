@@ -5,6 +5,7 @@ import Account from './components/Account'
 import AllProducts from './components/AllProducts'
 import Cart from './components/Cart'
 import Checkout from './components/Checkout'
+import Footer from './components/Footer'
 import Login from './components/Login'
 import Navbar from './components/Navbar'
 import Signup from './components/Signup'
@@ -23,17 +24,20 @@ function App() {
         <UserProvider storageKey="user">
           <CartProvider storageKey="cart">
             <ProductProvider storageKey="products">
-              <Navbar />
-              <Routes>
-                <Route path="/" element={<Login />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/signup" element={<Signup />} />
-                <Route path="/products" element={<AllProducts />} />
-                <Route path="/products/:productId" element={<SingleProduct />} />
-                <Route path="/cart" element={<Cart />} />
-                <Route path="/checkout" element={<Checkout />} />
-                <Route path="/account" element={<Account />} />
-              </Routes>
+              <div className="container">
+                <Navbar className="navbar" />
+                <Routes className="main">
+                  <Route path="/" element={<Login />} />
+                  <Route path="/login" element={<Login />} />
+                  <Route path="/signup" element={<Signup />} />
+                  <Route path="/products" element={<AllProducts />} />
+                  <Route path="/products/:productId" element={<SingleProduct />} />
+                  <Route path="/cart" element={<Cart />} />
+                  <Route path="/checkout" element={<Checkout />} />
+                  <Route path="/account" element={<Account />} />
+                </Routes>
+                <Footer className="footer" />
+              </div>
             </ProductProvider>
           </CartProvider>
         </UserProvider>

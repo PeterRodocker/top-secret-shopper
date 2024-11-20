@@ -5,23 +5,58 @@
 }
 
 .account__form {
-  grid-template-columns: repeat(2, 100px)
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-account-form_label-input {
+.account__grid {
+  display: grid;
+  grid-template: repeat(7, 125px), repeat(2, 200px);
+  /* background-color: yellow; */
+  width: 500px;
+  align-items: center;
+  justify-items: center;
+}
+
+label,
+input {
   display: flex;
-  background-color: orange;
-  margin: 1rem 1rem;
+  align-items: center;
+  justify-items: center;
+  height: 2.5rem;
+  border-radius: .25rem;
+  border-width: 0;
+  margin: 1rem;
+  padding: 1rem;
+  text-align: center;
 }
 
 label {
-  background-color: orange;
-  color: #000;
-  border-radius: .25rem;
-  margin: 1rem 1rem 2rem;
+  color: #fff;
+  grid-column: 1;
+  width: 7rem;
 }
 
 input {
-  background-color: red;
-  border-radius: 0.25rem;
+  background-color: #fff;
+  grid-column: 2;
+  margin: 5rem 1rem 0rem;
+  width: 20rem;
+}
+
+.account__button-submit {
+  background-color: dodgerblue;
+  border-radius: 1rem;
+  border-width: 0;
+  font-size: 1.5rem;
+  height: 3rem;
+  width: 7rem;
+  margin-top: 1rem;
+  color: #fff;
+}
+
+.account__button-submit:hover {
+  color: #fff;
+  background-color: rgb(8, 112, 191);
 }

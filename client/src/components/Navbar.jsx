@@ -53,7 +53,7 @@ const Navbar = () => {
         <>
           <img className='black-logo' src={logo} alt="logo" />
           <p className='nav__welcome-text'>
-            Welcome, {user.firstName}
+            Welcome, {user.firstName.charAt(0).toUpperCase() + user.firstName.slice(1)}
           </p>
           <div>
             <Link to='/products' className='link'>Products</Link>
