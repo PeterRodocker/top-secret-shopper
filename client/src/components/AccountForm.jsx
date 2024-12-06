@@ -17,8 +17,6 @@ const AccountForm = () => {
   const { street, unit, city, state, zip } = address
   const token = window.localStorage.getItem('authorization')
 
-  console.log('**address**', address)
-
   useEffect(() => {
     getPrimaryAddress()
   }, [profileFields])

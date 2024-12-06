@@ -30,7 +30,7 @@ const CartItemView = (props) => {
       }
       <form className='cart-view__form'>
         <div className="cart__label-and-input">
-          <label htmlFor={`cart-view__input${productId}`} className="item-subtotal__label">Item Subtotal: </label>
+          <label htmlFor={`cart-view__input${productId}`} className="item-qty__label">Quantity: </label>
           <input
             onChange={handleChangeQty}
             type="number"
