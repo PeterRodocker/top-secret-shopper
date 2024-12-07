@@ -8,8 +8,8 @@ import './Footer.css'
 
 const Footer = () => {
   return (
-    <div className='footer__container'>
-      <h1>I'm a Footer!!!</h1>
+    <div className='footer_container'>
+      <p className='footer-words'>Footer</p>
     </div >
   )
 }

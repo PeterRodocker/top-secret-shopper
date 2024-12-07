@@ -2,29 +2,26 @@ h1,
 h2,
 h3 {
   color: #fff;
-  text-align: center;
 }
 
-.checkout__content {
+
+.checkout_content {
   display: grid;
-  grid-template-columns: 50fr 50fr;
-  margin-bottom: 4rem;
+  grid-template-columns: 33fr 33fr 33fr;
+  margin-bottom: 2rem;
 }
 
-.checkout__subtotal-div {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+.cart-item_container {
   grid-column: 1;
 }
 
-.addresses-payment__container {
+.address_container {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100fr;
   grid-column: 2;
+  margin: 0 1rem;
 }
 
 .same-as_container {
@@ -44,13 +41,29 @@ h3 {
   background-color: dodgerblue;
 }
 
-.billing-select {
+.billing-select_input {
   align-items: center;
   justify-content: center;
   width: 1rem;
 }
 
-.checkout__update-button {
+.payment_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100fr;
+  grid-column: 3;
+}
+
+.checkout_button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  grid-column: 1;
+}
+
+.checkout_update-button {
   display: 'inline-block';
   background-color: #35b711;
   color: #fff;
@@ -66,12 +79,12 @@ h3 {
   justify-content: center;
 }
 
-.checkout__update-button:hover {
+.checkout_update-button:hover {
   color: #fff;
   background-color: #2f9e0f;
 }
 
-.checkout__complete-button {
+.checkout_complete-button {
   display: 'inline-block';
   background-color: dodgerblue;
   color: #fff;
@@ -86,7 +99,7 @@ h3 {
   justify-content: center;
 }
 
-.checkout__complete-button:hover {
+.checkout_complete-button:hover {
   color: #fff;
   background-color: rgb(8, 112, 191);
 }

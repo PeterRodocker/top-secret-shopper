@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import ShippingAddress from './ShippingAddress'
-import Payment from './Payment';
+import Payment from './Payments';
 import './Checkout.css'
 
 import CartContext from '../contexts/CartContext';
@@ -64,9 +64,13 @@ const Checkout = () => {
   return (
     <>
       <h1>Checkout</h1>
-      <div className="checkout__content">
-        <CheckoutCartItems cart={cart} />
-        <div className="addresses-payment__container">
+      <div className="checkout_content">
+        <div className="cart-item_container">
+          <CheckoutCartItems cart={cart} />
+          <h2>Order Total: ${getSubtotal()} </h2>
+        </div>
+
+        <div className="address_container">
           {
             user.addresses?.length === 1 ?
               <h3>Shipping & Billing Address</h3> :
@@ -76,6 +80,8 @@ const Checkout = () => {
           }
           <ShippingAddress
             user={user}
+            checked={checked}
+            setChecked={setChecked}
             shippingAddress={shippingAddress}
             setShippingAddress={setShippingAddress}
             billingAddress={billingAddress}
@@ -86,18 +92,15 @@ const Checkout = () => {
               <div className="same-as_container">
                 <p className='same-as_label'>Billing Address Same As Shipping</p>
                 <input
-                  name="billing-select_input"
                   type="checkbox"
                   checked={checked}
-                  className="billing-select"
+                  className="billing-select_input"
                   value="billing"
                   onChange={handleCheck}
                 />
               </div>
             </div>
             : ''}
-
-
           {checked ? "" :
             <>
               {billingAddress.id ?
@@ -114,23 +117,17 @@ const Checkout = () => {
               />
             </>
           }
-
-
-
-
-
+        </div>
+        <div className="payment_container">
           <Payment />
         </div>
       </div>
-
-
-      <div className='checkout__subtotal-div'>
-        <h2>Order Total: ${getSubtotal()} </h2>
+      <div className='checkout_button-container'>
         <button
-          className='checkout__update-button'
+          className='checkout_update-button'
           onClick={() => navigate('/cart')}
         >Update Your Cart</button>
-        <button className='checkout__complete-button'>Complete Your Order</button>
+        <button className='checkout_complete-button'>Complete Your Order</button>
       </div>
     </>
   )

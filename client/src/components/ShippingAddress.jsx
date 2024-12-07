@@ -21,6 +21,7 @@ function ShippingAddress({
   const handleNewShipping = () => {
     setShippingAddress({})
     window.localStorage.setItem('shippingAddress', JSON.stringify({}))
+
   }
 
   return (
