@@ -13,25 +13,59 @@ import BillingAddress from './BillingAddress';
 const Checkout = () => {
   const [user, setUser] = useContext(UserContext)
   const [cart, setCart] = useContext(CartContext)
+  // const [shippingAddress, setShippingAddress] = useContext(shippingAddressContext)
+  // const [billingAddress, setBillingAddress] = useContext(billingAddressContext)
+  // const [checked, setChecked] = useContext(checkedContext)
+
+
+
   const [shippingAddress, setShippingAddress] = useState({})
   const [billingAddress, setBillingAddress] = useState({})
   const [checked, setChecked] = useState(true)
+
   const navigate = useNavigate()
 
-  const getSubtotal = () => {
-    let subtotal = 0
-    cart.length ? cart.map(cartItem => {
-      subtotal += (cartItem.cartDetail.quantity * cartItem.price)
-    }) : ""
-    return subtotal
-  }
+  console.log('shippingAddress', shippingAddress)
+  console.log('billingAddress', billingAddress)
+
+
 
   useEffect(() => {
     if (checked && billingAddress.id) setBillingAddress({})
   }, [checked])
 
+
+  useEffect(() => {
+    getLocalStorage()
+  }, [])
+
+  const getLocalStorage = () => {
+    if (window.localStorage.getItem('checked')) {
+      const localChecked = window.localStorage.getItem('checked')
+      setChecked(JSON.parse(localChecked))
+    }
+    if (window.localStorage.getItem('shippingAddress')) {
+      const localShipping = window.localStorage.getItem('shippingAddress')
+      setShippingAddress(JSON.parse(localShipping))
+    }
+    if (window.localStorage.getItem('billingAddress')) {
+      const localBilling = window.localStorage.getItem('billingAddress')
+      setBillingAddress(JSON.parse(localBilling))
+    }
+  }
+
   const handleCheck = (e) => {
-    setChecked(e.target.checked)
+    setChecked(prevState => e.target.checked)
+    window.localStorage.setItem('checked', e.target.checked)
+    if (checked && billingAddress.id) setBillingAddress({})
+  }
+
+  const getSubtotal = () => {
+    let subtotal = 0
+    cart?.map(cartItem => {
+      subtotal += (cartItem.cartDetail.quantity * cartItem.price)
+    })
+    return subtotal
   }
 
   return (

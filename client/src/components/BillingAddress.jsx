@@ -9,13 +9,14 @@ function BillingAddress({
   shippingAddress,
   billingAddress,
   setBillingAddress,
-  setChecked
 }) {
 
 
   const handleBillingSelect = (e) => {
     const tempBillingAddress = user.addresses.filter(a => a.id === parseInt(e.target.value))
     setBillingAddress(prevState => ({ ...prevState, ...tempBillingAddress[0] }))
+    window.localStorage.setItem('billingAddress', JSON.stringify(tempBillingAddress[0]))
+
   }
 
   return (

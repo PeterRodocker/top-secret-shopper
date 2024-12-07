@@ -27,7 +27,7 @@ const Navbar = () => {
   }
 
   const logout = () => {
-    const keys = ['authorization', 'user', 'products', 'cart'];
+    const keys = ['authorization', 'user', 'products', 'cart', 'checked', 'shippingAddress', 'billingAddress'];
 
     setUser({})
     setCart({})

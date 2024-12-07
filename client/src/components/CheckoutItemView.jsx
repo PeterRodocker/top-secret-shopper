@@ -14,12 +14,12 @@ const CheckoutItemView = (props) => {
 
   return (
     <div className="checkout-item-view__container">
-      <Link className='checkout-view__link' to={`/products/${productId}`}>
-        <h3 className='checkout-view__heading'>{name}</h3>
-        <img className='checkout-view__image' src={imageURL} alt={name} />
+      <Link className='checkout-view_link' to={`/products/${productId}`}>
+        <h3 className='checkout-view_heading'>{name}</h3>
+        <img className='checkout-view_image' src={imageURL} alt={name} />
       </Link>
 
-      <div className="checkout-subtotal__container">
+      <div className="checkout-subtotal_container">
         <div className="middle-aligned-content">
           <p className='subtotal-text-title'>{`Quantity: `}</p>
           <p className='subtotal-text-number'>{`${quantity}`}</p>

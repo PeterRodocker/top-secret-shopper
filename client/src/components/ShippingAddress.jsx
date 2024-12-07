@@ -14,12 +14,13 @@ function ShippingAddress({
 
   const handleShippingSelect = (e) => {
     const tempShippingAddress = user.addresses.filter(a => a.id === parseInt(e.target.value))
-    setShippingAddress(prevState => ({ ...prevState, ...tempShippingAddress[0] }))
+    setShippingAddress(tempShippingAddress[0])
+    window.localStorage.setItem('shippingAddress', JSON.stringify(tempShippingAddress[0]))
   }
 
   return (
     <div className='shipping-address__container'>
-      {shippingAddress.street ?
+      {shippingAddress.id ?
         <div className='address'>
           <AddressFields address={shippingAddress} />
         </div>
