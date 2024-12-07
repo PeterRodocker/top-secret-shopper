@@ -36,7 +36,7 @@ const Cart = () => {
   return (
     <>
       <h1>Your Cart</h1>
-      <div className='cart__items-container'>
+      <div className='cart_items-container'>
         {cart.length ? cart.map(cartItem => <CartItemView
           cartItem={cartItem}
           key={cartItem.id}
@@ -48,7 +48,7 @@ const Cart = () => {
       <div className='subtotal-div'>
         <h2>Order Subtotal: ${getSubtotal()} </h2>
         <button
-          className='cart__checkout-button'
+          className='cart_checkout-button'
           onClick={() => navigate('/checkout')}
         >Checkout</button>
       </div>

@@ -22,35 +22,35 @@ const ProductView = (props) => {
   }
 
   return (
-    <div className="product-view__container">
-      <Link className='product-view__link' to={`/products/${productId}`}>
-        <h3 className='product-view__heading'>{name}</h3>
-        <img className='product-view__image' src={imageURL} alt={name} />
+    <div className="product-view_container">
+      <Link className='product-view_link' to={`/products/${productId}`}>
+        <h3 className='product-view_heading'>{name}</h3>
+        <img className='product-view_image' src={imageURL} alt={name} />
       </Link>
       <p id='price'>${price}</p>
       {stockQty - qty > 0 ?
         <p id="product-in-stock">In Stock</p> :
         <p id="product-only-in-stock">Only {qty} in Stock</p>
       }
-      <p className="product-view__description">${description}</p>
-      <form className='product-view__form'>
+      <p className="product-view_description">${description}</p>
+      <form className='product-view_form'>
         <input onChange={handleChangeQty}
           type="number"
           value={qty < 1 ? 1 : Math.round(qty)}
           size="mini"
           max={stockQty}
-          id="product-view__input">
+          id="product-view_input">
         </input>
         <button
           onClick={handleSubmit}
           type="submit"
-          className='product-view__add-to-cart'>
+          className='product-view_add-to-cart'>
           Add to Cart
         </button>
         <button
           onClick={(e) => onBuyNow(e, productId, qty, token)}
           type="submit"
-          className='product-view__buy-now'>
+          className='product-view_buy-now'>
           Buy Now
         </button>
       </form>

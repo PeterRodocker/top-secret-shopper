@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 
-.cart-item-view__container {
+.cart-item-view_container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -17,13 +17,13 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.cart-view__link {
+.cart-view_link {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.cart-view__heading {
+.cart-view_heading {
   font-size: 2rem;
   font-weight: 700;
   margin: .5rem;
@@ -31,11 +31,12 @@
   background-color: #fff;
 }
 
-.cart-view__heading:hover {
+.cart-view_heading:hover {
   color: #0f7dea;
 }
 
-.cart-view__image {
+.cart-view_image {
+  border-radius: .25rem;
   max-width: 8.625rem;
   margin: 0 0.5rem;
 }
@@ -49,19 +50,19 @@
 
 #cart-in-stock {
   font-size: 1.25rem;
-  color: green;
+  color: #257d0d;
   background-color: #fff;
   margin: 0 0 0.5rem;
 }
 
 #cart-only-in-stock {
   font-size: 1.25rem;
-  color: orange;
+  color: rgb(232, 152, 4);
   background-color: #fff;
   margin: 0 0 0.5rem;
 }
 
-.cart-view__form {
+.cart-view_form {
   display: flex;
   flex-direction: column;
   background-color: #fff;
@@ -71,7 +72,7 @@
   margin: 0 auto;
 }
 
-.cart__label-and-input {
+.cart_label-and-input {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -93,7 +94,7 @@
   margin: 0 0 .5rem;
 }
 
-.subtotal__input {
+.subtotal_input {
   background-color: #fff;
   border: 100px #2f2e2e;
   border-radius: 0.25rem;
@@ -109,8 +110,8 @@
   BUTTONS
 -------------*/
 
-.cart-view__update,
-.cart-view__remove {
+.cart-view_update,
+.cart-view_remove {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -125,18 +126,18 @@
   cursor: pointer;
 }
 
-.cart-view__update {
-  background-color: #35b711;
+.cart-view_update {
+  background-color: #257d0d;
 }
 
-.cart-view__remove {
-  background-color: red;
+.cart-view_remove {
+  background-color: rgb(185, 10, 10);
 }
 
-.cart-view__update:hover {
-  background-color: #2f9e0f;
+.cart-view_update:hover {
+  background-color: #134e03;
 }
 
-.cart-view__remove:hover {
-  background-color: #b30000;
+.cart-view_remove:hover {
+  background-color: #690808;
 }
