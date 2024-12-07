@@ -29,7 +29,7 @@ const CartItemView = (props) => {
         <p id="cart-only-in-stock">Only {qty} in Stock</p>
       }
       <form className='cart-view_form'>
-        <div className="cart_label-and-input">
+        <div className="cart_label-input">
           <label htmlFor={`cart-view_input${productId}`} className="item-qty__label">Quantity: </label>
           <input
             onChange={handleChangeQty}

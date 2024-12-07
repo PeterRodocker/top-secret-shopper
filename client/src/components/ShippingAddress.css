@@ -1,6 +1,31 @@
-.shipping-address__container {
+.shipping-address_container {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 22rem;
+}
+
+.new-shipping_label-input {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: .25rem .25rem 0 0;
+  padding: 0 1rem;
+  height: 1.7rem;
+  width: 100%;
+  background-color: dodgerblue;
+  color: #000
+}
+
+.new-shipping_label {
+  color: #000;
+  font-size: 1.1rem;
+  margin: 0 0 0rem;
+  background-color: dodgerblue;
+}
+
+.new-shipping_input {
+  align-items: center;
+  justify-content: center;
+  width: 1rem;
 }

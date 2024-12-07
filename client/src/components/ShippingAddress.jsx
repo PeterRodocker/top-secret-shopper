@@ -18,10 +18,24 @@ function ShippingAddress({
     window.localStorage.setItem('shippingAddress', JSON.stringify(tempShippingAddress[0]))
   }
 
+  const handleNewShipping = () => {
+    setShippingAddress({})
+    window.localStorage.setItem('shippingAddress', JSON.stringify({}))
+  }
+
   return (
-    <div className='shipping-address__container'>
+    <div className='shipping-address_container'>
       {shippingAddress.id ?
         <div className='address'>
+          <div className="new-shipping_label-input">
+            {shippingAddress.id ? <p className="new-shipping_label">Choose Different Shipping Address</p> : ''}
+            <input name="new-shipping"
+              type="radio"
+              defaultChecked={false}
+              className="new-shipping_input"
+              onChange={handleNewShipping}
+            />
+          </div>
           <AddressFields address={shippingAddress} />
         </div>
         : user?.addresses?.map(address => (

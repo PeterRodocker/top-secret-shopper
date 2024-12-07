@@ -13,22 +13,15 @@ import BillingAddress from './BillingAddress';
 const Checkout = () => {
   const [user, setUser] = useContext(UserContext)
   const [cart, setCart] = useContext(CartContext)
-  // const [shippingAddress, setShippingAddress] = useContext(shippingAddressContext)
-  // const [billingAddress, setBillingAddress] = useContext(billingAddressContext)
-  // const [checked, setChecked] = useContext(checkedContext)
-
-
-
   const [shippingAddress, setShippingAddress] = useState({})
   const [billingAddress, setBillingAddress] = useState({})
   const [checked, setChecked] = useState(true)
 
   const navigate = useNavigate()
 
+  console.log('checked', checked)
   console.log('shippingAddress', shippingAddress)
   console.log('billingAddress', billingAddress)
-
-
 
   useEffect(() => {
     if (checked && billingAddress.id) setBillingAddress({})
@@ -88,7 +81,7 @@ const Checkout = () => {
             billingAddress={billingAddress}
             setBillingAddress={setBillingAddress}
           />
-          {shippingAddress.street ?
+          {shippingAddress.id ?
             <div>
               <div className="same-as_container">
                 <p className='same-as_label'>Billing Address Same As Shipping</p>
@@ -101,26 +94,31 @@ const Checkout = () => {
                   onChange={handleCheck}
                 />
               </div>
-              {checked ? "" :
-                <>
-                  {checked ? "" :
-                    !billingAddress.id ?
-                      <h3>Select Billing Address</h3> :
-                      <h3>Billing Address</h3>
-                  }
-                  <BillingAddress
-                    user={user}
-                    billingAddress={billingAddress}
-                    setBillingAddress={setBillingAddress}
-                    shippingAddress={shippingAddress}
-                    checked={checked}
-                    setChecked={setChecked}
-                  />
-                </>
-              }
-
             </div>
             : ''}
+
+
+          {checked ? "" :
+            <>
+              {billingAddress.id ?
+                <h3>Billing Address</h3> :
+                <h3>Select Billing Address</h3>
+              }
+              <BillingAddress
+                user={user}
+                billingAddress={billingAddress}
+                setBillingAddress={setBillingAddress}
+                shippingAddress={shippingAddress}
+                checked={checked}
+                setChecked={setChecked}
+              />
+            </>
+          }
+
+
+
+
+
           <Payment />
         </div>
       </div>
