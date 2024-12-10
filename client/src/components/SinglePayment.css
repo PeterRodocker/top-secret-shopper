@@ -1,4 +1,4 @@
-.address {
+.payment {
   align-items: center;
   justify-items: center;
   background-color: #fff;
@@ -8,7 +8,7 @@
   width: 22rem;
 }
 
-.address-input_container {
+.payment-input_container {
   display: flex;
   justify-content: center;
   border-radius: .25rem .25rem 0 0;
@@ -17,7 +17,7 @@
   width: 22rem;
 }
 
-#address_input {
+#payment_input {
   margin-top: 0 0;
   border: 0px;
   width: 1rem;

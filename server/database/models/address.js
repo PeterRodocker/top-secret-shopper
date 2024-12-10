@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const { ENUM, INTEGER, STRING } = Sequelize;
+const { INTEGER, STRING } = Sequelize;
 const db = require('../db');
 
 const Address = db.define('address', {
@@ -23,11 +23,6 @@ const Address = db.define('address', {
     zip: {
         type: INTEGER,
         allowNull: false,
-    },
-    type: {
-        type: ENUM('Mailing', 'Billing'),
-        defaultValue: 'Mailing',
-        allowNull: false
     },
     isPrimary: {
         type: Sequelize.BOOLEAN,

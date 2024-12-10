@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import ShippingAddress from './ShippingAddress'
-import Payment from './Payments';
+import Payments from './Payments';
 import './Checkout.css'
 
 import CartContext from '../contexts/CartContext';
@@ -118,9 +118,16 @@ const Checkout = () => {
             </>
           }
         </div>
+
+
+
+
         <div className="payment_container">
-          <Payment />
+          <Payments user={user} />
         </div>
+
+
+
       </div>
       <div className='checkout_button-container'>
         <button

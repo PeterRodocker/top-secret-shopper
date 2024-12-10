@@ -4,7 +4,6 @@ const productData = [
   {
     name: 'Documents',
     price: 5,
-    // imageURL: faker.image.urlLoremFlickr({ category: 'abstract' }),
     imageURL: faker.image.urlLoremFlickr({ category: 'abstract' }),
     stockQty: 30,
     categoryId: 1,

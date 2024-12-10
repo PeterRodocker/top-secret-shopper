@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt')
 const SALT_ROUNDS = 5;
 const Address = require('./address')
+const PaymentMethod = require('./paymentMethod')
 
 const User = db.define('user', {
   username: {
@@ -47,7 +48,7 @@ const User = db.define('user', {
 User.findByToken = async function (token) {
   const { userId } = await jwt.verify(token, process.env.JWT);
   const user = await User.findByPk(userId, {
-    include: Address
+    include: [Address, PaymentMethod]
   });
   if (!user) {
     const error = Error('bad credentials');

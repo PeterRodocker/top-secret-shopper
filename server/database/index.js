@@ -7,10 +7,10 @@ const Order = require('./models/order')
 const OrderDetail = require('./models/orderDetail')
 const OrderHistory = require('./models/orderHistory')
 const Payment = require('./models/payment')
+const PaymentMethod = require('./models/paymentMethod')
 const Product = require('./models/product')
 const Shipping = require('./models/shipping')
 const User = require('./models/user')
-const hello = 'Hello Peter'
 
 // Associations go here
 
@@ -29,6 +29,9 @@ Product.belongsTo(Category);
 User.hasMany(Order)
 Order.belongsTo(User);
 
+User.hasMany(PaymentMethod)
+PaymentMethod.belongsTo(User);
+
 Order.belongsToMany(Product, { through: OrderDetail });
 Product.belongsToMany(Order, { through: OrderDetail });
 
@@ -45,7 +48,6 @@ Order.hasMany(OrderHistory);
 OrderHistory.belongsTo(Order);
 
 module.exports = {
-  hello,
   db,
   models: {
     Address,
@@ -56,6 +58,7 @@ module.exports = {
     OrderDetail,
     OrderHistory,
     Payment,
+    PaymentMethod,
     Product,
     Shipping,
     User,

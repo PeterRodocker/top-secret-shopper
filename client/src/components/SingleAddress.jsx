@@ -5,7 +5,7 @@ function SingleAddress({ address, handler }) {
 
   return (
     <div className='address' key={address.id}>
-      <div className="input_container">
+      <div className="address-input_container">
         <input
           id="address_input"
           type="radio"

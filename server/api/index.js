@@ -5,6 +5,7 @@ const router = require('express').Router();
 router.use('/address', require('./address'))
 router.use('/cart', require('./cart'))
 router.use('/categories', require('./categories'))
+router.use('/paymentMethods', require('./paymentMethods'))
 router.use('/products', require('./products'))
 router.use('/users', require('./users'))
 
