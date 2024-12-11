@@ -1,0 +1,31 @@
+.payment_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 22rem;
+}
+
+.new-pm_label-input {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: .25rem .25rem 0 0;
+  padding: 0 1rem;
+  height: 1.7rem;
+  width: 100%;
+  background-color: dodgerblue;
+  color: #000
+}
+
+.new-pm_label {
+  color: #000;
+  font-size: 1.1rem;
+  margin: 0 0 0rem;
+  background-color: dodgerblue;
+}
+
+.new-pm_input {
+  align-items: center;
+  justify-content: center;
+  width: 1rem;
+}

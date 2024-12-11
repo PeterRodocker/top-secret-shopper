@@ -34,7 +34,33 @@ const paymentMethodData = [
     cvv: 123,
     userId: 1
   },
-
+  {
+    type: "Visa",
+    name: "James Scott",
+    number: 1234567812345678,
+    exp: 128,
+    cvv: 123,
+    nickname: "Costco Visa",
+    userId: 2
+  },
+  {
+    type: "James Scott",
+    name: "Peter Rodocker",
+    number: 1234567887654321,
+    exp: 128,
+    cvv: 123,
+    nickname: "My MC",
+    userId: 2
+  },
+  {
+    type: "Visa",
+    name: "ThisGuy",
+    number: 1234567812345678,
+    exp: 128,
+    cvv: 123,
+    nickname: "Costco Visa",
+    userId: 3
+  },
 ]
 
 module.exports = paymentMethodData;

@@ -30,6 +30,13 @@ const addressData = [
     zip: '90001',
     userId: '2'
   },
+  {
+    street: '1 Some Place.',
+    city: 'Kansas City',
+    state: 'UT',
+    zip: '90001',
+    userId: '3'
+  },
 
 ]
 

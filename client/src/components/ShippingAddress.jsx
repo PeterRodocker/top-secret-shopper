@@ -1,4 +1,3 @@
-import { useContext, useEffect, useState } from "react"
 import AddressFields from "./AddressFields";
 import './ShippingAddress.css'
 
@@ -8,8 +7,6 @@ function ShippingAddress({
   user,
   shippingAddress,
   setShippingAddress,
-  billingAddress,
-  setBillingAddress
 }) {
 
   const handleShippingSelect = (e) => {
@@ -21,7 +18,6 @@ function ShippingAddress({
   const handleNewShipping = () => {
     setShippingAddress({})
     window.localStorage.setItem('shippingAddress', JSON.stringify({}))
-
   }
 
   return (
@@ -30,7 +26,8 @@ function ShippingAddress({
         <div className='address'>
           <div className="new-shipping_label-input">
             {shippingAddress.id ? <p className="new-shipping_label">Choose Different Shipping Address</p> : ''}
-            <input name="new-shipping"
+            <input
+              name="new-shipping"
               type="radio"
               defaultChecked={false}
               className="new-shipping_input"

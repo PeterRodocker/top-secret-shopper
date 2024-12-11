@@ -3,7 +3,7 @@ const router = require('express').Router();
 const { models: { PaymentMethod } } = require('../database');
 const { requireToken, isAdmin } = require('./gateKeepingMiddleware');
 
-// Get all paymentMethods /api/users
+// Get all paymentMethods /api/paymentMethods
 router.get('/', requireToken, isAdmin, async (req, res, next) => {
   try {
     const paymentMethods = await PaymentMethod.findAll();
@@ -13,29 +13,30 @@ router.get('/', requireToken, isAdmin, async (req, res, next) => {
   }
 });
 
-// Get single user /api/users
-// router.get('/:id', requireToken, async (req, res, next) => {
-//   try {
-//     const user = await PaymentMethod.findOne({
-//       where: { id: req.params.id },
-//     });
-//     res.send(user);
-//   } catch (err) {
-//     next(err);
-//   }
-// });
+// Get paymentMethods for an individual /api/paymentMethods
+router.get('/:id', requireToken, isAdmin, async (req, res, next) => {
+  console.log('***Individuals paymentMethods***')
+  try {
+    const user = await PaymentMethod.findAll({
+      where: { userId: req.params.id },
+    });
+    res.send(user);
+  } catch (err) {
+    next(err);
+  }
+});
 
-// Post user /api/users
+// Post paymentMethod /api/paymentMethods
 // router.post('/', async (req, res, next) => {
 //   try {
-//     const user = await PaymentMethod.create(req.body);
-//     res.send(user);
+//     const paymentMethod = await PaymentMethod.create(req.body);
+//     res.send(paymentMethod);
 //   } catch (err) {
 //     next(err);
 //   }
 // });
 
-// Post user /api/users
+// Post paymentMethod /api/paymentMethods
 // router.put('/update', requireToken, async (req, res, next) => {
 //   try {
 //     const { profileFields, profileFields: { id, addresses } } = req.body

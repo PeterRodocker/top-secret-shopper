@@ -16,17 +16,13 @@ const Checkout = () => {
   const [shippingAddress, setShippingAddress] = useState({})
   const [billingAddress, setBillingAddress] = useState({})
   const [checked, setChecked] = useState(true)
+  const [paymentMethod, setPaymentMethod] = useState({})
 
   const navigate = useNavigate()
-
-  console.log('checked', checked)
-  console.log('shippingAddress', shippingAddress)
-  console.log('billingAddress', billingAddress)
 
   useEffect(() => {
     if (checked && billingAddress.id) setBillingAddress({})
   }, [checked])
-
 
   useEffect(() => {
     getLocalStorage()
@@ -44,6 +40,10 @@ const Checkout = () => {
     if (window.localStorage.getItem('billingAddress')) {
       const localBilling = window.localStorage.getItem('billingAddress')
       setBillingAddress(JSON.parse(localBilling))
+    }
+    if (window.localStorage.getItem('paymentMethod')) {
+      const localPaymentMethod = window.localStorage.getItem('paymentMethod')
+      setPaymentMethod(JSON.parse(localPaymentMethod))
     }
   }
 
@@ -83,10 +83,7 @@ const Checkout = () => {
             checked={checked}
             setChecked={setChecked}
             shippingAddress={shippingAddress}
-            setShippingAddress={setShippingAddress}
-            billingAddress={billingAddress}
-            setBillingAddress={setBillingAddress}
-          />
+            setShippingAddress={setShippingAddress} />
           {shippingAddress.id ?
             <div>
               <div className="same-as_container">
@@ -123,7 +120,15 @@ const Checkout = () => {
 
 
         <div className="payment_container">
-          <Payments user={user} />
+          {paymentMethod.id ?
+            <h3>Payment Method</h3> :
+            <h3>Select Payment Method</h3>
+          }
+          <Payments
+            user={user}
+            paymentMethod={paymentMethod}
+            setPaymentMethod={setPaymentMethod}
+          />
         </div>
 
 

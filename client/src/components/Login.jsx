@@ -39,9 +39,9 @@ const Login = () => {
   }
 
   return (
-    <div className='login__container'>
-      <h1 className='login__heading'>Login</h1>
-      <form className='login__form'>
+    <div className='login_container'>
+      <h1 className='login_heading'>Login</h1>
+      <form className='login_form'>
         <input
           placeholder='Username'
           onChange={(e) => setUsername(e.target.value)}
@@ -55,7 +55,7 @@ const Login = () => {
         <button
           type='submit'
           onClick={handleSubmit}
-          className='login__button-submit'
+          className='login_button-submit'
         >
           Submit
         </button>
