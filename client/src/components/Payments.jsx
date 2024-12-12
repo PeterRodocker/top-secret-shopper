@@ -20,6 +20,7 @@ function Payments({ user, paymentMethod, setPaymentMethod }) {
     <div className='payment_container'>
       {paymentMethod.id ?
         <div className='payment'>
+          <PaymentFields pm={paymentMethod} selected='-selected' />
           <div className="new-pm_label-input">
             {paymentMethod.id ? <p className="new-pm_label">Choose Different Payment Method</p> : ''}
             <input
@@ -30,7 +31,6 @@ function Payments({ user, paymentMethod, setPaymentMethod }) {
               onChange={handleNewPaymentMethod}
             />
           </div>
-          <PaymentFields pm={paymentMethod} />
         </div>
         :
         user?.paymentMethods?.map(pm => (

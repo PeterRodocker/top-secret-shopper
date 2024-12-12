@@ -74,9 +74,11 @@ const Checkout = () => {
           {
             user.addresses?.length === 1 ?
               <h3>Shipping & Billing Address</h3> :
-              shippingAddress.street ?
-                <h3>Shipping Address</h3> :
-                <h3>Select Shipping Address</h3>
+              shippingAddress.id && checked ?
+                <h3>Shipping & Billing Address</h3> :
+                shippingAddress.id ?
+                  <h3>Shipping Address</h3> :
+                  <h3>Select Shipping Address</h3>
           }
           <ShippingAddress
             user={user}
@@ -115,10 +117,6 @@ const Checkout = () => {
             </>
           }
         </div>
-
-
-
-
         <div className="payment_container">
           {paymentMethod.id ?
             <h3>Payment Method</h3> :
@@ -130,9 +128,6 @@ const Checkout = () => {
             setPaymentMethod={setPaymentMethod}
           />
         </div>
-
-
-
       </div>
       <div className='checkout_button-container'>
         <button

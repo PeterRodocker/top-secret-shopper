@@ -13,7 +13,6 @@
 .account__grid {
   display: grid;
   grid-template: repeat(7, 125px), repeat(2, 200px);
-  /* background-color: yellow; */
   width: 500px;
   align-items: center;
   justify-items: center;

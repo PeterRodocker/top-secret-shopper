@@ -24,6 +24,7 @@ function ShippingAddress({
     <div className='shipping-address_container'>
       {shippingAddress.id ?
         <div className='address'>
+          <AddressFields address={shippingAddress} />
           <div className="new-shipping_label-input">
             {shippingAddress.id ? <p className="new-shipping_label">Choose Different Shipping Address</p> : ''}
             <input
@@ -34,7 +35,6 @@ function ShippingAddress({
               onChange={handleNewShipping}
             />
           </div>
-          <AddressFields address={shippingAddress} />
         </div>
         : user?.addresses?.map(address => (
           <SingleAddress

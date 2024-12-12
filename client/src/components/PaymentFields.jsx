@@ -1,8 +1,8 @@
 import './PaymentFields.css'
 
-function PaymentFields({ pm }) {
+function PaymentFields({ pm, selected }) {
   return (
-    <div className="payment-fields">
+    <div className={`payment-fields payment-fields${selected}`}>
       <div className="payment-row">
         <p className="payment-field_label">Payment Type:</p>
         <p className='payment-field' >{pm.type}</p>
