@@ -1,12 +1,12 @@
 const db = require('./db')
 const Address = require('./models/address')
 const Cart = require('./models/cart')
-const CartDetail = require('./models/cartDetail')
+const CartProduct = require('./models/cartProduct')
 const Category = require('./models/category')
 const Order = require('./models/order')
-const OrderDetail = require('./models/orderDetail')
+const OrderAddress = require('./models/orderAddress')
+const OrderProduct = require('./models/orderProduct')
 const OrderHistory = require('./models/orderHistory')
-const Payment = require('./models/payment')
 const PaymentMethod = require('./models/paymentMethod')
 const Product = require('./models/product')
 const Shipping = require('./models/shipping')
@@ -20,8 +20,8 @@ Address.belongsTo(User);
 User.hasOne(Cart);
 Cart.belongsTo(User);
 
-Product.belongsToMany(Cart, { through: CartDetail });
-Cart.belongsToMany(Product, { through: CartDetail });
+Product.belongsToMany(Cart, { through: CartProduct });
+Cart.belongsToMany(Product, { through: CartProduct });
 
 Category.hasMany(Product);
 Product.belongsTo(Category);
@@ -32,11 +32,15 @@ Order.belongsTo(User);
 User.hasMany(PaymentMethod)
 PaymentMethod.belongsTo(User);
 
-Order.belongsToMany(Product, { through: OrderDetail });
-Product.belongsToMany(Order, { through: OrderDetail });
+Order.belongsToMany(Address, { through: OrderAddress });
+Address.belongsToMany(Order, { through: OrderAddress });
 
-Order.hasOne(Payment);
-Payment.belongsTo(Order);
+Order.belongsToMany(Product, { through: OrderProduct });
+Product.belongsToMany(Order, { through: OrderProduct });
+
+
+Order.hasOne(PaymentMethod);
+PaymentMethod.belongsTo(Order);
 
 Order.hasOne(Shipping)
 Shipping.belongsTo(Order);
@@ -52,12 +56,11 @@ module.exports = {
   models: {
     Address,
     Cart,
-    CartDetail,
+    CartProduct,
     Category,
     Order,
-    OrderDetail,
+    OrderProduct,
     OrderHistory,
-    Payment,
     PaymentMethod,
     Product,
     Shipping,

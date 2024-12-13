@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom'
 
 import ShippingAddress from './ShippingAddress'
 import Payments from './Payments';
+import { addToOrder, createNewOrder } from '../utility/orderFuncs';
+
 import './Checkout.css'
 
 import CartContext from '../contexts/CartContext';
@@ -17,8 +19,11 @@ const Checkout = () => {
   const [billingAddress, setBillingAddress] = useState({})
   const [checked, setChecked] = useState(true)
   const [paymentMethod, setPaymentMethod] = useState({})
+  const [order, setOrder] = useState({})
+  const token = window.localStorage.getItem('authorization')
 
   const navigate = useNavigate()
+  let subtotal = 0
 
   useEffect(() => {
     if (checked && billingAddress.id) setBillingAddress({})
@@ -27,6 +32,11 @@ const Checkout = () => {
   useEffect(() => {
     getLocalStorage()
   }, [])
+
+  useEffect(() => {
+    console.log('***ORDER***', order)
+
+  }, [order])
 
   const getLocalStorage = () => {
     if (window.localStorage.getItem('checked')) {
@@ -48,13 +58,19 @@ const Checkout = () => {
   }
 
   const handleCheck = (e) => {
-    setChecked(prevState => e.target.checked)
+    setChecked(e.target.checked)
     window.localStorage.setItem('checked', e.target.checked)
     if (checked && billingAddress.id) setBillingAddress({})
   }
 
+  const handleCheckout = async (e, token, cart, shippingAddress, billingAddress, paymentMethod, total) => {
+    e.preventDefault()
+    await createNewOrder(token)
+    const updatedOrder = await addToOrder(token, cart, shippingAddress, billingAddress, paymentMethod, total)
+    setOrder(updatedOrder)
+  }
+
   const getSubtotal = () => {
-    let subtotal = 0
     cart?.map(cartItem => {
       subtotal += (cartItem.cartDetail.quantity * cartItem.price)
     })
@@ -134,7 +150,10 @@ const Checkout = () => {
           className='checkout_update-button'
           onClick={() => navigate('/cart')}
         >Update Your Cart</button>
-        <button className='checkout_complete-button'>Complete Your Order</button>
+        <button
+          className='checkout_complete-button'
+          onClick={(e) => handleCheckout(e, token, cart, shippingAddress, billingAddress, paymentMethod, subtotal)}
+        >Complete Your Order</button>
       </div>
     </>
   )

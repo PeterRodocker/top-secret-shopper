@@ -1,16 +1,17 @@
 const Sequelize = require('sequelize');
-const { DATE, INTEGER } = Sequelize;
+const { BOOLEAN, INTEGER } = Sequelize;
 const db = require('../db');
 
 const Order = db.define('order', {
-    orderDate: {
-        type: DATE,
-        allowNull: false,
-    },
-    totalAmount: {
+    total: {
         type: INTEGER,
         allowNull: false,
     },
+    isOpen: {
+        type: BOOLEAN,
+        allowNull: false,
+        defaultValue: true
+    }
 });
 
 module.exports = Order;

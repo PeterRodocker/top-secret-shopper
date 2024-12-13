@@ -1,8 +1,8 @@
 const { blue, cyan, green, red } = require('chalk');
-const { db, models: { Address, Cart, CartDetail, Category, PaymentMethod, Product, User } } = require('../database');
+const { db, models: { Address, Cart, CartProduct, Category, PaymentMethod, Product, User } } = require('../database');
 const addressData = require('./addressData');
 const cartData = require('./cartData');
-const cartDetailData = require('./cartDetailData');
+const cartProductData = require('./cartProductData');
 const categoryData = require('./categoryData');
 const paymentMethodData = require('./paymentMethodData');
 const productData = require('./productData');
@@ -20,7 +20,7 @@ async function seed() {
     await User.bulkCreate(userData)
     await Address.bulkCreate(addressData)
     await Cart.bulkCreate(cartData)
-    await CartDetail.bulkCreate(cartDetailData)
+    await CartProduct.bulkCreate(cartProductData)
     await PaymentMethod.bulkCreate(paymentMethodData)
 
 

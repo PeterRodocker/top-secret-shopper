@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const { INTEGER, STRING } = Sequelize;
+const { BOOLEAN, INTEGER, STRING } = Sequelize;
 const db = require('../db');
 
 const Address = db.define('address', {
@@ -25,7 +25,7 @@ const Address = db.define('address', {
         allowNull: false,
     },
     isPrimary: {
-        type: Sequelize.BOOLEAN,
+        type: BOOLEAN,
         allowNull: false,
         defaultValue: false
     }
