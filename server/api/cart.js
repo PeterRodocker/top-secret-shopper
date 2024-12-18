@@ -49,7 +49,7 @@ router.put('/', requireToken, async (req, res, next) => {
     if (cart.products.length) {
       cart.products.map(async cartItem => {
         if (cartItem.id === parseInt(productId)) {
-          newQty += parseInt(cartItem.cartDetail.quantity);
+          newQty += parseInt(cartItem.cartProduct.quantity);
         }
       })
     }

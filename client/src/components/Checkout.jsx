@@ -9,8 +9,10 @@ import './Checkout.css'
 
 import CartContext from '../contexts/CartContext';
 import UserContext from '../contexts/UserContext';
-import CheckoutCartItems from './CheckoutCartItems';
 import BillingAddress from './BillingAddress';
+import CheckoutCartItems from './CheckoutCartItems';
+import CompleteOrderModal from './CompleteOrderModal';
+import SelectModal from './SelectModal';
 
 const Checkout = () => {
   const [user, setUser] = useContext(UserContext)
@@ -20,23 +22,37 @@ const Checkout = () => {
   const [checked, setChecked] = useState(true)
   const [paymentMethod, setPaymentMethod] = useState({})
   const [order, setOrder] = useState({})
+  const [completeModalOpen, setCompleteModalOpen] = useState(false);
+  const [selectModalOpen, setSelectModalOpen] = useState(false);
+  const [type, setType] = useState('')
   const token = window.localStorage.getItem('authorization')
+
+  // console.log('**Checkout Shipping', shippingAddress)
+  // console.log('**Checkout Billing', billingAddress)
+  // console.log('**Checked', checked)
+  console.log('**PaymentMethod', paymentMethod)
 
   const navigate = useNavigate()
   let subtotal = 0
 
   useEffect(() => {
-    if (checked && billingAddress.id) setBillingAddress({})
+    if (checked && shippingAddress.id) {
+      setBillingAddress(shippingAddress)
+      return window.localStorage.setItem('billingAddress', JSON.stringify(shippingAddress))
+    }
+    if (checked && billingAddress.id) {
+      setShippingAddress(billingAddress)
+      window.localStorage.setItem('shippingAddress', JSON.stringify(billingAddress))
+    }
   }, [checked])
+
+  useEffect(() => {
+    if (shippingAddress.id === billingAddress.id) setChecked(true)
+  }, [shippingAddress, billingAddress])
 
   useEffect(() => {
     getLocalStorage()
   }, [])
-
-  useEffect(() => {
-    console.log('***ORDER***', order)
-
-  }, [order])
 
   const getLocalStorage = () => {
     if (window.localStorage.getItem('checked')) {
@@ -60,19 +76,35 @@ const Checkout = () => {
   const handleCheck = (e) => {
     setChecked(e.target.checked)
     window.localStorage.setItem('checked', e.target.checked)
-    if (checked && billingAddress.id) setBillingAddress({})
   }
 
   const handleCheckout = async (e, token, cart, shippingAddress, billingAddress, paymentMethod, total) => {
     e.preventDefault()
+    if (!shippingAddress.id) {
+      setSelectModalOpen(true)
+      return setType('Shipping')
+    }
+    if (!billingAddress.id) {
+      setSelectModalOpen(true)
+      return setType('Billing')
+    }
     await createNewOrder(token)
     const updatedOrder = await addToOrder(token, cart, shippingAddress, billingAddress, paymentMethod, total)
     setOrder(updatedOrder)
+    setCompleteModalOpen(true)
+  }
+
+  const handleCompleteClose = () => {
+    setCompleteModalOpen(false)
+  }
+
+  const handleSelectClose = () => {
+    setSelectModalOpen(false)
   }
 
   const getSubtotal = () => {
     cart?.map(cartItem => {
-      subtotal += (cartItem.cartDetail.quantity * cartItem.price)
+      subtotal += (cartItem.cartProduct.quantity * cartItem.price)
     })
     return subtotal
   }
@@ -85,7 +117,6 @@ const Checkout = () => {
           <CheckoutCartItems cart={cart} />
           <h2>Order Total: ${getSubtotal()} </h2>
         </div>
-
         <div className="address_container">
           {
             user.addresses?.length === 1 ?
@@ -101,21 +132,25 @@ const Checkout = () => {
             checked={checked}
             setChecked={setChecked}
             shippingAddress={shippingAddress}
-            setShippingAddress={setShippingAddress} />
-          {shippingAddress.id ?
-            <div>
-              <div className="same-as_container">
+            setShippingAddress={setShippingAddress}
+            billingAddress={billingAddress}
+            setBillingAddress={setBillingAddress}
+          />
+          <div>
+            <div className="same-as_container">
+              {billingAddress.id && !shippingAddress.id ?
+                <p className='same-as_label'>Shipping Address Same As Billing</p> :
                 <p className='same-as_label'>Billing Address Same As Shipping</p>
-                <input
-                  type="checkbox"
-                  checked={checked}
-                  className="billing-select_input"
-                  value="billing"
-                  onChange={handleCheck}
-                />
-              </div>
+              }
+              <input
+                type="checkbox"
+                checked={checked}
+                className="billing-select_input"
+                value="billing"
+                onChange={handleCheck}
+              />
             </div>
-            : ''}
+          </div>
           {checked ? "" :
             <>
               {billingAddress.id ?
@@ -155,6 +190,8 @@ const Checkout = () => {
           onClick={(e) => handleCheckout(e, token, cart, shippingAddress, billingAddress, paymentMethod, subtotal)}
         >Complete Your Order</button>
       </div>
+      <SelectModal isOpen={selectModalOpen} onClose={handleSelectClose} type={type} />
+      <CompleteOrderModal isOpen={completeModalOpen} onClose={handleCompleteClose} />
     </>
   )
 }

@@ -6,7 +6,7 @@ import './CheckoutItemView.css'
 import UserContext from '../contexts/UserContext';
 
 const CheckoutItemView = (props) => {
-  const { cartItem: { id: productId, imageURL, name, price, cartDetail: { quantity } } } = props
+  const { cartItem: { id: productId, imageURL, name, price, cartProduct: { quantity } } } = props
 
   const getSubtotal = () => {
     return quantity * price

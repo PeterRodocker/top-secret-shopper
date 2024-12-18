@@ -1,4 +1,4 @@
-const cartDetailData = [
+const cartProductData = [
   {
     cartId: 1,
     productId: 1,
@@ -31,4 +31,4 @@ const cartDetailData = [
   }
 ]
 
-module.exports = cartDetailData;
+module.exports = cartProductData;

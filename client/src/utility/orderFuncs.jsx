@@ -14,6 +14,10 @@ export const createNewOrder = async (token) => {
 }
 
 export const addToOrder = async (token, cart, shippingAddress, billingAddress, paymentMethod, total) => {
+  // console.log('***Func Shipping', shippingAddress)
+  console.log('***Func Billing', billingAddress)
+  // console.log('***Func Payment', paymentMethod)
+
   const { data: order } = await axios.put('api/order', {
     cart,
     shippingAddress,

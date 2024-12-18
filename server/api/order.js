@@ -1,15 +1,3 @@
-// On complete your order
-// create new order
-// send array of items from client with qty of each
-// map through on server adding them to the order
-// set total
-// set shippingAddress
-// set billingAddress
-// send back order details to display in modal (id #, items, total, shippingAddress)
-// on modal close, set order isOpen to false
-// close cart
-// create new cart
-
 const router = require('express').Router();
 
 const { models: { Address, Order, PaymentMethod, Product } } = require('../database');
@@ -58,10 +46,14 @@ router.put('/', requireToken, async (req, res, next) => {
       }
     })
 
+    // console.log('***API Shipping', shippingAddress)
+    // console.log('***API Billing', billingAddress)
+    // console.log('***API Payment', paymentMethod)
+
     await order.update({ total: total });
 
     await Promise.all(cart.map(async product => {
-      const quantity = product.cartDetail.quantity;
+      const quantity = product.cartProduct.quantity;
       const productInstance = await Product.findOne({ where: { id: product.id } });
       await order.addProduct(productInstance, { through: { quantity: quantity, price: productInstance.price } });
     }))
@@ -72,8 +64,8 @@ router.put('/', requireToken, async (req, res, next) => {
     const billingInstance = await Address.findOne({ where: { id: billingAddress.id } });
     await order.addAddress(billingInstance, { through: { type: 'Billing' } });
 
-    const paymentMethodInstance = await PaymentMethod.findOne({ where: { id: paymentMethod.id } });
-    await order.setPaymentMethod(paymentMethodInstance);
+    // const paymentMethodInstance = await PaymentMethod.findOne({ where: { id: paymentMethod.id } });
+    // await order.setPaymentMethod(paymentMethodInstance);
 
     const updatedOrder = await Order.findOne({
       where: {

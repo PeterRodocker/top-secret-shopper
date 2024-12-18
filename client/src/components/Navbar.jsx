@@ -21,13 +21,13 @@ const Navbar = () => {
     let quantity = 0;
 
     if (cart.length) {
-      cart.forEach(cartItem => quantity += cartItem.cartDetail.quantity)
+      cart.forEach(cartItem => quantity += cartItem.cartProduct.quantity)
     }
     setQty(quantity)
   }
 
   const logout = () => {
-    const keys = ['authorization', 'user', 'products', 'cart', 'checked', 'shippingAddress', 'billingAddress'];
+    const keys = ['authorization', 'user', 'paymentMethod', 'products', 'cart', 'checked', 'shippingAddress', 'billingAddress'];
 
     setUser({})
     setCart({})

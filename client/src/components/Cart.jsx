@@ -15,7 +15,7 @@ const Cart = () => {
   const getSubtotal = () => {
     let subtotal = 0
     cart.length ? cart.map(cartItem => {
-      subtotal += (cartItem.cartDetail.quantity * cartItem.price)
+      subtotal += (cartItem.cartProduct.quantity * cartItem.price)
     }) : ""
     return subtotal
   }
