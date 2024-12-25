@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 
 import ShippingAddress from './ShippingAddress'
 import Payments from './Payments';
-import { addToOrder, createNewOrder } from '../utility/orderFuncs';
+import { addToOrder, closeOrder, createNewOrder } from '../utility/orderFuncs';
 
 import './Checkout.css'
 
@@ -27,9 +27,6 @@ const Checkout = () => {
   const [type, setType] = useState('')
   const token = window.localStorage.getItem('authorization')
 
-  // console.log('**Checkout Shipping', shippingAddress)
-  // console.log('**Checkout Billing', billingAddress)
-  // console.log('**Checked', checked)
   console.log('**PaymentMethod', paymentMethod)
 
   const navigate = useNavigate()
@@ -82,11 +79,15 @@ const Checkout = () => {
     e.preventDefault()
     if (!shippingAddress.id) {
       setSelectModalOpen(true)
-      return setType('Shipping')
+      return setType('Shipping Address')
     }
     if (!billingAddress.id) {
       setSelectModalOpen(true)
-      return setType('Billing')
+      return setType('Billing Address')
+    }
+    if (!paymentMethod.id) {
+      setSelectModalOpen(true)
+      return setType('Payment Method')
     }
     await createNewOrder(token)
     const updatedOrder = await addToOrder(token, cart, shippingAddress, billingAddress, paymentMethod, total)
@@ -94,8 +95,11 @@ const Checkout = () => {
     setCompleteModalOpen(true)
   }
 
-  const handleCompleteClose = () => {
+  const handleCompleteClose = async () => {
+    // await closeOrder(token)
+    // await createNewOrder(token)
     setCompleteModalOpen(false)
+    // navigate('/products')
   }
 
   const handleSelectClose = () => {

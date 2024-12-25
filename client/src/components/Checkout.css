@@ -66,7 +66,6 @@ h3 {
 .checkout_update-button {
   display: 'inline-block';
   background-color: #35b711;
-  color: #fff;
   border: 1px solid #000;
   border-radius: 5px;
   margin: 0 0 1rem;
@@ -80,16 +79,14 @@ h3 {
 }
 
 .checkout_update-button:hover {
-  color: #fff;
   background-color: #2f9e0f;
 }
 
 .checkout_complete-button {
   display: 'inline-block';
   background-color: dodgerblue;
-  color: #fff;
   border: 1px solid #000;
-  border-radius: 5px;
+  border-radius: .25rem;
   padding: 0.5rem 1rem;
   font-size: 3rem;
   font-weight: 600;
@@ -100,6 +97,5 @@ h3 {
 }
 
 .checkout_complete-button:hover {
-  color: #fff;
   background-color: rgb(8, 112, 191);
 }

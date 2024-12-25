@@ -14,11 +14,23 @@ router.get('/', requireToken, isAdmin, async (req, res, next) => {
 });
 
 // Get paymentMethods for an individual /api/paymentMethods
-router.get('/:id', requireToken, isAdmin, async (req, res, next) => {
+router.get('/:id/:pmId', requireToken, async (req, res, next) => {
   console.log('***Individuals paymentMethods***')
   try {
     const user = await PaymentMethod.findAll({
-      where: { userId: req.params.id },
+      where: { userId: req.params.id }
+    });
+    res.send(user);
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.get('/:id/method/:pmId', requireToken, async (req, res, next) => {
+  console.log('***Single Individual paymentMethod***')
+  try {
+    const user = await PaymentMethod.findOne({
+      where: [{ userId: req.params.id }, { id: req.params.pmId }]
     });
     res.send(user);
   } catch (err) {
