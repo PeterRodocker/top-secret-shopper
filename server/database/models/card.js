@@ -2,7 +2,7 @@ const Sequelize = require('sequelize');
 const { BIGINT, INTEGER, STRING } = Sequelize;
 const db = require('../db');
 
-const PaymentMethod = db.define('paymentMethod', {
+const Card = db.define('card', {
   name: {
     type: STRING,
     allowNull: false,
@@ -33,4 +33,4 @@ const PaymentMethod = db.define('paymentMethod', {
   }
 });
 
-module.exports = PaymentMethod;
+module.exports = Card;
