@@ -1,10 +1,22 @@
 import axios from 'axios'
 
-export const fetchPaymentMethod = async (token) => {
-  const { data: paymentMethod } = await axios.get('api/paymentMethod', {
+export const fetchCard = async (token) => {
+  const { data: card } = await axios.get('api/card', {
     headers: { authorization: token }
   })
-  return paymentMethod
+  return card
+}
+
+export const fetchAndVerifyCard = async (token, cvv, exp, userId) => {
+  const { data: card } = await axios.post('api/card/verify', {
+    cvv,
+    exp,
+    userId
+  },
+    {
+      headers: { authorization: token }
+    })
+  return card
 }
 
 // export const createNewOrder = async (token) => {
@@ -12,12 +24,12 @@ export const fetchPaymentMethod = async (token) => {
 //   return order
 // }
 
-// export const addToOrder = async (token, cart, shippingAddress, billingAddress, paymentMethod, total) => {
+// export const addToOrder = async (token, cart, shippingAddress, billingAddress, card, total) => {
 //   const { data: order } = await axios.put('api/order', {
 //     cart,
 //     shippingAddress,
 //     billingAddress,
-//     paymentMethod,
+//     card,
 //     total
 //   }, {
 //     headers: { authorization: token }

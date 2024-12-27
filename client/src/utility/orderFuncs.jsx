@@ -12,12 +12,12 @@ export const createNewOrder = async (token) => {
   return order
 }
 
-export const addToOrder = async (token, cart, shippingAddress, billingAddress, paymentMethod, total) => {
+export const addToOrder = async (token, cart, shippingAddress, billingAddress, card, total) => {
   const { data: order } = await axios.put('api/order', {
     cart,
     shippingAddress,
     billingAddress,
-    paymentMethod,
+    card,
     total
   }, {
     headers: { authorization: token }

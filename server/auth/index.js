@@ -35,8 +35,7 @@ router.post('/login', async (req, res, next) => {
 // GET User - listens for GET requests on the '/me' endpoint
 router.get('/me', async (req, res, next) => {
   try {
-    const user = await User.findByToken(req.headers.authorization, {
-    })
+    const user = await User.findByToken(req.headers.authorization, {})
     res.send(user)
   } catch (ex) {
     next(ex)

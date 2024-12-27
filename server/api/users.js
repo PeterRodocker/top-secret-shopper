@@ -20,7 +20,6 @@ router.get('/:id', requireToken, isAdmin, async (req, res, next) => {
   try {
     const user = await User.findOne({
       where: { id: req.params.id },
-      // attributes: ['id', 'username']
     });
     res.send(user);
   } catch (err) {

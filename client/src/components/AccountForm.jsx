@@ -7,7 +7,6 @@ import UserContext from '../contexts/UserContext';
 
 
 const AccountForm = () => {
-
   const [user, setUser] = useContext(UserContext)
   const [profileFields, setProfileFields] = useState(user)
   const [address, setAddress] = useState({})

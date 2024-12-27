@@ -1,4 +1,4 @@
-const paymentMethodData = [
+const cardData = [
   {
     type: "Visa",
     name: "Peter Rodocker",
@@ -63,4 +63,4 @@ const paymentMethodData = [
   },
 ]
 
-module.exports = paymentMethodData;
+module.exports = cardData;

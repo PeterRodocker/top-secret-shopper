@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import ShippingAddress from './ShippingAddress'
-import Payments from './Payments';
+import Card from './Card';
 import { addToOrder, closeOrder, createNewOrder } from '../utility/orderFuncs';
 
 import './Checkout.css'
@@ -16,18 +16,16 @@ import SelectModal from './SelectModal';
 
 const Checkout = () => {
   const [user, setUser] = useContext(UserContext)
+  const [selectedCard, setSelectedCard] = useState({})
+  const [verifiedCard, setVerifiedCard] = useState({})
   const [cart, setCart] = useContext(CartContext)
   const [shippingAddress, setShippingAddress] = useState({})
   const [billingAddress, setBillingAddress] = useState({})
   const [checked, setChecked] = useState(true)
-  const [paymentMethod, setPaymentMethod] = useState({})
-  const [order, setOrder] = useState({})
   const [completeModalOpen, setCompleteModalOpen] = useState(false);
   const [selectModalOpen, setSelectModalOpen] = useState(false);
   const [type, setType] = useState('')
   const token = window.localStorage.getItem('authorization')
-
-  console.log('**PaymentMethod', paymentMethod)
 
   const navigate = useNavigate()
   let subtotal = 0
@@ -64,9 +62,13 @@ const Checkout = () => {
       const localBilling = window.localStorage.getItem('billingAddress')
       setBillingAddress(JSON.parse(localBilling))
     }
-    if (window.localStorage.getItem('paymentMethod')) {
-      const localPaymentMethod = window.localStorage.getItem('paymentMethod')
-      setPaymentMethod(JSON.parse(localPaymentMethod))
+    if (window.localStorage.getItem('selectedCard')) {
+      const localCard = window.localStorage.getItem('selectedCard')
+      setSelectedCard(JSON.parse(localCard))
+    }
+    if (window.localStorage.getItem('verifiedCard')) {
+      const localCard = window.localStorage.getItem('verifiedCard')
+      setVerifiedCard(JSON.parse(localCard))
     }
   }
 
@@ -75,7 +77,7 @@ const Checkout = () => {
     window.localStorage.setItem('checked', e.target.checked)
   }
 
-  const handleCheckout = async (e, token, cart, shippingAddress, billingAddress, paymentMethod, total) => {
+  const handleCheckout = async (e, token, cart, shippingAddress, billingAddress, card, total) => {
     e.preventDefault()
     if (!shippingAddress.id) {
       setSelectModalOpen(true)
@@ -85,12 +87,12 @@ const Checkout = () => {
       setSelectModalOpen(true)
       return setType('Billing Address')
     }
-    if (!paymentMethod.id) {
+    if (!verifiedCard.id) {
       setSelectModalOpen(true)
       return setType('Payment Method')
     }
     await createNewOrder(token)
-    const updatedOrder = await addToOrder(token, cart, shippingAddress, billingAddress, paymentMethod, total)
+    const updatedOrder = await addToOrder(token, cart, shippingAddress, billingAddress, card, total)
     setOrder(updatedOrder)
     setCompleteModalOpen(true)
   }
@@ -98,7 +100,7 @@ const Checkout = () => {
   const handleCompleteClose = async () => {
     // await closeOrder(token)
     // await createNewOrder(token)
-    setCompleteModalOpen(false)
+    // setCompleteModalOpen(false)
     // navigate('/products')
   }
 
@@ -172,15 +174,18 @@ const Checkout = () => {
             </>
           }
         </div>
-        <div className="payment_container">
-          {paymentMethod.id ?
+        <div className="card_container">
+          {selectedCard.id ?
             <h3>Payment Method</h3> :
             <h3>Select Payment Method</h3>
           }
-          <Payments
+          <Card
+            billingAddress={billingAddress}
+            selectedCard={selectedCard}
+            setSelectedCard={setSelectedCard}
             user={user}
-            paymentMethod={paymentMethod}
-            setPaymentMethod={setPaymentMethod}
+            verifiedCard={verifiedCard}
+            setVerifiedCard={setVerifiedCard}
           />
         </div>
       </div>
@@ -191,7 +196,7 @@ const Checkout = () => {
         >Update Your Cart</button>
         <button
           className='checkout_complete-button'
-          onClick={(e) => handleCheckout(e, token, cart, shippingAddress, billingAddress, paymentMethod, subtotal)}
+          onClick={(e) => handleCheckout(e, token, cart, shippingAddress, billingAddress, verifiedCard, subtotal)}
         >Complete Your Order</button>
       </div>
       <SelectModal isOpen={selectModalOpen} onClose={handleSelectClose} type={type} />

@@ -9,7 +9,7 @@ const CartItemView = (props) => {
   const { onDelete, onUpdate, cartItem: { id: productId, imageURL, name, price, stockQty, cartProduct: { quantity } } } = props
 
   const [qty, setQty] = useState(quantity)
-  const [user, setUser] = useContext(UserContext)
+  // const [user, setUser] = useContext(UserContext)
   const token = window.localStorage.getItem('authorization')
 
   const handleChangeQty = (e) => {

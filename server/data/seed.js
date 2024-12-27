@@ -1,10 +1,10 @@
 const { blue, cyan, green, red } = require('chalk');
-const { db, models: { Address, Cart, CartProduct, Category, PaymentMethod, Product, User } } = require('../database');
+const { db, models: { Address, Cart, CartProduct, Category, Card, Product, User } } = require('../database');
 const addressData = require('./addressData');
 const cartData = require('./cartData');
 const cartProductData = require('./cartProductData');
 const categoryData = require('./categoryData');
-const paymentMethodData = require('./paymentMethodData');
+const cardData = require('./cardData');
 const productData = require('./productData');
 const userData = require('./userData');
 
@@ -21,7 +21,7 @@ async function seed() {
     await Address.bulkCreate(addressData)
     await Cart.bulkCreate(cartData)
     await CartProduct.bulkCreate(cartProductData)
-    await PaymentMethod.bulkCreate(paymentMethodData)
+    await Card.bulkCreate(cardData)
 
 
     console.log(green('🌲 Finished seeding the database!'));

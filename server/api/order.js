@@ -1,6 +1,6 @@
 const router = require('express').Router();
 
-const { models: { Address, Order, PaymentMethod, Product } } = require('../database');
+const { models: { Address, Order, Card, Product } } = require('../database');
 const { requireToken } = require('./gateKeepingMiddleware');
 
 // GET Fetch open order
@@ -11,7 +11,7 @@ router.get('/', requireToken, async (req, res, next) => {
         userId: req.user.id,
         isOpen: true
       },
-      include: [Address, PaymentMethod, Product]
+      include: [Address, Card, Product]
     })
     res.send(orderItems);
   } catch (err) {
@@ -37,7 +37,7 @@ router.post('/', requireToken, async (req, res, next) => {
 // PUT Add order details
 router.put('/', requireToken, async (req, res, next) => {
   try {
-    const { cart, shippingAddress, billingAddress, paymentMethod, total } = req.body;
+    const { cart, shippingAddress, billingAddress, card, total } = req.body;
 
     const order = await Order.findOne({
       where: {
@@ -48,7 +48,7 @@ router.put('/', requireToken, async (req, res, next) => {
 
     // console.log('***API Shipping', shippingAddress)
     // console.log('***API Billing', billingAddress)
-    // console.log('***API Payment', paymentMethod)
+    // console.log('***API Payment', card)
 
     await order.update({ total: total });
 
@@ -64,15 +64,15 @@ router.put('/', requireToken, async (req, res, next) => {
     const billingInstance = await Address.findOne({ where: { id: billingAddress.id } });
     await order.addAddress(billingInstance, { through: { type: 'Billing' } });
 
-    // const paymentMethodInstance = await PaymentMethod.findOne({ where: { id: paymentMethod.id } });
-    // await order.setPaymentMethod(paymentMethodInstance);
+    // const cardInstance = await Card.findOne({ where: { id: card.id } });
+    // await order.setCard(cardInstance);
 
     const updatedOrder = await Order.findOne({
       where: {
         userId: req.user.id,
         isOpen: true,
       },
-      include: [Address, PaymentMethod, Product]
+      include: [Address, Card, Product]
     })
 
     res.send(updatedOrder);
