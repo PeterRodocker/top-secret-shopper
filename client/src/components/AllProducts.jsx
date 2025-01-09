@@ -35,14 +35,13 @@ const AllProducts = () => {
   return (
     <>
       <div className='all-products__container'>
-        {products.length ? products.map(product => (
+        {products.length && products.map(product => (
           <ProductView
             key={product.id}
             product={product}
             onAddToCart={handleAddToCart}
           />
-        )) : ''
-        }
+        ))}
       </div>
     </>
   )

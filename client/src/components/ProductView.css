@@ -9,9 +9,9 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    width: 20rem;
-    margin: 2rem;
-    padding: 1rem 1rem;
+    width: 16rem;
+    margin: .7rem;
+    padding: .5rem 1rem 1rem;
     background-color: #fff;
     border-radius: 0.25rem;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -21,11 +21,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 0 0 .5rem;
 }
 
 .product-view_heading {
-    font-size: 2.5rem;
+    font-size: 1.8rem;
     font-weight: 700;
     margin: .5rem;
     background-color: #fff;
@@ -33,28 +32,37 @@
 }
 
 .product-view_image {
-    max-width: 8.625rem;
-    margin: 0 0.5rem;
+    max-width: 8rem;
+    border-radius: .25rem;
 }
 
-#price {
-    font-size: 1.5rem;
+#product-price {
+    font-size: 1.3rem;
+    background-color: #fff;
+    margin-top: .3rem;
+}
+
+div.product-view_container p {
+    margin: 0;
+}
+
+#product-in-stock,
+#product-only-in-stock {
+    background-color: #fff;
+    margin-bottom: .3rem;
+    font-size: 1.1rem;
 }
 
 #product-in-stock {
-    font-size: 1.25rem;
     color: #257d0d;
-    background-color: #fff;
 }
 
 #product-only-in-stock {
-    font-size: 1.25rem;
     color: orange;
-    background-color: #fff;
 }
 
 .product-view_description {
-    font-size: 1rem;
+    font-size: .8rem;
     font-weight: 400;
     background-color: #fff;
     color: #000;
@@ -73,46 +81,38 @@
 #product-view_input {
     border: 2px #2f2e2e;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    height: 2.5rem;
+    height: 2rem;
     width: 30%;
     min-width: 45px;
-    margin-bottom: .5rem;
+    margin: .3rem 0;
     background-color: #fff;
-    padding: 0 .5rem;
+}
+
+#product-view_input::-webkit-inner-spin-button,
+#product-view_input::-webkit-outer-spin-button {
+    margin-left: .5rem
 }
 
 
 /* -----------
     BUTTONS
 -------------*/
-.product-view_add-to-cart,
-.product-view_buy-now {
+.product-view_add-to-cart {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     height: 2.5rem;
-    margin: 4px 0;
+    margin-top: .1rem;
     border: none;
     border-radius: 0.25rem;
     color: white;
     font-size: 1rem;
     font-weight: 700;
     cursor: pointer;
-}
-
-.product-view_add-to-cart {
     background-color: #03038e;
-}
-
-.product-view_buy-now {
-    background-color: #257d0d;
 }
 
 .product-view_add-to-cart:hover {
     background-color: #18184f;
-}
-
-.product-view_buy-now:hover {
-    background-color: #134e03;
 }
