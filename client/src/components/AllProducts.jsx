@@ -32,12 +32,6 @@ const AllProducts = () => {
     setCart(updatedCart)
   }
 
-  const handleBuyNow = async (e, productId, quantity, token) => {
-    e.preventDefault()
-    const updatedCart = await updateCart(productId, quantity, token)
-    setCart(updatedCart)
-  }
-
   return (
     <>
       <div className='all-products__container'>
@@ -46,7 +40,7 @@ const AllProducts = () => {
             key={product.id}
             product={product}
             onAddToCart={handleAddToCart}
-            onBuyNow={handleBuyNow} />
+          />
         )) : ''
         }
       </div>

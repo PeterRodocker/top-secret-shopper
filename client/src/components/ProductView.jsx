@@ -1,11 +1,11 @@
-import { useContext, useState } from "react"
+import { useState } from "react"
 import { Link } from "react-router-dom"
 
 import './ProductView.css'
 
 
 const ProductView = (props) => {
-  const { onAddToCart, onBuyNow, product: { description, id: productId, imageURL, name, price, stockQty } } = props
+  const { onAddToCart, product: { description, id: productId, imageURL, name, price, stockQty } } = props
   const token = window.localStorage.getItem('authorization')
 
   const [qty, setQty] = useState(1)
@@ -46,12 +46,6 @@ const ProductView = (props) => {
           type="submit"
           className='product-view_add-to-cart'>
           Add to Cart
-        </button>
-        <button
-          onClick={(e) => onBuyNow(e, productId, qty, token)}
-          type="submit"
-          className='product-view_buy-now'>
-          Buy Now
         </button>
       </form>
     </div >

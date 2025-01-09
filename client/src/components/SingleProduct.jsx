@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios'
 
-import { addToCart, updateCart } from '../utility/cartFuncs';
+import { addToCart } from '../utility/cartFuncs';
 import "./SingleProduct.css"
 
 import CartContext from '../contexts/CartContext';
@@ -38,11 +38,6 @@ const SingleProduct = () => {
     setQty(1)
   }
 
-  const handleBuyNow = (e) => {
-    e.preventDefault()
-    console.log('BuyNow', qty)
-  }
-
   return (
     <div className="single-product__container">
       <h1 className='single-product__heading'>{name}</h1>
@@ -68,13 +63,6 @@ const SingleProduct = () => {
           className="single-product__add-to-cart"
         >
           Add to Cart
-        </button>
-        <button
-          onClick={handleBuyNow}
-          type="submit"
-          className="single-product__buy-now"
-        >
-          Buy Now
         </button>
       </form>
     </div>
