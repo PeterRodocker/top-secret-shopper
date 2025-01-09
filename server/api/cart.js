@@ -1,7 +1,7 @@
 const router = require('express').Router();
 
 const { models: { Cart, Product } } = require('../database');
-const { requireToken, isAdmin } = require('./gateKeepingMiddleware');
+const { requireToken } = require('./gateKeepingMiddleware');
 
 // GET Fetch cart
 router.get('/', requireToken, async (req, res, next) => {
@@ -89,6 +89,22 @@ router.put('/update', requireToken, async (req, res, next) => {
       include: Product
     })
     res.send(cartItems);
+  } catch (err) {
+    next(err);
+  }
+});
+
+// PUT update cartItem quantity
+router.put('/close', requireToken, async (req, res, next) => {
+  try {
+    const cart = await Cart.findOne({
+      where: {
+        userId: req.user.id,
+        isOpen: true
+      }
+    })
+    const closedCart = await cart.update({ isOpen: false });
+    res.send(closedCart);
   } catch (err) {
     next(err);
   }

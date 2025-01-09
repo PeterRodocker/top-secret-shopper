@@ -8,7 +8,9 @@ export const fetchOrder = async (token) => {
 }
 
 export const createNewOrder = async (token) => {
-  const { data: order } = await axios.post('api/order', {}, { headers: { authorization: token } })
+  const { data: order } = await axios.post('api/order', {}, {
+    headers: { authorization: token }
+  })
   return order
 }
 

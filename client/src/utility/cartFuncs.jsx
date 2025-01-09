@@ -8,7 +8,7 @@ export const fetchCart = async (token) => {
 }
 
 export const createNewCart = async (token) => {
-  const { data: cart } = await axios.post('api/cart', {
+  const { data: cart } = await axios.post('api/cart', {}, {
     headers: { authorization: token }
   })
   return cart
@@ -38,6 +38,14 @@ export const deleteFromCart = async (productId, token) => {
   const { data: cart } = await axios.delete('api/cart', {
     headers: { authorization: token },
     data: { productId }
+  })
+  return cart
+}
+
+export const closeCart = async (token) => {
+  const { data: cart } = await axios.put('api/cart/close', {
+  }, {
+    headers: { authorization: token }
   })
   return cart
 }

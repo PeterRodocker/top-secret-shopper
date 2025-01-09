@@ -18,7 +18,6 @@ const CheckoutItemView = (props) => {
         <h3 className='checkout-view_heading'>{name}</h3>
         <img className='checkout-view_image' src={imageURL} alt={name} />
       </Link>
-
       <div className="checkout-subtotal_container">
         <div className="middle-aligned-content">
           <p className='subtotal-text-title'>{`Quantity: `}</p>
@@ -29,7 +28,7 @@ const CheckoutItemView = (props) => {
           <p className='subtotal-text-number'>{`$${price}`}</p>
         </div>
         <div className="middle-aligned-content">
-          <p className='subtotal-text-title'>{`Item Subtotal: `}</p>
+          <p className='subtotal-text-title'>{`Subtotal: `}</p>
           <p className='subtotal-text-number'>{`$${getSubtotal()}`}</p>
         </div>
       </div>

@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom'
 
 import ShippingAddress from './ShippingAddress'
 import Card from './Card';
+import { closeCart, createNewCart, fetchCart } from '../utility/cartFuncs';
+import { clearLocalStorage, getLocalStorage } from '../utility/localStorageFuncs';
 import { addToOrder, closeOrder, createNewOrder } from '../utility/orderFuncs';
 
 import './Checkout.css'
@@ -16,19 +18,36 @@ import SelectModal from './SelectModal';
 
 const Checkout = () => {
   const [user, setUser] = useContext(UserContext)
-  const [selectedCard, setSelectedCard] = useState({})
-  const [verifiedCard, setVerifiedCard] = useState({})
   const [cart, setCart] = useContext(CartContext)
   const [shippingAddress, setShippingAddress] = useState({})
   const [billingAddress, setBillingAddress] = useState({})
   const [checked, setChecked] = useState(true)
-  const [completeModalOpen, setCompleteModalOpen] = useState(false);
+  const [selectedCard, setSelectedCard] = useState({})
+  const [verifiedCard, setVerifiedCard] = useState({})
   const [selectModalOpen, setSelectModalOpen] = useState(false);
   const [type, setType] = useState('')
+  const [order, setOrder] = useState([])
+  const [orderTotal, setOrderTotal] = useState(0)
+  const [completeModalOpen, setCompleteModalOpen] = useState(false);
   const token = window.localStorage.getItem('authorization')
 
   const navigate = useNavigate()
-  let subtotal = 0
+
+  const itemsToFetch = [
+    ['checked', setChecked],
+    ['shippingAddress', setShippingAddress],
+    ['billingAddress', setBillingAddress],
+    ['selectedCard', setSelectedCard],
+    ['verifiedCard', setVerifiedCard]
+  ]
+
+  const itemsToClear = [
+    ['billingAddress', {}, setBillingAddress],
+    ['shippingAddress', {}, setShippingAddress],
+    ['selectedCard', {}, setSelectedCard],
+    ['verifiedCard', {}, setVerifiedCard],
+    ['cart', [], setCart]
+  ]
 
   useEffect(() => {
     if (checked && shippingAddress.id) {
@@ -39,6 +58,10 @@ const Checkout = () => {
       setShippingAddress(billingAddress)
       window.localStorage.setItem('shippingAddress', JSON.stringify(billingAddress))
     }
+    if (!checked && shippingAddress.id === billingAddress.id) {
+      setBillingAddress({})
+      window.localStorage.setItem('billingAddress', JSON.stringify({}))
+    }
   }, [checked])
 
   useEffect(() => {
@@ -46,31 +69,16 @@ const Checkout = () => {
   }, [shippingAddress, billingAddress])
 
   useEffect(() => {
-    getLocalStorage()
+    itemsToFetch.forEach(item => getLocalStorage(item[0], item[1]))
   }, [])
 
-  const getLocalStorage = () => {
-    if (window.localStorage.getItem('checked')) {
-      const localChecked = window.localStorage.getItem('checked')
-      setChecked(JSON.parse(localChecked))
-    }
-    if (window.localStorage.getItem('shippingAddress')) {
-      const localShipping = window.localStorage.getItem('shippingAddress')
-      setShippingAddress(JSON.parse(localShipping))
-    }
-    if (window.localStorage.getItem('billingAddress')) {
-      const localBilling = window.localStorage.getItem('billingAddress')
-      setBillingAddress(JSON.parse(localBilling))
-    }
-    if (window.localStorage.getItem('selectedCard')) {
-      const localCard = window.localStorage.getItem('selectedCard')
-      setSelectedCard(JSON.parse(localCard))
-    }
-    if (window.localStorage.getItem('verifiedCard')) {
-      const localCard = window.localStorage.getItem('verifiedCard')
-      setVerifiedCard(JSON.parse(localCard))
-    }
-  }
+  useEffect(() => {
+    let subtotal = 0
+    cart?.map(cartItem => {
+      subtotal += (cartItem.cartProduct.quantity * cartItem.price)
+      setOrderTotal(subtotal)
+    })
+  }, [cart])
 
   const handleCheck = (e) => {
     setChecked(e.target.checked)
@@ -79,40 +87,31 @@ const Checkout = () => {
 
   const handleCheckout = async (e, token, cart, shippingAddress, billingAddress, card, total) => {
     e.preventDefault()
-    if (!shippingAddress.id) {
-      setSelectModalOpen(true)
-      return setType('Shipping Address')
-    }
-    if (!billingAddress.id) {
-      setSelectModalOpen(true)
-      return setType('Billing Address')
-    }
-    if (!verifiedCard.id) {
-      setSelectModalOpen(true)
-      return setType('Payment Method')
+    if (!shippingAddress.id || !billingAddress.id || !selectedCard.id) {
+      if (!shippingAddress.id) setType('Shipping Address')
+      else if (!billingAddress.id) setType('Billing Address')
+      else if (!verifiedCard.id) setType('Payment Method')
+      return setSelectModalOpen(true)
     }
     await createNewOrder(token)
-    const updatedOrder = await addToOrder(token, cart, shippingAddress, billingAddress, card, total)
+    const updatedOrder = await addToOrder(token, cart, shippingAddress, billingAddress, card, orderTotal)
     setOrder(updatedOrder)
     setCompleteModalOpen(true)
   }
 
   const handleCompleteClose = async () => {
-    // await closeOrder(token)
-    // await createNewOrder(token)
-    // setCompleteModalOpen(false)
-    // navigate('/products')
+    closeOrder(token)
+    closeCart(token)
+    await createNewCart(token)
+    const newCart = await fetchCart(token)
+    setCart(newCart)
+    itemsToClear.forEach(item => clearLocalStorage(item[0], item[1], item[2]))
+    setCompleteModalOpen(false)
+    navigate('/products')
   }
 
   const handleSelectClose = () => {
     setSelectModalOpen(false)
-  }
-
-  const getSubtotal = () => {
-    cart?.map(cartItem => {
-      subtotal += (cartItem.cartProduct.quantity * cartItem.price)
-    })
-    return subtotal
   }
 
   return (
@@ -121,7 +120,7 @@ const Checkout = () => {
       <div className="checkout_content">
         <div className="cart-item_container">
           <CheckoutCartItems cart={cart} />
-          <h2>Order Total: ${getSubtotal()} </h2>
+          <h2>Order Total: ${orderTotal} </h2>
         </div>
         <div className="address_container">
           {
@@ -168,8 +167,7 @@ const Checkout = () => {
                 billingAddress={billingAddress}
                 setBillingAddress={setBillingAddress}
                 shippingAddress={shippingAddress}
-                checked={checked}
-                setChecked={setChecked}
+                selected={billingAddress.id && '-selected'}
               />
             </>
           }
@@ -196,11 +194,11 @@ const Checkout = () => {
         >Update Your Cart</button>
         <button
           className='checkout_complete-button'
-          onClick={(e) => handleCheckout(e, token, cart, shippingAddress, billingAddress, verifiedCard, subtotal)}
+          onClick={(e) => handleCheckout(e, token, cart, shippingAddress, billingAddress, verifiedCard, orderTotal)}
         >Complete Your Order</button>
       </div>
       <SelectModal isOpen={selectModalOpen} onClose={handleSelectClose} type={type} />
-      <CompleteOrderModal isOpen={completeModalOpen} onClose={handleCompleteClose} />
+      <CompleteOrderModal isOpen={completeModalOpen} onClose={handleCompleteClose} order={order} />
     </>
   )
 }

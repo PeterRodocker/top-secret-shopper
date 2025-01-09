@@ -7,7 +7,6 @@ const Category = require('./models/category')
 const Order = require('./models/order')
 const OrderAddress = require('./models/orderAddress')
 const OrderProduct = require('./models/orderProduct')
-const OrderHistory = require('./models/orderHistory')
 const Product = require('./models/product')
 const Shipping = require('./models/shipping')
 const User = require('./models/user')
@@ -38,17 +37,11 @@ Address.belongsToMany(Order, { through: OrderAddress });
 Order.belongsToMany(Product, { through: OrderProduct });
 Product.belongsToMany(Order, { through: OrderProduct });
 
-Order.hasOne(Card);
-Card.belongsTo(Order);
+Card.hasOne(Order);
+Order.belongsTo(Card);
 
 Order.hasOne(Shipping)
 Shipping.belongsTo(Order);
-
-User.hasMany(OrderHistory);
-OrderHistory.belongsTo(User);
-
-Order.hasMany(OrderHistory);
-OrderHistory.belongsTo(Order);
 
 module.exports = {
   db,
@@ -59,7 +52,6 @@ module.exports = {
     Category,
     Order,
     OrderProduct,
-    OrderHistory,
     Card,
     Product,
     Shipping,

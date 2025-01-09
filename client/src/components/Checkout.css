@@ -4,11 +4,15 @@ h3 {
   color: #fff;
 }
 
-
 .checkout_content {
   display: grid;
-  grid-template-columns: 33fr 33fr 33fr;
+  grid-template-columns: 24fr 38fr 38fr;
   margin-bottom: 2rem;
+}
+
+div.checkout_content h3 {
+  background-color: #000;
+  color: #fff;
 }
 
 .cart-item_container {

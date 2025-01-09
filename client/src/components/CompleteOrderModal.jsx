@@ -1,24 +1,28 @@
 import { Modal } from 'semantic-ui-react';
 
-function CompleteOrderModal({ isOpen, onClose }) {
+import './CompleteOrderModal.css'
+
+function CompleteOrderModal({ isOpen, onClose, order }) {
   return (
-    <Modal open={isOpen} onClose={onClose}>
-      <Modal.Header>Profile Picture</Modal.Header>
-      <Modal.Content>
-        <p>We've auto-chosen a profile image for you.</p>
-        <p>We've grabbed the following image from the <a href="https://www.gravatar.com" target="_blank">gravatar</a> image associated with your registered e-mail address.</p>
-        <p>Is it okay to use this photo?</p>
-      </Modal.Content>
-      <Modal.Actions>
-        <div className="ui negative button">
-          Nope
+    <div>
+      <Modal open={isOpen} onClose={onClose}>
+        <div className="complete-content">
+          <Modal.Header><h3>{`Your Order (#${order.id}) Will Be Shipped To:`}</h3></Modal.Header>
+          <Modal.Content className='content'>
+            {order?.addresses?.filter(a => ['shipping', 'both'].includes(a.orderAddress.type))
+              .map(a => (
+                <div key={a.id} className='shipping-address'>
+                  <p id='field'>{a.street}</p>
+                  <p >{`${a.city}, ${a.state} ${a.zip}`}</p>
+                </div>
+              ))
+            }
+            <p className='total'>{`Your Total Is $${order.total}`}</p>
+            <h4 className='total'>{'Thank You For Shopping With Us'}</h4>
+          </Modal.Content>
         </div>
-        <div className="ui positive right labeled icon button">
-          Yep, that's me
-          <i className="checkmark icon"></i>
-        </div>
-      </Modal.Actions>
-    </Modal>
+      </Modal>
+    </div>
   );
 }
 

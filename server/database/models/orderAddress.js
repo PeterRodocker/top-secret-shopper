@@ -4,7 +4,7 @@ const db = require('../db');
 
 const OrderAddress = db.define('orderAddress', {
   type: {
-    type: ENUM('Shipping', 'Billing'),
+    type: ENUM('shipping', 'billing', 'both'),
     allowNull: false,
   }
 })
