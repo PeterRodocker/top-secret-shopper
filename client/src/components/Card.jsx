@@ -5,6 +5,7 @@ import SingleCard from './SingleCard'
 import './Card.css'
 
 import { fetchAndVerifyCard } from '../utility/cardFuncs';
+import { getLocalStorage } from '../utility/localStorageFuncs';
 
 
 function Card({ selectedCard, setSelectedCard, user, verifiedCard, setVerifiedCard }) {
@@ -15,15 +16,15 @@ function Card({ selectedCard, setSelectedCard, user, verifiedCard, setVerifiedCa
   const token = window.localStorage.getItem('authorization')
 
   useEffect(() => {
-    getLocalStorage()
+    getLocalStorage('selectedCard', setSelectedCard)
   }, [])
 
-  const getLocalStorage = () => {
-    if (window.localStorage.getItem('selectedCard')) {
-      const localCard = window.localStorage.getItem('selectedCard')
-      setSelectedCard(JSON.parse(localCard))
+  useEffect(() => {
+    if (!selectedCard.id) {
+      setVerifiedCard({})
+      window.localStorage.setItem('verifiedCard', JSON.stringify({}))
     }
-  }
+  }, [selectedCard])
 
   const handleCardSelect = async (e) => {
     const tempCard = user.cards.filter(card => card.id === parseInt(e.target.value))

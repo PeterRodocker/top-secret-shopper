@@ -39,8 +39,8 @@ const SingleProduct = () => {
   }
 
   return (
-    <div className="single-product__container">
-      <h1 className='single-product__heading'>{name}</h1>
+    <div className="single-product_container">
+      <h1 className='single-product_heading'>{name}</h1>
       <img src={imageURL} alt={name} className="single-product__image" />
       <p className="single-product__description">${description}</p>
       <p className="single-product__price">${price}</p>

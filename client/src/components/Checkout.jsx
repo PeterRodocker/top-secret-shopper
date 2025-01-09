@@ -72,6 +72,7 @@ const Checkout = () => {
     itemsToFetch.forEach(item => getLocalStorage(item[0], item[1]))
   }, [])
 
+
   useEffect(() => {
     let subtotal = 0
     cart?.map(cartItem => {
