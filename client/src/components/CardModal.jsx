@@ -17,12 +17,13 @@ function CvvModal({ cvv, setCvv, exp, setExp, isOpen, onHandleClose, onHandleVer
     >
       <form className='card-modal_form'>
         <input
-          placeholder={'Enter the Correct Expiration Date'}
+          placeholder={'Enter the Correct 4 Digit Expiration Date'}
           value={exp.length > 0 ? exp : ''}
           onChange={handleSetValue}
           name='exp'
           required
           className='card-modal_input'
+          maxLength={4}
         />
         <input
           placeholder={'Enter the Correct CVV (The 3-digit # from the back of your card)'}
@@ -31,6 +32,7 @@ function CvvModal({ cvv, setCvv, exp, setExp, isOpen, onHandleClose, onHandleVer
           name='cvv'
           required
           className='card-modal_input'
+          maxLength={4}
         />
         <button className='card-modal_submit-button' onClick={e => {
           e.preventDefault()
