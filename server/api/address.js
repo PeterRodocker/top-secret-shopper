@@ -4,7 +4,7 @@ const { models: { Address } } = require('../database');
 const { requireToken, isAdmin } = require('./gateKeepingMiddleware');
 
 // Get all addresses /api/address
-router.get('/', async (req, res, next) => {
+router.get('/', requireToken, async (req, res, next) => {
   try {
     const address = await Address.findAll({
       where:

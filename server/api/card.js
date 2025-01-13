@@ -17,7 +17,10 @@ router.get('/', requireToken, isAdmin, async (req, res, next) => {
 router.get('/:id', requireToken, async (req, res, next) => {
   try {
     const card = await Card.findOne({
-      where: [{ id: req.params.id }, { userId: req.user.id }]
+      where: [
+        { id: req.params.id },
+        { userId: req.user.id }
+      ]
     });
     res.send(card);
   } catch (err) {
@@ -63,7 +66,10 @@ router.post('/verify', requireToken, async (req, res, next) => {
 router.delete('/:id', requireToken, async (req, res, next) => {
   try {
     const card = await Card.destroy({
-      where: [{ id: req.params.id }, { userId: req.user.id }]
+      where: [
+        { id: req.params.id },
+        { userId: req.user.id }
+      ]
     });
     if (card === 0) {
       res.status(404).send('Card not found');
