@@ -10,19 +10,22 @@
   border-radius: .25rem .25rem 0 0;
 }
 
+.card-fields-radius {
+  border-radius: .25rem;
+}
+
 .card-row {
   display: flex;
   justify-content: center;
   justify-content: space-between;
   height: 1.3rem;
   width: 15rem;
-  /* margin-bottom: .1rem;d */
   background-color: #fff;
+  color: #000;
 }
 
 .card-field_label {
   background-color: #fff;
-  /* justify-self: flex-start; */
 }
 
 .card-field {

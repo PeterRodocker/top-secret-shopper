@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import CardModal from './CardModal';
+import CardVerifyModal from './CardVerifyModal';
 import SingleCard from './SingleCard'
 import './Card.css'
 
@@ -78,7 +78,7 @@ function Card({ selectedCard, setSelectedCard, user, verifiedCard, setVerifiedCa
           />
         ))
       }
-      {cardModalOpen && <CardModal
+      {cardModalOpen && <CardVerifyModal
         cvv={cvv}
         setCvv={setCvv}
         exp={exp}

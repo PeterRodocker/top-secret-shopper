@@ -6,7 +6,13 @@
   border-radius: .25rem;
 }
 
+.address-fields-delete {
+  border-radius: .25rem .25rem 0 0;
+}
+
+
 .address-field {
-  background-color: #fff;
   margin: -.2rem;
+  background-color: #fff;
+  color: #000;
 }

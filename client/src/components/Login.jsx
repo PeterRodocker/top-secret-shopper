@@ -4,6 +4,7 @@ import axios from 'axios'
 
 import './Login.css'
 import { fetchCart } from '../utility/cartFuncs'
+import { fetchUser } from '../utility/userFuncs';
 
 import CartContext from '../contexts/CartContext'
 import UserContext from '../contexts/UserContext'
@@ -31,9 +32,7 @@ const Login = () => {
   const attemptTokenLogin = async () => {
     const token = window.localStorage.getItem('authorization')
     if (token) {
-      const { data: user } = await axios.get('/auth/me', {
-        headers: { authorization: token }
-      })
+      const user = await fetchUser(token)
       setUser(user)
     }
   }

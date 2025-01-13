@@ -1,8 +1,8 @@
 import './AddressFields.css'
 
-function AddressFields({ address }) {
+function AddressFields({ address, account }) {
   return (
-    <div className='address-fields'>
+    <div className={`address-fields address-fields${account}`}>
       <p className='address-field' >{address.street}</p>
       {address.unit ? <p className='address-field' >{`Unit ${address.unit}`}</p> : ''}
       <p className='address-field' >{address.city}</p>

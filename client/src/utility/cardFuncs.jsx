@@ -1,11 +1,24 @@
 import axios from 'axios'
 
+export const createNewCard = async (token, newCard) => {
+  console.log('createNewCard before', newCard)
+  const { name, type, number, exp, cvv, nickname } = newCard
+
+  const { data: card } = await axios.post('api/card',
+    { name, type, number, exp, cvv, nickname }, {
+    headers: { authorization: token },
+  })
+  console.log('createNewCard after', card)
+  return card
+}
+
 export const fetchCard = async (token) => {
   const { data: card } = await axios.get('api/card', {
     headers: { authorization: token }
   })
   return card
 }
+
 
 export const fetchAndVerifyCard = async (token, cvv, exp, userId) => {
   const { data: card } = await axios.post('api/card/verify', {
@@ -19,37 +32,11 @@ export const fetchAndVerifyCard = async (token, cvv, exp, userId) => {
   return card
 }
 
-// export const createNewOrder = async (token) => {
-//   const { data: order } = await axios.post('api/order', {}, { headers: { authorization: token } })
-//   return order
-// }
+export const deleteCard = async (token, cardId) => {
+  const { data: card } = await axios.delete(`api/card/${cardId}`, {
+    params: { id: cardId },
+    headers: { authorization: token },
+  })
+  return card
+}
 
-// export const addToOrder = async (token, cart, shippingAddress, billingAddress, card, total) => {
-//   const { data: order } = await axios.put('api/order', {
-//     cart,
-//     shippingAddress,
-//     billingAddress,
-//     card,
-//     total
-//   }, {
-//     headers: { authorization: token }
-//   })
-//   return order
-// }
-
-// export const closeOrder = async (token) => {
-//   const { data: order } = await axios.put('api/order/close', {
-//     isOpen: false
-//   }, {
-//     headers: { authorization: token }
-//   })
-//   return order
-// }
-
-// export const deleteFromOrder = async (productId, token) => {
-//   const { data: order } = await axios.delete('api/order', {
-//     headers: { authorization: token },
-//     data: { productId }
-//   })
-//   return order
-// }
