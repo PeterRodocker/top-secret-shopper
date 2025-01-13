@@ -38,7 +38,6 @@ router.post('/', requireToken, async (req, res, next) => {
 router.put('/', requireToken, async (req, res, next) => {
   try {
     const { cart, shippingAddress, billingAddress, card, total } = req.body;
-
     const order = await Order.findOne({
       where: {
         userId: req.user.id,

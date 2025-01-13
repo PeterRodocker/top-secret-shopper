@@ -27,9 +27,10 @@ const Checkout = () => {
   const [warningModalOpen, setWarningModalOpen] = useState(false);
   const [message, setMessage] = useState('')
   const [order, setOrder] = useState([])
-  const [orderTotal, setOrderTotal] = useState(0)
   const [completeModalOpen, setCompleteModalOpen] = useState(false);
   const token = window.localStorage.getItem('authorization')
+  let orderTotal = 0
+
 
   const navigate = useNavigate()
 
@@ -73,20 +74,20 @@ const Checkout = () => {
   }, [])
 
 
-  useEffect(() => {
-    let subtotal = 0
+  const getTotal = () => {
     cart?.map(cartItem => {
-      subtotal += (cartItem.cartProduct.quantity * cartItem.price)
-      setOrderTotal(subtotal)
+      orderTotal += (cartItem.cartProduct.quantity * cartItem.price)
     })
-  }, [cart])
+  }
+
+  getTotal()
 
   const handleCheck = (e) => {
     setChecked(e.target.checked)
     window.localStorage.setItem('checked', e.target.checked)
   }
 
-  const handleCheckout = async (e, token, cart, shippingAddress, billingAddress, card, total) => {
+  const handleCheckout = async (e, token, cart, shippingAddress, billingAddress, card, orderTotal) => {
     e.preventDefault()
     if (!shippingAddress.id || !billingAddress.id || !selectedCard.id) {
       if (!shippingAddress.id) setMessage('Please Select Your Shipping Address')
