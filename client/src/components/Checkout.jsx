@@ -14,7 +14,7 @@ import UserContext from '../contexts/UserContext';
 import BillingAddress from './BillingAddress';
 import CheckoutCartItems from './CheckoutCartItems';
 import CompleteOrderModal from './CompleteOrderModal';
-import SelectModal from './SelectModal';
+import SelectModal from './WarningModal';
 
 const Checkout = () => {
   const [user, setUser] = useContext(UserContext)
@@ -25,7 +25,7 @@ const Checkout = () => {
   const [selectedCard, setSelectedCard] = useState({})
   const [verifiedCard, setVerifiedCard] = useState({})
   const [selectModalOpen, setSelectModalOpen] = useState(false);
-  const [type, setType] = useState('')
+  const [message, setMessage] = useState('')
   const [order, setOrder] = useState([])
   const [orderTotal, setOrderTotal] = useState(0)
   const [completeModalOpen, setCompleteModalOpen] = useState(false);
@@ -89,9 +89,13 @@ const Checkout = () => {
   const handleCheckout = async (e, token, cart, shippingAddress, billingAddress, card, total) => {
     e.preventDefault()
     if (!shippingAddress.id || !billingAddress.id || !selectedCard.id) {
-      if (!shippingAddress.id) setType('Shipping Address')
-      else if (!billingAddress.id) setType('Billing Address')
-      else if (!verifiedCard.id) setType('Payment Method')
+      if (!shippingAddress.id) setMessage('Please Select Your Shipping Address')
+      else if (!billingAddress.id) setMessage('Please Select Your Billing Address')
+      else if (!verifiedCard.id) setMessage('Please Select Your Payment Method')
+      return setSelectModalOpen(true)
+    }
+    if (cart.length < 1) {
+      setMessage('You Have No Items In Your Cart')
       return setSelectModalOpen(true)
     }
     await createNewOrder(token)
@@ -198,7 +202,7 @@ const Checkout = () => {
           onClick={(e) => handleCheckout(e, token, cart, shippingAddress, billingAddress, verifiedCard, orderTotal)}
         >Complete Your Order</button>
       </div>
-      <SelectModal isOpen={selectModalOpen} onClose={handleSelectClose} type={type} />
+      <SelectModal isOpen={selectModalOpen} onClose={handleSelectClose} message={message} />
       <CompleteOrderModal isOpen={completeModalOpen} onClose={handleCompleteClose} order={order} />
     </>
   )
