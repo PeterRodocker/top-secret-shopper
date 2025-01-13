@@ -1,0 +1,41 @@
+.card-verify-modal_form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background-color: rgb(30, 30, 30);
+}
+
+.card-verify-modal_input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 2.5rem;
+  width: 32rem;
+  padding: 0 1rem;
+  border-radius: .25rem;
+  border-width: 0;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  background-color: #fff;
+}
+
+.card-verify-modal_input:first-child {
+  margin: 1rem;
+}
+
+.card-verify-modal_submit-button {
+  border-radius: .25rem;
+  border-width: 0;
+  font-size: 1.5rem;
+  height: 3rem;
+  width: 7rem;
+  margin-top: 1rem;
+  color: #fff;
+  background-color: #257d0d;
+}
+
+.card-verify-modal_submit-button:hover {
+  color: #fff;
+  background-color: #134e03;
+}
