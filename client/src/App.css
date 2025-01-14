@@ -6,20 +6,21 @@ html {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  background: linear-gradient(to bottom, #000, rgb(40, 3, 75));
   background-color: #000;
 }
 
-.container {
+/* .container {
   display: grid;
   grid-template-rows: 100px, auto, 100px;
-}
+} */
 
 /* Everything in this <div> is going to be centered in a column */
-.main {
+/* .main {
   display: flex;
   height: 100vh;
   background: pink;
-}
+} */
 
 .navbar {
   grid-row: 1;
