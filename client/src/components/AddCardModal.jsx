@@ -28,7 +28,7 @@ const AddCardModal = ({ isOpen, onHandleAddCard, onHandleClose, newCard, setNewC
       open={isOpen}
       onClose={onHandleClose}
     >
-      <form className='card_form'>
+      <form className='card_form' id='card-form'>
         <input
           name="name"
           value={name}

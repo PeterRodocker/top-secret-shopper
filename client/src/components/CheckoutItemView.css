@@ -5,8 +5,8 @@
 }
 
 div.checkout-item-view__container h3 {
-  background-color: #fff;
-  color: dodgerblue;
+  background-color: #fffafa;
+  color: rgb(40, 3, 75);
 }
 
 .checkout-item-view__container {
@@ -17,7 +17,7 @@ div.checkout-item-view__container h3 {
   width: 100fr;
   margin-bottom: .5rem;
   padding: .5rem 1rem;
-  background-color: #fff;
+  background-color: #fffafa;
   border-radius: 0.25rem;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
@@ -32,8 +32,8 @@ div.checkout-item-view__container h3 {
 .checkout-view_heading {
   font-size: 1rem;
   font-weight: 700;
-  color: dodgerblue;
-  background-color: #fff;
+  color: rgb(40, 3, 75);
+  background-color: #fffafa;
   margin: 1rem 0 0;
 }
 
@@ -50,7 +50,7 @@ div.checkout-item-view__container h3 {
 .checkout-subtotal_container {
   display: 'flex';
   flex-direction: 'row';
-  background-color: #fff;
+  background-color: #fffafa;
   margin-top: .4rem;
 }
 
@@ -58,20 +58,20 @@ div.checkout-item-view__container h3 {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #fff;
+  background-color: #fffafa;
   width: 100%;
 }
 
 .subtotal-text-title {
   font-size: 1rem;
   color: rgb(90, 88, 88);
-  background-color: #fff;
+  background-color: #fffafa;
   margin: .5rem 2rem 0 0;
 }
 
 .subtotal-text-number {
   line-height: 1;
   font-size: 1.2rem;
-  background-color: #fff;
-  color: dodgerblue
+  background-color: #fffafa;
+  color: rgb(40, 3, 75)
 }

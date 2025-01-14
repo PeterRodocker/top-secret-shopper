@@ -20,7 +20,7 @@ html {
     font-size: 2rem;
     font-weight: 500;
     margin-bottom: 1rem;
-    color: #fff;
+    color: #fffafa;
 }
 
 .login_form {
@@ -35,7 +35,7 @@ html {
 .login_password {
     height: 3rem;
     width: 20rem;
-    background-color: #fff;
+    background-color: #fffafa;
     border-radius: .25rem;
     border-width: 0;
     margin: 1rem;
@@ -49,16 +49,16 @@ html {
 
 
 .login_button-submit {
-    background-color: dodgerblue;
+    background-color: rgb(40, 3, 75);
     border-radius: 1rem;
     border-width: 0;
     font-size: 1.5rem;
     height: 3rem;
     width: 7rem;
-    color: #fff;
+    color: #fffafa;
 }
 
 .login_button-submit:hover {
-    color: #fff;
+    color: #fffafa;
     background-color: rgb(8, 112, 191);
 }

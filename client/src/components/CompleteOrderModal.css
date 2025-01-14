@@ -1,6 +1,6 @@
 h3,
 h4 {
-  background-color: #fff;
+  background-color: #fffafa;
   color: #000;
 }
 
@@ -9,13 +9,13 @@ h4 {
   flex-direction: column;
   align-items: center;
   padding: 1rem 0 1rem;
-  background-color: #fff;
+  background-color: #fffafa;
 }
 
 div.complete-content p {
   margin: 0;
   font-size: large;
-  background-color: #fff;
+  background-color: #fffafa;
   color: #000;
 }
 
@@ -23,7 +23,7 @@ div.complete-content p {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #fff;
+  background-color: #fffafa;
 }
 
 .shipping-address {
@@ -31,12 +31,12 @@ div.complete-content p {
   flex-direction: column;
   align-items: center;
   margin: .25rem 0 1rem;
-  background-color: #fff;
+  background-color: #fffafa;
 }
 
 .total {
   margin-top: 1rem;
-  background-color: #fff;
+  background-color: #fffafa;
   color: #000;
 }
 
@@ -54,11 +54,11 @@ div.complete-content p {
   height: 3rem;
   margin-bottom: 1rem;
   padding: 0 1rem 0 1rem;
-  color: #fff;
+  color: #fffafa;
 }
 
 .products_button {
-  background-color: dodgerblue;
+  background-color: rgb(40, 3, 75);
 }
 
 .account_button {

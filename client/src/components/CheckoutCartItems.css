@@ -4,5 +4,8 @@
   flex-wrap: wrap;
   align-content: center;
   justify-content: center;
-  /* min-height: 200px; */
+}
+
+.checkout_items-container h3 {
+  text-align: center;
 }

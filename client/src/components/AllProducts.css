@@ -1,4 +1,8 @@
-.all-products__container {
+div.all-products_container h1 {
+  margin-bottom: 4rem;
+}
+
+.all-products-content_container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;

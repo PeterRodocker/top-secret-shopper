@@ -1,16 +1,41 @@
 .footer_container {
+  display: flex;
   align-items: center;
-  justify-items: center;
+  justify-content: space-around;
   margin-top: 1.5rem;
   padding: 2rem;
   background-color: rgb(40, 3, 75);
-  height: 8rem;
+  height: 10rem;
 }
 
-.footer-words {
-  font-size: xx-large;
-  font-weight: 10rem;
+#copyright {
+  color: darkgray;
+  margin: 0;
+  font-size: 1.5rem;
   background-color: rgb(40, 3, 75);
-  color: #fff;
-  margin-top: 10rem;
+}
+
+.footer-link_container {
+  background-color: rgb(40, 3, 75);
+}
+
+.footer_link {
+  font-size: 1.5rem;
+  margin-left: 1rem;
+  color: darkgray;
+}
+
+.footer_link:hover {
+  font-size: 1.5rem;
+  margin-left: 1rem;
+  color: #fffafa
+}
+
+.footer_link:first-child {
+  margin-left: 0;
+  color: darkgray;
+}
+
+.footer_link:first-child:hover {
+  color: #fffafa
 }

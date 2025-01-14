@@ -9,7 +9,6 @@ const CartItemView = (props) => {
   const { onDelete, onUpdate, cartItem: { id: productId, imageURL, name, price, stockQty, cartProduct: { quantity } } } = props
 
   const [qty, setQty] = useState(quantity)
-  // const [user, setUser] = useContext(UserContext)
   const token = window.localStorage.getItem('authorization')
 
   const handleChangeQty = (e) => {
@@ -30,7 +29,7 @@ const CartItemView = (props) => {
       }
       <form className='cart-view_form'>
         <div className="cart_label-input">
-          <label htmlFor={`cart-view_input${productId}`} className="item-qty__label">Quantity: </label>
+          <label htmlFor={`cart-view_input cart-view_input${productId}`} className="item-qty__label">Quantity</label>
           <input
             onChange={handleChangeQty}
             type="number"

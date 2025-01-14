@@ -45,8 +45,8 @@ html {
   align-items: center;
   list-style: none;
   padding-top: 1rem;
-  background: #fff;
-  color: #fff;
+  background: #fffafa;
+  color: #fffafa;
 }
 
 .nav li {
@@ -68,5 +68,18 @@ li a:hover {
   align-items: center;
   height: 100vh;
   background: #212121;
-  color: #fff;
+  color: #fffafa;
+}
+
+input {
+  text-align: center;
+}
+
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
 }

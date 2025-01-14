@@ -17,7 +17,7 @@
   border-radius: .25rem;
   border-width: 0;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  background-color: #fff;
+  background-color: #fffafa;
 }
 
 .card-verify-modal_input:first-child {
@@ -31,11 +31,11 @@
   height: 3rem;
   width: 7rem;
   margin-top: 1rem;
-  color: #fff;
+  color: #fffafa;
   background-color: #257d0d;
 }
 
 .card-verify-modal_submit-button:hover {
-  color: #fff;
+  color: #fffafa;
   background-color: #134e03;
 }

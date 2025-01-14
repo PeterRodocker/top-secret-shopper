@@ -1,7 +1,7 @@
 .address {
   align-items: center;
   justify-items: center;
-  background-color: #fff;
+  background-color: #fffafa;
   border-radius: .25rem;
   margin-bottom: .5rem;
   padding-top: -1rem;
@@ -12,7 +12,7 @@
   display: flex;
   justify-content: center;
   border-radius: .25rem .25rem 0 0;
-  background-color: dodgerblue;
+  background-color: rgb(40, 3, 75);
   height: 1.7rem;
   width: 21rem;
 }

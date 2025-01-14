@@ -12,7 +12,7 @@
     width: 16rem;
     margin: .7rem;
     padding: .5rem 1rem 1rem;
-    background-color: #fff;
+    background-color: #fffafa;
     border-radius: 0.25rem;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
@@ -27,8 +27,12 @@
     font-size: 1.8rem;
     font-weight: 700;
     margin: .5rem;
-    background-color: #fff;
-    color: dodgerblue;
+    background-color: #fffafa;
+    color: rgb(40, 3, 75);
+}
+
+.product-view_heading:hover {
+    color: darkgray;
 }
 
 .product-view_image {
@@ -38,7 +42,7 @@
 
 #product-price {
     font-size: 1.3rem;
-    background-color: #fff;
+    background-color: #fffafa;
     margin-top: .3rem;
 }
 
@@ -48,7 +52,7 @@ div.product-view_container p {
 
 #product-in-stock,
 #product-only-in-stock {
-    background-color: #fff;
+    background-color: #fffafa;
     margin-bottom: .3rem;
     font-size: 1.1rem;
 }
@@ -64,14 +68,14 @@ div.product-view_container p {
 .product-view_description {
     font-size: .8rem;
     font-weight: 400;
-    background-color: #fff;
+    background-color: #fffafa;
     color: #000;
 }
 
 .product-view_form {
     display: flex;
     flex-direction: column;
-    background-color: #fff;
+    background-color: #fffafa;
     width: 100%;
     justify-content: center;
     align-items: center;
@@ -85,12 +89,7 @@ div.product-view_container p {
     width: 30%;
     min-width: 45px;
     margin: .3rem 0;
-    background-color: #fff;
-}
-
-#product-view_input::-webkit-inner-spin-button,
-#product-view_input::-webkit-outer-spin-button {
-    margin-left: .5rem
+    background-color: #fffafa;
 }
 
 
@@ -110,9 +109,9 @@ div.product-view_container p {
     font-size: 1rem;
     font-weight: 700;
     cursor: pointer;
-    background-color: #03038e;
+    background-color: rgb(40, 3, 75);
 }
 
 .product-view_add-to-cart:hover {
-    background-color: #18184f;
+    background-color: rgb(62, 10, 108);
 }

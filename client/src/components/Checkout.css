@@ -1,7 +1,11 @@
 h1,
 h2,
 h3 {
-  color: #fff;
+  color: #fffafa;
+}
+
+div.checkout_container h1 {
+  margin-bottom: 4rem;
 }
 
 .checkout_content {
@@ -12,7 +16,7 @@ h3 {
 
 div.checkout_content h3 {
   background-color: #000;
-  color: #fff;
+  color: #fffafa;
 }
 
 .cart-item_container {
@@ -36,13 +40,14 @@ div.checkout_content h3 {
   padding: 0 1rem;
   height: 1.7rem;
   width: 21rem;
-  background-color: dodgerblue;
+  background-color: rgb(40, 3, 75);
+  color: #fffafa;
 }
 
 .same-as_label {
   font-size: 1.1rem;
   margin: .5rem 2rem 0 0;
-  background-color: dodgerblue;
+  background-color: rgb(40, 3, 75);
 }
 
 .billing-select_input {
@@ -59,6 +64,10 @@ div.checkout_content h3 {
   grid-column: 3;
 }
 
+/* -----------
+  BUTTONS
+-------------*/
+
 .checkout_button-container {
   display: flex;
   flex-direction: column;
@@ -67,39 +76,37 @@ div.checkout_content h3 {
   grid-column: 1;
 }
 
-.checkout_update-button {
+.checkout_button {
+  color: #fffafa;
   display: 'inline-block';
-  background-color: #35b711;
+  border-radius: .25rem;
+  cursor: pointer;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkout_update-button {
+  background-color: #257d0d;
   border: 1px solid #000;
-  border-radius: 5px;
   margin: 0 0 1rem;
   padding: 0.5rem 1rem;
   font-size: 1.7rem;
   font-weight: 600;
-  cursor: pointer;
-  text-align: center;
-  align-items: center;
-  justify-content: center;
 }
 
 .checkout_update-button:hover {
-  background-color: #2f9e0f;
+  background-color: #134e03;
 }
 
 .checkout_complete-button {
-  display: 'inline-block';
-  background-color: dodgerblue;
   border: 1px solid #000;
-  border-radius: .25rem;
   padding: 0.5rem 1rem;
   font-size: 3rem;
   font-weight: 600;
-  cursor: pointer;
-  text-align: center;
-  align-items: center;
-  justify-content: center;
+  background-color: rgb(40, 3, 75);
 }
 
 .checkout_complete-button:hover {
-  background-color: rgb(8, 112, 191);
+  background-color: rgb(62, 10, 108);
 }

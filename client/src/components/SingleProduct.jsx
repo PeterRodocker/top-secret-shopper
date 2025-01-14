@@ -42,25 +42,25 @@ const SingleProduct = () => {
     <div className="single-product_container">
       <h1 className='single-product_heading'>{name}</h1>
       <img src={imageURL} alt={name} className="single-product__image" />
-      <p className="single-product__description">${description}</p>
-      <p className="single-product__price">${price}</p>
+      <p className="single-product_description">${description}</p>
+      <p className="single-product_price">${price}</p>
       {stockQty - qty > 0 ?
-        <p className="single-product__in-stock">In Stock</p> :
-        <p className="single-product__only-in-stock">Only {qty} in Stock</p>
+        <p className="single-product_in-stock">In Stock</p> :
+        <p className="single-product_only-in-stock">Only {qty} in Stock</p>
       }
-      <form className="single-product__form">
+      <form className="single-product_form">
         <input
           onChange={handleChange}
           type="number"
           value={qty < 1 ? 1 : qty}
           max={stockQty}
-          id="single-product__input"
+          id="single-product_input"
         >
         </input>
         <button
           onClick={handleAddToCart}
           type="submit"
-          className="single-product__add-to-cart"
+          className="single-product_add-to-cart"
         >
           Add to Cart
         </button>

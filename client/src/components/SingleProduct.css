@@ -12,7 +12,7 @@
   max-width: 100%;
   margin: 2rem;
   padding: 1rem 1rem 1rem;
-  background-color: #fff;
+  background-color: #fffafa;
   border-radius: 0.25rem;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
@@ -21,8 +21,8 @@
   font-size: 2.5rem;
   font-weight: 700;
   margin: .5rem;
-  background-color: #fff;
-  color: dodgerblue;
+  background-color: #fffafa;
+  color: rgb(40, 3, 75);
   font-size: 2.5rem;
   font-weight: 700;
   margin: .5rem;
@@ -33,72 +33,70 @@
   margin: 0 0.5rem;
 }
 
-.single-product__description {
+.single-product_description {
   width: 75%;
   margin: 1rem 0 0;
-  background-color: #fff;
+  background-color: #fffafa;
   color: #000;
 }
 
-.single-product__price {
-  background-color: #fff;
+.single-product_price {
+  background-color: #fffafa;
   font-size: 2rem;
   margin: .5rem;
 
 }
 
-.single-product__in-stock {
+.single-product_in-stock {
   align-items: center;
   justify-content: center;
   font-size: 1.25rem;
   color: #257d0d;
-  background-color: #fff;
+  background-color: #fffafa;
   margin: 0 0 0.5rem;
 }
 
-.single-product__only-in-stock {
+.single-product_only-in-stock {
   font-size: 1.25rem;
   color: orange;
-  background-color: #fff;
+  background-color: #fffafa;
   margin: 0 0 0.5rem;
 }
 
-.single-product__form {
-  background-color: #fff;
+.single-product_form {
+  background-color: #fffafa;
 }
 
-.product-view__description {
+.product-view_description {
   font-size: 1rem;
   font-weight: 400;
-  background-color: #fff;
+  background-color: #fffafa;
 }
 
-.single-product__form {
+.single-product_form {
   display: flex;
   flex-direction: column;
-  background-color: #fff;
+  background-color: #fffafa;
   width: 50%;
   justify-content: center;
   align-items: center;
   margin: 0 auto;
 }
 
-#single-product__input {
-  background-color: #fff;
+#single-product_input {
+  background-color: #fffafa;
   border: 2px #2f2e2e;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   height: 2.5rem;
   width: 20%;
   min-width: 45px;
   margin-bottom: .5rem;
-  padding: 0 .5rem 0 1.5rem;
 }
 
 /* -----------
   BUTTONS
 -------------*/
-.single-product__add-to-cart,
-.single-product__buy-now {
+.single-product_add-to-cart {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -113,18 +111,10 @@
   cursor: pointer;
 }
 
-.single-product__add-to-cart {
-  background-color: dodgerblue;
+.single-product_add-to-cart {
+  background-color: rgb(40, 3, 75);
 }
 
-.single-product__buy-now {
-  background-color: #35b711;
-}
-
-.single-product__add-to-cart:hover {
-  background-color: #0f7dea;
-}
-
-.single-product__buy-now:hover {
-  background-color: #2f9e0f;
+.single-product_add-to-cart:hover {
+  background-color: rgb(62, 10, 108);
 }

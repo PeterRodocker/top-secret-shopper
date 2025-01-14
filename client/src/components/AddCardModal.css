@@ -18,25 +18,17 @@
   align-items: center;
   justify-items: center;
   height: 2.5rem;
+  width: 25rem;
   border-radius: .25rem;
   border-width: 0;
   margin: .3rem;
   padding: 1rem;
   text-align: center;
-  background-color: #fff;
+  background-color: #fffafa;
 }
 
 .add-card-modal_input:first-child {
   margin-top: 2rem;
-}
-
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-}
-
-input[type=number] {
-  -moz-appearance: textfield;
 }
 
 .card_button-submit {
@@ -47,10 +39,10 @@ input[type=number] {
   height: 3rem;
   width: 10rem;
   margin: 1rem;
-  color: #fff;
+  color: #fffafa;
 }
 
 .card_button-submit:hover {
-  color: #fff;
+  color: #fffafa;
   background-color: #134e03;
 }

@@ -11,14 +11,15 @@ import CartContext from '../contexts/CartContext';
 const Cart = () => {
   const [cart, setCart] = useContext(CartContext)
   const navigate = useNavigate()
+  let subtotal = 0
 
   const getSubtotal = () => {
-    let subtotal = 0
-    cart.length ? cart.map(cartItem => {
+    cart.map(cartItem => {
       subtotal += (cartItem.cartProduct.quantity * cartItem.price)
-    }) : ""
-    return subtotal
+    })
   }
+
+  getSubtotal()
 
   const handleUpdate = async (e, productId, quantity, token) => {
     e.preventDefault()
@@ -43,10 +44,11 @@ const Cart = () => {
           onUpdate={handleUpdate}
           onDelete={handleDelete}
         />) :
-          <h3 className='no-items'>No items in your cart</h3>}
+          <h3 className='no-items'>You Have No Items In Your Cart</h3>}
       </div>
+
       <div className='subtotal-div'>
-        <h2>Order Subtotal: ${getSubtotal()} </h2>
+        {subtotal > 0 && <h2>Order Subtotal: ${subtotal} </h2>}
         <button
           className='cart_checkout-button'
           onClick={() => navigate('/checkout')}

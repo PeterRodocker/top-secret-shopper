@@ -121,12 +121,12 @@ const Checkout = () => {
   }
 
   return (
-    <>
+    <div className='checkout_container'>
       <h1>Checkout</h1>
       <div className="checkout_content">
         <div className="cart-item_container">
           <CheckoutCartItems cart={cart} />
-          <h2>Order Total: ${orderTotal} </h2>
+          {orderTotal > 0 && <h2>Order Total: ${orderTotal} </h2>}
         </div>
         <div className="address_container">
           {
@@ -195,17 +195,17 @@ const Checkout = () => {
       </div>
       <div className='checkout_button-container'>
         <button
-          className='checkout_update-button'
+          className='checkout_update-button checkout_button'
           onClick={() => navigate('/cart')}
         >Update Your Cart</button>
         <button
-          className='checkout_complete-button'
+          className='checkout_complete-button checkout_button'
           onClick={(e) => handleCheckout(e, token, cart, shippingAddress, billingAddress, verifiedCard, orderTotal)}
         >Complete Your Order</button>
       </div>
       <WarningModal isOpen={warningModalOpen} onClose={handleWarningClose} message={message} />
       <CompleteOrderModal isOpen={completeModalOpen} onClose={handleCompleteClose} order={order} />
-    </>
+    </div>
   )
 }
 

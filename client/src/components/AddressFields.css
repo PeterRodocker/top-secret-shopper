@@ -2,7 +2,7 @@
   justify-items: center;
   padding: .3rem;
   width: 100fr;
-  background-color: #fff;
+  background-color: #fffafa;
   border-radius: .25rem;
 }
 
@@ -13,6 +13,6 @@
 
 .address-field {
   margin: -.2rem;
-  background-color: #fff;
+  background-color: #fffafa;
   color: #000;
 }

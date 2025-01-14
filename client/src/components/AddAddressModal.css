@@ -26,21 +26,11 @@
   margin: .3rem;
   padding: 1rem;
   text-align: center;
-  background-color: #fff;
+  background-color: #fffafa;
 }
 
 .add-address-modal_input:first-child {
   margin-top: 2rem;
-}
-
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-input[type=number] {
-  -moz-appearance: textfield;
 }
 
 .address_button-submit {
@@ -51,10 +41,10 @@ input[type=number] {
   height: 3rem;
   width: 10rem;
   margin: 1rem;
-  color: #fff;
+  color: #fffafa;
 }
 
 .address_button-submit:hover {
-  color: #fff;
+  color: #fffafa;
   background-color: #134e03;
 }

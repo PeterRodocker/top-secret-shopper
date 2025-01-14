@@ -33,8 +33,9 @@ const AllProducts = () => {
   }
 
   return (
-    <>
-      <div className='all-products__container'>
+    <div className='all-products_container'>
+      <h1 className='account_heading'>Products</h1>
+      <div className='all-products-content_container'>
         {products.length && products.map(product => (
           <ProductView
             key={product.id}
@@ -43,7 +44,7 @@ const AllProducts = () => {
           />
         ))}
       </div>
-    </>
+    </div>
   )
 }
 

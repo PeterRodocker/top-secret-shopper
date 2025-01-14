@@ -83,68 +83,69 @@ function Account() {
 
   return (
     <div className='account_container'>
-      <h1 className='account_heading'>Your Account</h1>
-      <h2 className='account-name'>{user.fullName}</h2>
-      <div className="addresses-cards_container">
-        <div className="addresses_container">
-          <h3>Addresses</h3>
-          {user?.addresses?.map(address => (
-            <div key={address.id} className='address-fields_container'>
-              <AddressFields
-                address={address}
-                className='address-fields'
-                account='-delete'
-              />
+      <h1 className='account_heading'>{`${user.fullName}'s Account`}</h1>
+      <div className='account-content_container'>
+        <div className="addresses-cards_container">
+          <div className="addresses_container">
+            <h3>Addresses</h3>
+            {user?.addresses?.map(address => (
+              <div key={address.id} className='address-fields_container'>
+                <AddressFields
+                  address={address}
+                  className='address-fields'
+                  account='-delete'
+                />
+                <button
+                  className='account_buttons account-delete_button'
+                  onClick={() => handleDeleteAddress(token, address.id)}
+                >Remove This Address</button>
+              </div>
+            ))}
+            <div className="account-buttons_container">
               <button
-                className='account_buttons account-delete_button'
-                onClick={() => handleDeleteAddress(token, address.id)}
-              >Remove This Address</button>
+                className='account_buttons account-add_button'
+                onClick={() => setAddressModalOpen(true)}
+              >Add An Address</button>
             </div>
-          ))}
-          <div className="account-buttons_container">
-            <button
-              className='account_buttons account-add_button'
-              onClick={() => setAddressModalOpen(true)}
-            >Add An Address</button>
+          </div>
+          <div className="cards_container">
+            <h3>Payment Methods</h3>
+            {user.cards.map(card => (
+              <div key={card.id} className='card-fields_container'>
+                <CardFields
+                  card={card}
+                  radius={'-radius'}
+                  className='card-fields'
+                />
+                <button
+                  className='account_buttons account-delete_button'
+                  onClick={(e) => handleDeleteCard(e, token, card.id)}
+                >Remove This Card</button>
+              </div>
+            ))}
+            <div className="account-buttons_container">
+              <button
+                className='account_buttons account-add_button'
+                onClick={() => setCardModalOpen(true)}
+              >Add A Card</button>
+            </div>
           </div>
         </div>
-        <div className="cards_container">
-          <h3>Payment Methods</h3>
-          {user.cards.map(card => (
-            <div key={card.id} className='card-fields_container'>
-              <CardFields
-                card={card}
-                radius={'-radius'}
-                className='card-fields'
-              />
-              <button
-                className='account_buttons account-delete_button'
-                onClick={(e) => handleDeleteCard(e, token, card.id)}
-              >Remove This Card</button>
-            </div>
-          ))}
-          <div className="account-buttons_container">
-            <button
-              className='account_buttons account-add_button'
-              onClick={() => setCardModalOpen(true)}
-            >Add A Card</button>
-          </div>
-        </div>
+        <AddAddressModal
+          isOpen={addressModalOpen}
+          onHandleAddAddress={handleAddAddress}
+          onHandleClose={handleCloseAddress}
+          newAddress={newAddress}
+          setNewAddress={setNewAddress}
+        />
+        <AddCardModal
+          isOpen={cardModalOpen}
+          onHandleAddCard={handleAddCard}
+          onHandleClose={handleCloseCard}
+          newCard={newCard}
+          setNewCard={setNewCard}
+        />
       </div>
-      <AddAddressModal
-        isOpen={addressModalOpen}
-        onHandleAddAddress={handleAddAddress}
-        onHandleClose={handleCloseAddress}
-        newAddress={newAddress}
-        setNewAddress={setNewAddress}
-      />
-      <AddCardModal
-        isOpen={cardModalOpen}
-        onHandleAddCard={handleAddCard}
-        onHandleClose={handleCloseCard}
-        newCard={newCard}
-        setNewCard={setNewCard}
-      />
     </div>
   )
 }

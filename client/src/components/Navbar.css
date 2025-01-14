@@ -4,12 +4,12 @@
     box-sizing: border-box;
 }
 
-.nav__container {
+.nav_container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 1rem;
-    background-color: #000000;
+    padding: 1rem 2rem;
+    /* background-color: #000000; */
 }
 
 .black-logo {
@@ -19,44 +19,49 @@
     border-radius: 50%;
 }
 
-.nav__welcome-text {
+.nav_welcome-text {
     font-size: 1.5rem;
     font-weight: 600;
     margin: 0;
-    color: #fff;
+    color: #fffafa;
 }
 
-.nav__links {
+.nav_links {
     display: flex;
     justify-content: space-around;
     width: 30%;
     margin: 1em;
 }
 
-.link {
-    color: #fff;
+.nav_link {
+    color: #fffafa;
     margin: .5em;
 }
 
-.link:hover {
-    color: #80bfff;
+.nav_link:hover {
+    color: darkgray;
     text-decoration: none;
 }
 
-.nav__cart-button,
-.nav__logout-button {
+.nav_cart-button,
+.nav_logout-button {
     display: 'inline-block';
-    background-color: dodgerblue;
-    color: #fff;
+    background-color: rgb(40, 3, 75);
+    color: #fffafa;
     border: 1px solid #000;
     border-radius: 5px;
     padding: 0.5rem 1rem;
     font-size: 1rem;
     font-weight: 600;
+    width: 6rem;
     cursor: pointer;
 }
 
-.nav__cart-button:hover,
-.nav__logout-button:hover {
-    background-color: #0f7dea;
+.nav_cart-button:hover,
+.nav_logout-button:hover {
+    background-color: rgb(62, 10, 108);
+}
+
+.nav_logout-button {
+    margin-left: .3rem;
 }
