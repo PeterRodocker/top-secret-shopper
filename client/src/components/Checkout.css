@@ -56,6 +56,10 @@ div.checkout_content h3 {
   width: 1rem;
 }
 
+/* ::checked {
+  background-color: #257d0d;
+} */
+
 .card_container {
   display: flex;
   flex-direction: column;

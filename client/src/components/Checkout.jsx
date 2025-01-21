@@ -27,10 +27,9 @@ const Checkout = () => {
   const [warningModalOpen, setWarningModalOpen] = useState(false);
   const [message, setMessage] = useState('')
   const [order, setOrder] = useState([])
+  const [orderTotal, setOrderTotal] = useState(0)
   const [completeModalOpen, setCompleteModalOpen] = useState(false);
   const token = window.localStorage.getItem('authorization')
-  let orderTotal = 0
-
 
   const navigate = useNavigate()
 
@@ -73,14 +72,18 @@ const Checkout = () => {
     itemsToFetch.forEach(item => getLocalStorage(item[0], item[1]))
   }, [])
 
+  useEffect(() => {
+    getTotal()
+  }, [])
+
 
   const getTotal = () => {
-    cart?.map(cartItem => {
-      orderTotal += (cartItem.cartProduct.quantity * cartItem.price)
+    let subtotal = 0
+    cart.forEach(cartItem => {
+      subtotal += (cartItem.cartProduct.quantity * cartItem.price)
     })
+    setOrderTotal(subtotal)
   }
-
-  getTotal()
 
   const handleCheck = (e) => {
     setChecked(e.target.checked)

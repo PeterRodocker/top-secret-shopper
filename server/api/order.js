@@ -74,7 +74,6 @@ router.put('/', requireToken, async (req, res, next) => {
       },
       include: [Address, Card, Product]
     })
-
     res.send(updatedOrder);
   } catch (err) {
     next(err);
