@@ -52,7 +52,8 @@ router.post('/verify', requireToken, async (req, res, next) => {
     const card = await Card.findOne({
       where: {
         cvv: req.body.cvv,
-        exp: req.body.exp,
+        expMonth: req.body.expMonth,
+        expYear: req.body.expYear,
         userId: req.user.id
       },
       attributes: { exclude: ['cvv', 'exp'] }

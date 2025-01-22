@@ -20,10 +20,14 @@ export const fetchCard = async (token) => {
 }
 
 
-export const fetchAndVerifyCard = async (token, cvv, exp, userId) => {
+export const fetchAndVerifyCard = async (token, cvv, expMonth, expYear, userId) => {
+  console.log('funcs cvv', cvv)
+  console.log('funcs expMonth', expMonth)
+  console.log('funcs expYear', expYear)
   const { data: card } = await axios.post('api/card/verify', {
     cvv,
-    exp,
+    expMonth,
+    expYear,
     userId
   },
     {

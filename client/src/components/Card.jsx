@@ -10,7 +10,8 @@ import { getLocalStorage } from '../utility/localStorageFuncs';
 
 function Card({ selectedCard, setSelectedCard, user, verifiedCard, setVerifiedCard }) {
   const [cvv, setCvv] = useState(0)
-  const [exp, setExp] = useState(0)
+  const [expMonth, setExpMonth] = useState('')
+  const [expYear, setExpYear] = useState(0)
   const [cardModalOpen, setCardModalOpen] = useState(false)
 
   const token = window.localStorage.getItem('authorization')
@@ -34,7 +35,7 @@ function Card({ selectedCard, setSelectedCard, user, verifiedCard, setVerifiedCa
   }
 
   const handleVerifyCard = async () => {
-    const verifiedCard = await fetchAndVerifyCard(token, cvv, exp, user.id)
+    const verifiedCard = await fetchAndVerifyCard(token, cvv, expMonth, expYear, user.id)
 
     if (verifiedCard) {
       setVerifiedCard(verifiedCard)
@@ -43,7 +44,8 @@ function Card({ selectedCard, setSelectedCard, user, verifiedCard, setVerifiedCa
       setCardModalOpen(false)
     }
     setCvv(0)
-    setExp(0)
+    setExpMonth('')
+    setExpYear(0)
   }
 
   const handleModalClose = async (e) => {
@@ -81,8 +83,10 @@ function Card({ selectedCard, setSelectedCard, user, verifiedCard, setVerifiedCa
       {cardModalOpen && <CardVerifyModal
         cvv={cvv}
         setCvv={setCvv}
-        exp={exp}
-        setExp={setExp}
+        expMonth={expMonth}
+        setExpMonth={setExpMonth}
+        expYear={expYear}
+        setExpYear={setExpYear}
         isOpen={cardModalOpen}
         onHandleVerifyCard={handleVerifyCard}
         onHandleClose={handleModalClose}

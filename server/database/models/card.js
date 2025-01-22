@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const { BIGINT, INTEGER, STRING } = Sequelize;
+const { BIGINT, ENUM, INTEGER, STRING } = Sequelize;
 const db = require('../db');
 
 const Card = db.define('card', {
@@ -19,7 +19,11 @@ const Card = db.define('card', {
     }
 
   },
-  exp: {
+  expMonth: {
+    type: ENUM('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'),
+    allowNull: false,
+  },
+  expYear: {
     type: INTEGER,
     allowNull: false,
   },
