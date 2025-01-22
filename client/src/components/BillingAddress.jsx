@@ -25,7 +25,7 @@ function BillingAddress({
   return (
     <div className="billing-address_container">
       {billingAddress.street && billingAddress !== shippingAddress ?
-        <div className='address'>
+        <div className='address address-selected'>
           <AddressFields address={billingAddress} />
           <div className={`new-billing_button-container new-billing_button-container${selected}`}>
             <button

@@ -1,9 +1,9 @@
 import AddressFields from "./AddressFields"
 import "./SingleAddress.css"
 
-function SingleAddress({ address, handler }) {
+function SingleAddress({ address, handler, selected }) {
   return (
-    <div className='address' key={address.id}>
+    <div className={`address address${selected}`} key={address.id}>
       <div className="address-input_container">
         <button
           id="address_button"

@@ -2,15 +2,15 @@ import { Modal } from 'semantic-ui-react';
 
 import './CardVerifyModal.css'
 
-function CardVerifyModal({ cvv, setCvv, expMonth, setExpMonth, expYear, setExpYear, isOpen, onHandleClose, onHandleVerifyCard }) {
-  const currentYear = new Date().getFullYear()
+function CardVerifyModal({ currentYear, cvv, setCvv, expMonth, setExpMonth, expYear, setExpYear, isOpen, onHandleClose, onHandleVerifyCard }) {
+  const monthsArray = ['', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
   const futureYear = currentYear + 10
   const yearsArray = []
-  const monthsArray = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 
   for (let i = 0; i <= 10; i++) {
     yearsArray.unshift(futureYear - i)
   }
+  yearsArray.push('')
 
   const handleSetValue = (e) => {
     const { name, value } = e.target;

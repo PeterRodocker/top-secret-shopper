@@ -56,7 +56,7 @@ router.post('/verify', requireToken, async (req, res, next) => {
         expYear: req.body.expYear,
         userId: req.user.id
       },
-      attributes: { exclude: ['cvv', 'exp'] }
+      attributes: { exclude: ['cvv', 'expMonth', 'expYear'] }
     });
     res.send(card);
   } catch (err) {

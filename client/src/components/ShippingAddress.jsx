@@ -34,7 +34,7 @@ function ShippingAddress({
   return (
     <div className='shipping-address_container'>
       {shippingAddress.id ?
-        <div className='address'>
+        <div className='address address-selected'>
           <AddressFields address={shippingAddress} />
           <div className="new-shipping_button-container">
             <button

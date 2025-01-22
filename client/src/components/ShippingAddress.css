@@ -5,6 +5,10 @@
   width: 22rem;
 }
 
+.address-selected {
+  padding: .4rem 0;
+}
+
 .new-shipping_button-container {
   display: flex;
   align-items: center;
@@ -14,7 +18,6 @@
   height: 2.2rem;
   width: 100%;
   background-color: #fffafa;
-  /* background-color: yellow; */
 }
 
 .new-shipping_button {
