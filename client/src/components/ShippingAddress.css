@@ -5,27 +5,25 @@
   width: 22rem;
 }
 
-.new-shipping_label-input {
+.new-shipping_button-container {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   border-radius: 0 0 .25rem .25rem;
   padding: 0 1rem;
-  height: 1.7rem;
+  height: 2.2rem;
   width: 100%;
-  background-color: rgb(40, 3, 75);
-  color: #fffafa;
+  background-color: #fffafa;
+  /* background-color: yellow; */
 }
 
-.new-shipping_label {
-  font-size: 1.1rem;
-  margin: 0 0 0rem;
-  background-color: rgb(40, 3, 75);
-  color: #fffafa;
-}
-
-.new-shipping_input {
+.new-shipping_button {
   align-items: center;
   justify-content: center;
-  width: 1rem;
+  border: 0px;
+  height: 2rem;
+  padding: 0 1.5rem;
+  border-radius: .25rem;
+  background-color: rgb(40, 3, 75);
+  color: #fffafa;
 }

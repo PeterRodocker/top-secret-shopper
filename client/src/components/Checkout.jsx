@@ -159,7 +159,7 @@ const Checkout = () => {
               <input
                 type="checkbox"
                 checked={checked}
-                className="billing-select_input"
+                className="billing-select_button"
                 value="billing"
                 onChange={handleCheck}
               />

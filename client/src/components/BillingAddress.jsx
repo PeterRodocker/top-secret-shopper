@@ -27,14 +27,14 @@ function BillingAddress({
       {billingAddress.street && billingAddress !== shippingAddress ?
         <div className='address'>
           <AddressFields address={billingAddress} />
-          <div className={`new-billing_label-input new-billing_label-input${selected}`}>
-            {billingAddress.id ? <p className="new-billing_label">Choose Different Billing Address</p> : ''}
-            <input name="new-billing"
-              type="radio"
-              defaultChecked={false}
-              className="new-billing_input"
-              onChange={handleNewBilling}
-            />
+          <div className={`new-billing_button-container new-billing_button-container${selected}`}>
+            <button
+              className="new-billing_button"
+              onClick={handleNewBilling}
+            >
+              Choose Different Address
+            </button>
+
           </div>
         </div>
         : user?.addresses?.filter(address => address.id !== shippingAddress.id).map(address => (

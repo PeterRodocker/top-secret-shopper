@@ -36,15 +36,14 @@ function ShippingAddress({
       {shippingAddress.id ?
         <div className='address'>
           <AddressFields address={shippingAddress} />
-          <div className="new-shipping_label-input">
-            {shippingAddress.id ? <p className="new-shipping_label">Choose Different Shipping Address</p> : ''}
-            <input
+          <div className="new-shipping_button-container">
+            <button
               name="new-shipping"
-              type="radio"
-              defaultChecked={false}
-              className="new-shipping_input"
-              onChange={handleNewShipping}
-            />
+              className="new-shipping_button"
+              onClick={handleNewShipping}
+            >
+              Choose Different Address
+            </button>
           </div>
         </div>
         : user?.addresses?.map(address => (

@@ -37,8 +37,9 @@ div.checkout_content h3 {
   align-items: center;
   justify-content: space-between;
   border-radius: .25rem;
+  margin: 1rem 0 0;
   padding: 0 1rem;
-  height: 1.7rem;
+  height: 2.5rem;
   width: 21rem;
   background-color: rgb(40, 3, 75);
   color: #fffafa;
@@ -50,15 +51,11 @@ div.checkout_content h3 {
   background-color: rgb(40, 3, 75);
 }
 
-.billing-select_input {
+.billing-select_button {
   align-items: center;
   justify-content: center;
   width: 1rem;
 }
-
-/* ::checked {
-  background-color: #257d0d;
-} */
 
 .card_container {
   display: flex;
