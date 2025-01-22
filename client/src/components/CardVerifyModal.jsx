@@ -8,7 +8,7 @@ function CardVerifyModal({ currentYear, cvv, setCvv, expMonth, setExpMonth, expY
   const yearsArray = []
 
   for (let i = 0; i <= 10; i++) {
-    yearsArray.unshift(futureYear - i)
+    yearsArray.push(futureYear - i)
   }
   yearsArray.push('')
 

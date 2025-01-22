@@ -95,10 +95,12 @@ function Account() {
                   className='address-fields'
                   account='-delete'
                 />
-                <button
-                  className='account_buttons account-delete_button'
-                  onClick={() => handleDeleteAddress(token, address.id)}
-                >Remove This Address</button>
+                <div className="delete_button-container">
+                  <button
+                    className='account_buttons account-delete_button'
+                    onClick={() => handleDeleteAddress(token, address.id)}
+                  >Remove This Address</button>
+                </div>
               </div>
             ))}
             <div className="account-buttons_container">
@@ -117,10 +119,12 @@ function Account() {
                   radius={'-radius'}
                   className='card-fields'
                 />
-                <button
-                  className='account_buttons account-delete_button'
-                  onClick={(e) => handleDeleteCard(e, token, card.id)}
-                >Remove This Card</button>
+                <div className="delete_button-container">
+                  <button
+                    className='account_buttons account-delete_button'
+                    onClick={(e) => handleDeleteCard(e, token, card.id)}
+                  >Remove This Card</button>
+                </div>
               </div>
             ))}
             <div className="account-buttons_container">
