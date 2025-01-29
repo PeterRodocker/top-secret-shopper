@@ -10,11 +10,12 @@ import CartContext from '../contexts/CartContext';
 
 const Cart = () => {
   const [cart, setCart] = useContext(CartContext)
+  const { products: cartItems } = cart
   const navigate = useNavigate()
   let subtotal = 0
 
   const getSubtotal = () => {
-    cart.map(cartItem => {
+    cartItems.map(cartItem => {
       subtotal += (cartItem.cartProduct.quantity * cartItem.price)
     })
   }
@@ -38,7 +39,7 @@ const Cart = () => {
     <>
       <h1>Your Cart</h1>
       <div className='cart_items-container'>
-        {cart.length ? cart.map(cartItem => <CartItemView
+        {cartItems.length ? cartItems.map(cartItem => <CartItemView
           cartItem={cartItem}
           key={cartItem.id}
           onUpdate={handleUpdate}

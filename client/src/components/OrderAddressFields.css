@@ -1,0 +1,12 @@
+.order-address-fields_container {
+  display: flex;
+  background-color: inherit;
+}
+
+.order-address-fields_container p {
+  height: 3rem;
+}
+
+#city {
+  margin-left: .5rem;
+}

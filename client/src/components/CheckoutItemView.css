@@ -19,7 +19,7 @@ div.checkout-item-view__container h3 {
   padding: .5rem 1rem;
   background-color: #fffafa;
   border-radius: 0.25rem;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
 .checkout-view_link {
@@ -29,16 +29,18 @@ div.checkout-item-view__container h3 {
   width: 100%;
 }
 
-.checkout-view_heading {
-  font-size: 1rem;
+.checkout-view_link .checkout-view_heading {
+  text-align: center;
+  text-justify: center;
+  font-size: 1.5rem;
   font-weight: 700;
   color: rgb(40, 3, 75);
   background-color: #fffafa;
-  margin: 1rem 0 0;
+  margin: 0;
 }
 
 .checkout-view_heading:hover {
-  color: #0f7dea;
+  color: rgb(62, 10, 108);
 }
 
 .checkout-view_image {
@@ -64,9 +66,9 @@ div.checkout-item-view__container h3 {
 
 .subtotal-text-title {
   font-size: 1rem;
-  color: rgb(90, 88, 88);
-  background-color: #fffafa;
   margin: .5rem 2rem 0 0;
+  background-color: #fffafa;
+  color: #000;
 }
 
 .subtotal-text-number {

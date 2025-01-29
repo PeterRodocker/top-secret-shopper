@@ -12,6 +12,7 @@ const Navbar = () => {
   const [user, setUser] = useContext(UserContext)
   const [cart, setCart] = useContext(CartContext)
   const [qty, setQty] = useState(0)
+  const { products: cartItems } = cart
 
   useEffect(() => {
     getQty()
@@ -20,8 +21,8 @@ const Navbar = () => {
   const getQty = () => {
     let quantity = 0;
 
-    if (cart.length) {
-      cart.forEach(cartItem => quantity += cartItem.cartProduct.quantity)
+    if (cartItems?.length) {
+      cartItems.forEach(cartItem => quantity += cartItem.cartProduct.quantity)
     }
     setQty(quantity)
   }

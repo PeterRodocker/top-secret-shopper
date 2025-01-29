@@ -1,15 +1,51 @@
 const router = require('express').Router();
+const { Sequelize } = require('sequelize')
 
-const { models: { Address, Order, Card, Product } } = require('../database');
+const { models: { Address, Card, Cart, CartProduct, Order, Product } } = require('../database');
 const { requireToken } = require('./gateKeepingMiddleware');
 
-// GET Fetch open order
+// GET Fetch all orders for user
 router.get('/', requireToken, async (req, res, next) => {
+  try {
+    const orders = await Order.findAll({
+      where: {
+        userId: req.user.id,
+      },
+      include: [
+        Address,
+        Card,
+        Product,
+        // Cart
+        // {
+        //   model: Cart, where: {
+        //     id: Sequelize.col('Order.cartId')
+        //   }
+        // }
+      ]
+    })
+    res.send(orders);
+  } catch (err) {
+    console.error('Error fetching orders:', err);
+    res.status(500).send({ error: 'An error occurred while fetching orders' });
+  }
+});
+
+// model.findAll({
+//   attributes: [
+//       'id',
+//       [sequelize.fn('date_format', sequelize.col('date_col'), '%Y-%m-%d'), 'date_col_formed']
+//   ]})
+//   .then(function(result) {
+//     console.log(result);
+//   });
+
+// GET Fetch individual order
+router.get('/:orderId', requireToken, async (req, res, next) => {
   try {
     const { products: orderItems } = await Order.findOne({
       where: {
         userId: req.user.id,
-        isOpen: true
+        id: req.params.orderId,
       },
       include: [Address, Card, Product]
     })
@@ -19,11 +55,14 @@ router.get('/', requireToken, async (req, res, next) => {
   }
 });
 
+
+
 // POST Create new order
 router.post('/', requireToken, async (req, res, next) => {
   try {
     const order = await Order.create({
       userId: req.user.id,
+      cartId: 1,
       total: 0,
       isOpen: true
     })
@@ -45,9 +84,9 @@ router.put('/', requireToken, async (req, res, next) => {
       }
     })
 
-    await order.update({ total: total });
+    await order.update({ cartId: cart.id, total: total });
 
-    await Promise.all(cart.map(async product => {
+    await Promise.all(cart.products.map(async product => {
       const quantity = product.cartProduct.quantity;
       const productInstance = await Product.findOne({ where: { id: product.id } });
       await order.addProduct(productInstance, { through: { quantity: quantity, price: productInstance.price } });

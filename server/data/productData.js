@@ -60,6 +60,22 @@ const productData = [
     categoryId: 2,
     description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero quo, placeat harum cupiditate quaerat dolore, quidem velit soluta magnam itaque modi aut distinctio unde omnis. Iusto modi vitae corporis iste.'
   },
+  {
+    name: 'Secret Identity',
+    price: 180,
+    imageURL: faker.image.urlLoremFlickr({ category: 'abstract' }),
+    stockQty: 7,
+    categoryId: 2,
+    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero quo, placeat harum cupiditate quaerat dolore, quidem velit soluta magnam itaque modi aut distinctio unde omnis. Iusto modi vitae corporis iste.'
+  },
+  {
+    name: 'Brief Case',
+    price: 70,
+    imageURL: faker.image.urlLoremFlickr({ category: 'abstract' }),
+    stockQty: 120,
+    categoryId: 3,
+    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero quo, placeat harum cupiditate quaerat dolore, quidem velit soluta magnam itaque modi aut distinctio unde omnis. Iusto modi vitae corporis iste.'
+  },
 ]
 
 module.exports = productData;

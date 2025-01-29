@@ -1,11 +1,13 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
 import AddAddressModal from './AddAddressModal'
 import AddCardModal from './AddCardModal'
 import AddressFields from './AddressFields'
 import CardFields from './CardFields'
+import Orders from './Orders'
 import { createNewAddress, deleteAddress } from '../utility/addressFuncs';
 import { createNewCard, deleteCard } from '../utility/cardFuncs';
+import { } from '../utility/orderFuncs';
 import { fetchUser } from '../utility/userFuncs';
 
 import './Account.css'
@@ -37,8 +39,12 @@ function Account() {
   const [newCard, setNewCard] = useState(cardSchema)
   const [addressModalOpen, setAddressModalOpen] = useState(false)
   const [cardModalOpen, setCardModalOpen] = useState(false)
+  const [orders, setOrders] = useState([])
   const token = window.localStorage.getItem('authorization')
 
+  // useEffect(() => {
+  // if()
+  // }, [])
 
   const handleAddAddress = async (token, newAddress) => {
     const address = await createNewAddress(token, newAddress)
@@ -110,6 +116,7 @@ function Account() {
               >Add An Address</button>
             </div>
           </div>
+
           <div className="cards_container">
             <h3>Payment Methods</h3>
             {user.cards.map(card => (
@@ -135,6 +142,12 @@ function Account() {
             </div>
           </div>
         </div>
+
+        <div className="past-orders_container">
+          {orders.length > 0 && <h3>Past Orders</h3>}
+          <Orders orders={orders} setOrders={setOrders} />
+        </div>
+
         <AddAddressModal
           isOpen={addressModalOpen}
           onHandleAddAddress={handleAddAddress}

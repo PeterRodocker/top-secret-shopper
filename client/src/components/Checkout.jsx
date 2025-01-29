@@ -30,8 +30,9 @@ const Checkout = () => {
   const [orderTotal, setOrderTotal] = useState(0)
   const [completeModalOpen, setCompleteModalOpen] = useState(false);
   const token = window.localStorage.getItem('authorization')
-
+  const { products: cartItems } = cart
   const navigate = useNavigate()
+
 
   const itemsToFetch = [
     ['checked', setChecked],
@@ -69,7 +70,7 @@ const Checkout = () => {
   }, [shippingAddress, billingAddress])
 
   useEffect(() => {
-    itemsToFetch.forEach(item => getLocalStorage(item[0], item[1]))
+    itemsToFetch?.forEach(item => getLocalStorage(item[0], item[1]))
   }, [])
 
   useEffect(() => {
@@ -79,7 +80,7 @@ const Checkout = () => {
 
   const getTotal = () => {
     let subtotal = 0
-    cart.forEach(cartItem => {
+    cartItems?.forEach(cartItem => {
       subtotal += (cartItem.cartProduct.quantity * cartItem.price)
     })
     setOrderTotal(subtotal)
@@ -98,7 +99,7 @@ const Checkout = () => {
       else if (!verifiedCard.id) setMessage('Please Select Your Payment Method')
       return setWarningModalOpen(true)
     }
-    if (cart.length < 1) {
+    if (cartItems.length < 1) {
       setMessage('You Have No Items In Your Cart')
       return setWarningModalOpen(true)
     }
@@ -114,7 +115,7 @@ const Checkout = () => {
     await createNewCart(token)
     const newCart = await fetchCart(token)
     setCart(newCart)
-    itemsToClear.forEach(item => clearLocalStorage(item[0], item[1], item[2]))
+    itemsToClear?.forEach(item => clearLocalStorage(item[0], item[1], item[2]))
     setCompleteModalOpen(false)
     navigate('/products')
   }
@@ -128,7 +129,7 @@ const Checkout = () => {
       <h1>Checkout</h1>
       <div className="checkout_content">
         <div className="cart-item_container">
-          <CheckoutCartItems cart={cart} />
+          <CheckoutCartItems cartItems={cartItems} />
           {orderTotal > 0 && <h2>Order Total: ${orderTotal} </h2>}
         </div>
         <div className="address_container">

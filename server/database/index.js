@@ -31,6 +31,10 @@ Order.belongsTo(User);
 User.hasMany(Card);
 Card.belongsTo(User)
 
+Cart.hasOne(Order)
+Order.belongsTo(Cart);
+
+
 Order.belongsToMany(Address, { through: OrderAddress });
 Address.belongsToMany(Order, { through: OrderAddress });
 

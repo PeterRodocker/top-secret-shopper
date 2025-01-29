@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-export const fetchOrder = async (token) => {
+export const fetchOrders = async (token) => {
   const { data: order } = await axios.get('api/order', {
     headers: { authorization: token }
   })

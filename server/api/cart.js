@@ -4,16 +4,31 @@ const { models: { Cart, Product } } = require('../database');
 const { requireToken } = require('./gateKeepingMiddleware');
 
 // GET Fetch cart
+// router.get('/', requireToken, async (req, res, next) => {
+//   try {
+//     const { products: cartItems } = await Cart.findOne({
+//       where: {
+//         userId: req.user.id,
+//         isOpen: true
+//       },
+//       include: Product
+//     })
+//     res.send(cartItems);
+//   } catch (err) {
+//     next(err);
+//   }
+// });
+
 router.get('/', requireToken, async (req, res, next) => {
   try {
-    const { products: cartItems } = await Cart.findOne({
+    const cart = await Cart.findOne({
       where: {
         userId: req.user.id,
         isOpen: true
       },
       include: Product
     })
-    res.send(cartItems);
+    res.send(cart);
   } catch (err) {
     next(err);
   }
@@ -54,14 +69,15 @@ router.put('/', requireToken, async (req, res, next) => {
       })
     }
     await cart.addProduct(product, { through: { quantity: newQty } })
-    const { products: cartItems } = await Cart.findOne({
+    const updatedCart = await Cart.findOne({
       where: {
         userId: req.user.id,
         isOpen: true
       },
       include: Product
     })
-    res.send(cartItems);
+    console.log('api updatedCart', updatedCart)
+    res.send(updatedCart);
   } catch (err) {
     next(err);
   }

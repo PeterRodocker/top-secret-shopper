@@ -15,7 +15,7 @@ div.account_container h1 {
   align-items: center;
   justify-content: center;
   margin: 2rem;
-  color: white;
+  color: #fffafa;
 }
 
 .account_heading {
@@ -37,7 +37,8 @@ div.account_container h1 {
 }
 
 div.addresses_container h3,
-div.cards_container h3 {
+div.cards_container h3,
+div.past-orders_container h3 {
   margin: .5rem;
   background-color: #000;
   color: #fffafa;
@@ -74,15 +75,26 @@ div.cards_container h3 {
   background-color: inherit;
 }
 
+.past-orders_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 2rem 0 0;
+}
+
+.account-buttons_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  max-width: 20rem;
+}
+
 /* -----------
   BUTTONS
 -------------*/
 
-.account-buttons_container {
-  display: flex;
-  flex-direction: column;
-  max-width: 20rem;
-}
 
 .account_buttons {
   display: flex;
@@ -111,12 +123,30 @@ div.cards_container h3 {
   background-color: #690808;
 }
 
-.account-add_button {
+.account-add_button,
+.past-orders_button {
   border: 1px solid #000;
   font-size: 1.7rem;
   background-color: #257d0d;
 }
 
+
 .account-add_button:hover {
   background-color: #134e03;
+}
+
+.past-orders_button {
+  background-color: rgb(40, 3, 75)
+}
+
+.past-orders_button:hover {
+  background-color: rgb(62, 10, 108);
+}
+
+.hide-past-orders_button {
+  background-color: rgb(126, 2, 2);
+}
+
+.hide-past-orders_button:hover {
+  background-color: #690808;
 }

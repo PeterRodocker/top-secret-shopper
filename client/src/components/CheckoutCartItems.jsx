@@ -1,13 +1,12 @@
 import CheckoutItemView from './CheckoutItemView'
 import './CheckoutCartItems.css'
 
-function CheckoutCartItems({ cart }) {
-
+function CheckoutCartItems({ cartItems }) {
   return (
     <div className="checkout_cart-items">
       <div className='checkout_items-container'>
         <h3>Cart Items</h3>
-        {cart.length ? cart.map(cartItem => (
+        {cartItems?.length ? cartItems.map(cartItem => (
           <CheckoutItemView
             cartItem={cartItem}
             key={cartItem.id}
