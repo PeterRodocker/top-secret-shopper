@@ -19,6 +19,7 @@ const { requireToken } = require('./gateKeepingMiddleware');
 //   }
 // });
 
+// GET Fetch individual cart
 router.get('/', requireToken, async (req, res, next) => {
   try {
     const cart = await Cart.findOne({
@@ -76,7 +77,6 @@ router.put('/', requireToken, async (req, res, next) => {
       },
       include: Product
     })
-    console.log('api updatedCart', updatedCart)
     res.send(updatedCart);
   } catch (err) {
     next(err);

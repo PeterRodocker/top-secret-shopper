@@ -39,12 +39,11 @@ function Account() {
   const [newCard, setNewCard] = useState(cardSchema)
   const [addressModalOpen, setAddressModalOpen] = useState(false)
   const [cardModalOpen, setCardModalOpen] = useState(false)
-  const [orders, setOrders] = useState([])
+  const [showOrders, setShowOrders] = useState(false)
+  const { orders } = user
   const token = window.localStorage.getItem('authorization')
 
-  // useEffect(() => {
-  // if()
-  // }, [])
+
 
   const handleAddAddress = async (token, newAddress) => {
     const address = await createNewAddress(token, newAddress)
@@ -145,7 +144,11 @@ function Account() {
 
         <div className="past-orders_container">
           {orders.length > 0 && <h3>Past Orders</h3>}
-          <Orders orders={orders} setOrders={setOrders} />
+          <Orders
+            orders={orders}
+            showOrders={showOrders}
+            setShowOrders={setShowOrders}
+          />
         </div>
 
         <AddAddressModal

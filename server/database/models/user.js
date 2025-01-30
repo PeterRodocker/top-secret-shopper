@@ -5,6 +5,8 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt')
 const SALT_ROUNDS = 5;
 const Address = require('./address')
+const Order = require('./order')
+const Product = require('./product')
 const Card = require('./card')
 
 const User = db.define('user', {
@@ -51,6 +53,8 @@ User.findByToken = async function (token) {
     attributes: { exclude: ['password'] },
     include: [
       { model: Address },
+      { model: Order, include: { model: Address } },
+      { model: Order, include: { model: Product } },
       { model: Card, attributes: { exclude: ['exp', 'cvv'] } }
     ]
   });
