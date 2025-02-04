@@ -5,6 +5,7 @@
 :root {
   background-color: transparent;
   background: linear-gradient(green, orange);
+  background: #000;
 }
 
 html {

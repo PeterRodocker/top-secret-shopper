@@ -1,5 +1,6 @@
 const { faker } = require('@faker-js/faker');
 
+
 const productData = [
   {
     name: 'Documents',
@@ -7,7 +8,7 @@ const productData = [
     imageURL: faker.image.urlLoremFlickr({ category: 'abstract' }),
     stockQty: 30,
     categoryId: 1,
-    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero quo, placeat harum cupiditate quaerat dolore, quidem velit soluta magnam itaque modi aut distinctio unde omnis. Iusto modi vitae corporis iste.'
+    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero quo, placeat harum cupiditate quaerat dolore.'
   },
 
   {
@@ -16,7 +17,7 @@ const productData = [
     imageURL: faker.image.urlLoremFlickr({ category: 'abstract' }),
     stockQty: 25,
     categoryId: 1,
-    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero quo, placeat harum cupiditate quaerat dolore, quidem velit soluta magnam itaque modi aut distinctio unde omnis. Iusto modi vitae corporis iste.'
+    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero quo, placeat harum cupiditate quaerat dolore.'
 
   },
 
@@ -26,7 +27,7 @@ const productData = [
     imageURL: faker.image.urlLoremFlickr({ category: 'abstract' }),
     stockQty: 10,
     categoryId: 2,
-    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero quo, placeat harum cupiditate quaerat dolore, quidem velit soluta magnam itaque modi aut distinctio unde omnis. Iusto modi vitae corporis iste.'
+    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero quo, placeat harum cupiditate quaerat dolore.'
   },
   {
     name: 'Smoke Bombs',
@@ -34,7 +35,7 @@ const productData = [
     imageURL: faker.image.urlLoremFlickr({ category: 'abstract' }),
     stockQty: 85,
     categoryId: 3,
-    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero quo, placeat harum cupiditate quaerat dolore, quidem velit soluta magnam itaque modi aut distinctio unde omnis. Iusto modi vitae corporis iste.'
+    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero quo, placeat harum cupiditate quaerat dolore.'
   },
   {
     name: 'Lies',
@@ -42,7 +43,7 @@ const productData = [
     imageURL: faker.image.urlLoremFlickr({ category: 'abstract' }),
     stockQty: 12,
     categoryId: 3,
-    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero quo, placeat harum cupiditate quaerat dolore, quidem velit soluta magnam itaque modi aut distinctio unde omnis. Iusto modi vitae corporis iste.'
+    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero quo, placeat harum cupiditate quaerat dolore.'
   },
   {
     name: 'Fedora',
@@ -50,7 +51,7 @@ const productData = [
     imageURL: faker.image.urlLoremFlickr({ category: 'abstract' }),
     stockQty: 18,
     categoryId: 1,
-    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero quo, placeat harum cupiditate quaerat dolore, quidem velit soluta magnam itaque modi aut distinctio unde omnis. Iusto modi vitae corporis iste.'
+    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero quo, placeat harum cupiditate quaerat dolore.'
   },
   {
     name: 'Trench Coat',
@@ -58,7 +59,7 @@ const productData = [
     imageURL: faker.image.urlLoremFlickr({ category: 'abstract' }),
     stockQty: 4,
     categoryId: 2,
-    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero quo, placeat harum cupiditate quaerat dolore, quidem velit soluta magnam itaque modi aut distinctio unde omnis. Iusto modi vitae corporis iste.'
+    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero quo, placeat harum cupiditate quaerat dolore.'
   },
   {
     name: 'Secret Identity',
@@ -66,7 +67,7 @@ const productData = [
     imageURL: faker.image.urlLoremFlickr({ category: 'abstract' }),
     stockQty: 7,
     categoryId: 2,
-    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero quo, placeat harum cupiditate quaerat dolore, quidem velit soluta magnam itaque modi aut distinctio unde omnis. Iusto modi vitae corporis iste.'
+    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero quo, placeat harum cupiditate quaerat dolore.'
   },
   {
     name: 'Brief Case',
@@ -74,7 +75,7 @@ const productData = [
     imageURL: faker.image.urlLoremFlickr({ category: 'abstract' }),
     stockQty: 120,
     categoryId: 3,
-    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero quo, placeat harum cupiditate quaerat dolore, quidem velit soluta magnam itaque modi aut distinctio unde omnis. Iusto modi vitae corporis iste.'
+    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero quo, placeat harum cupiditate quaerat dolore.'
   },
 ]
 

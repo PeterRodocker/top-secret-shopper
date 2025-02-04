@@ -5,6 +5,7 @@ import ShippingAddress from './ShippingAddress'
 import Card from './Card';
 import { closeCart, createNewCart, fetchCart } from '../utility/cartFuncs';
 import { clearLocalStorage, getLocalStorage } from '../utility/localStorageFuncs';
+import { fetchUser } from '../utility/userFuncs';
 import { addToOrder, closeOrder, createNewOrder } from '../utility/orderFuncs';
 
 import './Checkout.css'
@@ -115,6 +116,8 @@ const Checkout = () => {
     await createNewCart(token)
     const newCart = await fetchCart(token)
     setCart(newCart)
+    const user = await fetchUser(token)
+    setUser(user)
     itemsToClear?.forEach(item => clearLocalStorage(item[0], item[1], item[2]))
     setCompleteModalOpen(false)
     navigate('/products')

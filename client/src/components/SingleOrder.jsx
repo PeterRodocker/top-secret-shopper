@@ -1,5 +1,5 @@
 import OrderAddressFields from './OrderAddressFields';
-import CheckoutItemView from './CheckoutItemView';
+import ItemView from './ItemView';
 import FormatDate from './FormatDate';
 
 import './SingleOrder.css'
@@ -20,7 +20,7 @@ const SingleOrder = ({ order }) => {
       </div>
       <div className="order-items_container">
         {order.products.map(product => (
-          <CheckoutItemView key={product.id} cartItem={product} type='order' />
+          <ItemView key={product.id} cartItem={product} />
         ))}
       </div>
 

@@ -43,8 +43,6 @@ function Account() {
   const { orders } = user
   const token = window.localStorage.getItem('authorization')
 
-
-
   const handleAddAddress = async (token, newAddress) => {
     const address = await createNewAddress(token, newAddress)
     if (address) {

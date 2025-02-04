@@ -1,4 +1,4 @@
-import CheckoutItemView from './CheckoutItemView'
+import ItemView from './ItemView'
 import './CheckoutCartItems.css'
 
 function CheckoutCartItems({ cartItems }) {
@@ -7,7 +7,7 @@ function CheckoutCartItems({ cartItems }) {
       <div className='checkout_items-container'>
         <h3>Cart Items</h3>
         {cartItems?.length ? cartItems.map(cartItem => (
-          <CheckoutItemView
+          <ItemView
             cartItem={cartItem}
             key={cartItem.id}
           />)) :

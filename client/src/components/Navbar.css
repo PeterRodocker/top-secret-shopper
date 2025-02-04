@@ -30,6 +30,7 @@
     justify-content: space-around;
     width: 30%;
     margin: 1em;
+    background-color: inherit;
 }
 
 .nav_link {

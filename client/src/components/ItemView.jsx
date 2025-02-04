@@ -1,16 +1,16 @@
 import { useContext, useState } from "react"
 import { Link } from "react-router-dom"
 
-import './CheckoutItemView.css'
+import './ItemView.css'
 
 import UserContext from '../contexts/UserContext';
 
-const CheckoutItemView = ({ cartItem, type }) => {
-  // let { id: productId, imageURL, name, price, cartProduct: { quantity } } = cartItem
+const ItemView = ({ cartItem }) => {
+  const { id: productId, imageURL, name, price, cartProduct, orderProduct } = cartItem
 
-  let { id: productId, imageURL, name, price, orderProduct: { quantity } } = cartItem
-
-  console.log('quantity', quantity)
+  let quantity
+  if (cartProduct) quantity = cartProduct.quantity
+  if (orderProduct) quantity = orderProduct.quantity
 
   const getSubtotal = () => {
     return quantity * price
@@ -40,4 +40,4 @@ const CheckoutItemView = ({ cartItem, type }) => {
   )
 }
 
-export default CheckoutItemView
+export default ItemView
