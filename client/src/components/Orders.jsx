@@ -11,6 +11,7 @@ const Orders = ({ orders, showOrders, setShowOrders }) => {
         >
           View Past Orders
         </button>}
+      {!orders.length && showOrders && <h3>You don't have any orders yet</h3>}
       {orders.length > 0 && showOrders &&
         <div >
           {orders.reverse().map(order => (
